@@ -7,17 +7,19 @@ void main() {
 
 Widget getApplication() {
   return MaterialApp(
-    home: Scaffold(backgroundColor: Colors.green, body: getBody()),
+    home: Scaffold(
+      backgroundColor: Colors.green,
+      body: getBody(),
+    ),
   );
 }
 
 Widget getBody() {
   return SafeArea(
     child: Center(
-      child: Image(
-        image: AssetImage('images/flags.png'),
-      ),
-    ),
+        child: Image(
+      image: AssetImage('images/flags.png'),
+    )),
   );
 }
 
