@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.amber,
-        body: SafeArea(
-          child: Text('hello world!'),
-        ),
+  var application = Application();
+  runApp(application);
+}
+
+Widget getApplication() {
+  return MaterialApp(
+    home: Scaffold(
+      backgroundColor: Colors.pink,
+      body: SafeArea(
+        child: Center(child: Text('hello world!')),
       ),
     ),
   );
+}
+
+class Application extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return getApplication();
+  }
 }
