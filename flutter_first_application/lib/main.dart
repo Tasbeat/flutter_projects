@@ -17,9 +17,10 @@ Widget getApplication() {
 Widget getBody() {
   return SafeArea(
     child: Center(
-        child: Image(
-      image: AssetImage('images/flags.png'),
-    )),
+      child: Image(
+        image: AssetImage('images/flags.png'),
+      ),
+    ),
   );
 }
 
