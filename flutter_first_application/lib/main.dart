@@ -7,10 +7,15 @@ void main() {
 
 Widget getApplication() {
   return MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.pink,
-      body: SafeArea(
-        child: Center(child: Text('hello world!')),
+    home: Scaffold(backgroundColor: Colors.green, body: getBody()),
+  );
+}
+
+Widget getBody() {
+  return SafeArea(
+    child: Center(
+      child: Image(
+        image: AssetImage('images/flags.png'),
       ),
     ),
   );
