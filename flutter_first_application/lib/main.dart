@@ -8,7 +8,7 @@ void main() {
 Widget getApplication() {
   return MaterialApp(
     home: Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.blue,
       body: getBody(),
     ),
   );
