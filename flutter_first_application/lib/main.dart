@@ -10,7 +10,7 @@ void main() {
 Widget getApplication() {
   return MaterialApp(
     home: Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.green,
       body: getBody(),
     ),
   );
@@ -18,33 +18,41 @@ Widget getApplication() {
 
 Widget getBody() {
   return SafeArea(
-    child: Center(
-      child: Column(
-        children: [
-          setAndGetContainer(
-              width: 70.0,
-              height: 70.0,
-              margin: 50.0,
-              color: Colors.pink,
-              padding: 5.0,
-              pathOrUrl: 'images/flags.png'),
-          setAndGetContainer(
-              width: 70.0,
-              height: 70.0,
-              margin: 50.0,
-              color: Colors.brown,
-              padding: 5.0,
-              text: 'Ali'),
-          setAndGetContainer(
-            width: 70.0,
-            height: 70.0,
-            margin: 50.0,
-            color: Colors.deepPurple,
-            padding: 5.0,
-            pathOrUrl: 'images/flags.png',
+    child: Row(
+      //column / Row
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: Container(
+            width: 100.0,
+            height: 100.0,
+            color: Colors.amber,
+            margin: EdgeInsets.only(top: 20.0, left: 20.0),
+            child: Text('hello world1'),
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          child: Container(
+            width: 60.0,
+            height: 60.0,
+            color: Colors.red,
+            margin: EdgeInsets.only(top: 20.0, left: 20.0),
+            padding: EdgeInsets.all(8.0),
+            child: Text('hello world2'),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            width: 60.0,
+            height: 60.0,
+            color: Colors.blue,
+            margin: EdgeInsets.only(top: 20.0, left: 20.0),
+            child: Text('hello world3'),
+          ),
+        ),
+      ],
     ),
   );
 }
@@ -58,7 +66,8 @@ class Application extends StatelessWidget {
   }
 }
 
-Widget setAndGetContainer(
+//define function for customize container and use it in column widget
+/* Widget setAndGetContainer(
     {required double width,
     required double height,
     required Color color,
@@ -116,3 +125,4 @@ Widget setAndGetContainer(
     );
   }
 }
+ */
