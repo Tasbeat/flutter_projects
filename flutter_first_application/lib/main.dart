@@ -25,6 +25,7 @@ Widget getBody() {
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
+          flex: 50,
           child: Container(
             width: 100.0,
             height: 100.0,
@@ -34,6 +35,7 @@ Widget getBody() {
           ),
         ),
         Expanded(
+          flex: 25,
           child: Container(
             width: 60.0,
             height: 60.0,
@@ -44,6 +46,7 @@ Widget getBody() {
           ),
         ),
         Expanded(
+          flex: 25,
           child: Container(
             width: 60.0,
             height: 60.0,
