@@ -31,7 +31,9 @@ Widget getBody() {
             height: 100.0,
             color: Colors.amber,
             margin: EdgeInsets.only(top: 20.0, left: 20.0),
-            child: Text('hello world1'),
+            child: Image(
+              image: AssetImage('images/flags.png'),
+            ),
           ),
         ),
         Expanded(
@@ -55,6 +57,14 @@ Widget getBody() {
             child: Text('hello world3'),
           ),
         ),
+        TextButton(
+          style: TextButton.styleFrom(
+              primary: Colors.black, backgroundColor: Colors.pink),
+          onPressed: () {
+            print('ali');
+          },
+          child: Text('click me!'),
+        )
       ],
     ),
   );
