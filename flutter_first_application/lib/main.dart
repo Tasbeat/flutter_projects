@@ -19,6 +19,45 @@ Widget getApplication() {
 Widget getBody() {
   return SafeArea(
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  color: Colors.amber,
+                ),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  color: Colors.pink,
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
+/* TextButton(
+          style: TextButton.styleFrom(
+              primary: Colors.black, backgroundColor: Colors.pink),
+          onPressed: () {
+            print('ali');
+          },
+          child: Text('click me!'),
+        ) */
+  /* 
+  return SafeArea(
+    child: Row(
       //column / Row
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,7 +106,7 @@ Widget getBody() {
         )
       ],
     ),
-  );
+  ); */
 }
 
 //Image(image : NetworkImage('url'),)
