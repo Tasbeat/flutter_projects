@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +17,6 @@ Widget getApplication() {
 Widget getBody() {
   return SafeArea(
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
           child: Column(
@@ -66,7 +63,7 @@ Widget getBody() {
       ],
     ),
   );
-
+}
 /* TextButton(
           style: TextButton.styleFrom(
               primary: Colors.black, backgroundColor: Colors.pink),
@@ -74,9 +71,9 @@ Widget getBody() {
             print('ali');
           },
           child: Text('click me!'),
-        ) */
-  /* 
-  return SafeArea(
+        )  */
+
+/* return SafeArea(
     child: Row(
       //column / Row
       mainAxisAlignment: MainAxisAlignment.start,
@@ -126,8 +123,79 @@ Widget getBody() {
         )
       ],
     ),
+  );
   ); */
-}
+//challenge 2(course way)
+/* return SafeArea(
+    child: Column(
+      children: [
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  color: Colors.amber,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  color: Colors.blue,
+                ),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  color: Colors.red,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  color: Colors.pink,
+                ),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  color: Colors.black,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  color: Colors.white,
+                ),
+              )
+            ],
+          ),
+        )
+      ],
+    ), 
+
+} */
 
 //Image(image : NetworkImage('url'),)
 //Image(image : AssetImage('path'),)
@@ -139,7 +207,7 @@ class Application extends StatelessWidget {
 }
 
 //define function for customize container and use it in column widget
-/* Widget setAndGetContainer(
+ /* Widget setAndGetContainer(
     {required double width,
     required double height,
     required Color color,
@@ -196,5 +264,5 @@ class Application extends StatelessWidget {
       ),
     );
   }
-}
- */
+} */
+ 
