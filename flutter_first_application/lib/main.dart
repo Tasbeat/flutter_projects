@@ -28,7 +28,17 @@ Widget getBody() {
                 child: Container(
                   color: Colors.amber,
                 ),
-              )
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.blue,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ),
@@ -39,7 +49,17 @@ Widget getBody() {
                 child: Container(
                   color: Colors.pink,
                 ),
-              )
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.purple,
+                ),
+              ),
             ],
           ),
         ),
