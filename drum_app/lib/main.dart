@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
+var player = AudioCache();
 void main() {
   runApp(Application());
 }
@@ -41,19 +43,25 @@ Widget getBody() {
           children: [
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  player.play('c1.wav');
+                },
                 child: Text(''),
               ),
             ),
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  player.play('c2.wav');
+                },
                 child: Text(''),
               ),
             ),
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  player.play('h1.wav');
+                },
                 child: Text(''),
               ),
             ),
@@ -66,19 +74,25 @@ Widget getBody() {
           children: [
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  player.play('h2.wav');
+                },
                 child: Text(''),
               ),
             ),
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  player.play('k1.wav');
+                },
                 child: Text(''),
               ),
             ),
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  player.play('k2.wav');
+                },
                 child: Text(''),
               ),
             ),
