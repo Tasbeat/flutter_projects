@@ -9,27 +9,46 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return getApplication();
+    return _getApplication();
   }
-}
 
-Widget getApplication() {
-  return MaterialApp(
-    theme: ThemeData(fontFamily: 'vazir'),
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(
-      appBar: getAppBar(),
-      body: SafeArea(
-        child: Text('علی علیرحیمی'),
+  Widget _getApplication() {
+    return MaterialApp(
+      theme: ThemeData(fontFamily: 'vazir'),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: _getAppBar(),
+        body: SafeArea(
+          child: _getBody(),
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-PreferredSizeWidget getAppBar() {
-  return AppBar(
-    backgroundColor: Colors.blue,
-    elevation: 0,
-    title: Text('رزومه'),
-  );
+  PreferredSizeWidget _getAppBar() {
+    return AppBar(
+      backgroundColor: Colors.blue,
+      elevation: 0,
+      title: Center(
+        child: Text('رزومه'),
+      ),
+    );
+  }
+
+  Widget _getBody() {
+    return Column(
+      children: [
+        SizedBox(height: 30),
+        Center(
+          child: CircleAvatar(
+            backgroundColor: Colors.brown,
+            backgroundImage: AssetImage('images/flutter.png'),
+            radius: 80,
+          ),
+        ),
+        SizedBox(height: 20),
+        Text('علی علیرحیمی'),
+      ],
+    );
+  }
 }
