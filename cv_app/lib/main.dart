@@ -38,6 +38,14 @@ class Application extends StatelessWidget {
   Widget _getBody() {
     return Column(
       children: [
+        _getHeader(),
+      ],
+    );
+  }
+
+  Widget _getHeader() {
+    return Column(
+      children: [
         SizedBox(height: 30),
         Center(
           child: CircleAvatar(
@@ -47,7 +55,11 @@ class Application extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        Text('علی علیرحیمی'),
+        Text(
+          'علی علیرحیمی',
+          style: TextStyle(
+              fontWeight: FontWeight.w900, fontSize: 20.0, color: Colors.blue),
+        ),
       ],
     );
   }
