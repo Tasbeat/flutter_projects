@@ -59,13 +59,13 @@ class Application extends StatelessWidget {
         CircleAvatar(
           backgroundColor: Colors.brown,
           backgroundImage: AssetImage('images/flutter1.png'),
-          radius: 50,
+          radius: 40,
         ),
         SizedBox(height: 20),
         Text(
           'علی علیرحیمی',
           style: TextStyle(
-              fontWeight: FontWeight.w900, fontSize: 20.0, color: Colors.blue),
+              fontWeight: FontWeight.w900, fontSize: 15.0, color: Colors.blue),
         ),
       ],
     );
@@ -78,18 +78,22 @@ class Application extends StatelessWidget {
       alignment: WrapAlignment.center,
       children: [
         IconButton(
+          iconSize: 20,
           onPressed: () {},
           icon: FaIcon(FontAwesomeIcons.instagram),
         ),
         IconButton(
+          iconSize: 20,
           onPressed: () {},
           icon: FaIcon(FontAwesomeIcons.telegram),
         ),
         IconButton(
+          iconSize: 20,
           onPressed: () {},
           icon: FaIcon(FontAwesomeIcons.github),
         ),
         IconButton(
+          iconSize: 20,
           onPressed: () {},
           icon: FaIcon(FontAwesomeIcons.linkedin),
         ),
@@ -118,13 +122,13 @@ class Application extends StatelessWidget {
             elevation: 15,
             shadowColor: Colors.blue,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(7),
+              borderRadius: BorderRadius.circular(5),
             ),
             child: Column(
               children: [
                 Container(
-                  width: 30.0,
-                  height: 30.0,
+                  width: 40.0,
+                  height: 40.0,
                   child: Image(
                     image: AssetImage('images/${images[index]}.png'),
                   ),
