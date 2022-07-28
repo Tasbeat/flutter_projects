@@ -31,13 +31,13 @@ class Application extends StatelessWidget {
       backgroundColor: Colors.blue,
       elevation: 0,
       title: Center(
-        child: Text('رزومه'),
+        child: Text('رزومه من'),
       ),
     );
   }
 
   Widget _getBody() {
-    return Center(
+    return SingleChildScrollView(
       child: Column(
         children: [
           _getHeader(),
@@ -57,15 +57,22 @@ class Application extends StatelessWidget {
       children: [
         SizedBox(height: 20),
         CircleAvatar(
-          backgroundColor: Colors.brown,
-          backgroundImage: AssetImage('images/flutter1.png'),
+          backgroundColor: Colors.blue[400],
+          child: IconButton(
+            iconSize: 40,
+            color: Colors.black,
+            onPressed: () {},
+            icon: FaIcon(FontAwesomeIcons.user),
+          ),
           radius: 40,
         ),
         SizedBox(height: 20),
         Text(
           'علی علیرحیمی',
           style: TextStyle(
-              fontWeight: FontWeight.w900, fontSize: 15.0, color: Colors.blue),
+              fontWeight: FontWeight.w900,
+              fontSize: 15.0,
+              color: Colors.blue[900]),
         ),
       ],
     );
@@ -127,6 +134,7 @@ class Application extends StatelessWidget {
             child: Column(
               children: [
                 Container(
+                  padding: EdgeInsets.symmetric(vertical: 5.0),
                   width: 40.0,
                   height: 40.0,
                   child: Image(
@@ -145,7 +153,18 @@ class Application extends StatelessWidget {
   }
 
   Widget _getResume() {
-    var resumeContext = ['متن 1', 'متن 2', 'متن 3', 'متن 4', 'متن 5'];
+    var resumeContext = [
+      'متن 1',
+      'متن 2',
+      'متن 3',
+      'متن 4',
+      'متن 5',
+      'متن 6',
+      'متن 7',
+      'متن 8',
+      'متن 9',
+      'متن 10'
+    ];
     return Column(
       children: [
         Container(
@@ -158,20 +177,22 @@ class Application extends StatelessWidget {
           ),
         ),
         Container(
-          color: Colors.grey[400],
+          color: Colors.grey[300],
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SizedBox(
-                width: double.infinity,
-              ),
-              for (var index in resumeContext)
-                Text(
-                  index,
-                  textDirection: TextDirection.rtl,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  width: double.infinity,
                 ),
-            ],
+                for (var index in resumeContext)
+                  Text(
+                    index,
+                    textDirection: TextDirection.rtl,
+                  ),
+              ],
+            ),
           ),
         )
       ],
