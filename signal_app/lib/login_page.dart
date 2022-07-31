@@ -19,18 +19,30 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: double.infinity, height: 40.0),
-            Text(
-              'خوش آمدید!',
-              textDirection: TextDirection.rtl,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            SizedBox(height: 40.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'خوش آمدید!',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                ),
+                SizedBox(width: 5.0),
+                Icon(
+                  Icons.login,
+                  color: Colors.black,
+                  size: 20.0,
+                )
+              ],
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 15.0),
             Image(
               image: AssetImage('images/welcome.png'),
               height: 300.0,
             ),
             _getSignUpButton(),
+            SizedBox(height: 10.0),
             _getSignInButton(),
           ],
         ),
@@ -53,11 +65,11 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _getSignInButton() {
-    return TextButton(
-      style: TextButton.styleFrom(
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
         minimumSize: Size(200.0, 40.0),
         primary: Colors.black,
-        backgroundColor: Colors.white,
+        elevation: 10.0,
       ),
       child: Text(
         'ورود',
