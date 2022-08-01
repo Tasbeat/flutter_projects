@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:signal_app/blog_page.dart';
+import 'package:signal_app/forgot_password_page.dart';
+import 'package:signal_app/navigator.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -7,7 +10,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,
-      appBar: _getHomeScreenBar(),
+      appBar: _getLoginPageBar(),
       body: _getBody(context),
     );
   }
@@ -43,10 +46,26 @@ class LoginPage extends StatelessWidget {
             ),
             _getSignUpButton(),
             SizedBox(height: 10.0),
-            _getSignInButton(),
+            _getSignInButton(context),
+            _ForgotPasswordButton(context),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _ForgotPasswordButton(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        primary: Colors.black,
+      ),
+      onPressed: () {
+        navigator(
+          context,
+          ForgotPasswordPage(),
+        );
+      },
+      child: Text('فراموشی رمز عبور!', textDirection: TextDirection.rtl),
     );
   }
 
@@ -64,7 +83,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _getSignInButton() {
+  Widget _getSignInButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         minimumSize: Size(200.0, 40.0),
@@ -75,11 +94,16 @@ class LoginPage extends StatelessWidget {
         'ورود',
         style: TextStyle(fontSize: 16.0),
       ),
-      onPressed: () {},
+      onPressed: () {
+        navigator(
+          context,
+          BlogPage(),
+        );
+      },
     );
   }
 
-  PreferredSizeWidget _getHomeScreenBar() {
+  PreferredSizeWidget _getLoginPageBar() {
     return AppBar(
       elevation: 10.0,
       title: Text(
