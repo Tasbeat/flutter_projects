@@ -16,11 +16,21 @@ class BlogPage extends StatelessWidget {
 
   Widget _getBody(BuildContext context) {
     return SafeArea(
-      child: Center(
-        child: Image(
-          image: AssetImage('images/s.png'),
+      
+        child: Column(
+          children: [
+            Padding(
+            padding: EdgeInsets.all(20.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image(
+                image: AssetImage('images/s.png'),
+              ),
+            ),
+          ),
+          ], 
         ),
-      ),
+      
     );
   }
 
