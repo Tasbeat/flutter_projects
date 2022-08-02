@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:ffi';
 
-import 'login_page.dart';
+import 'package:flutter/material.dart';
+import 'package:signal_app/navigator.dart';
+
+import 'custom_widges/post_widget.dart';
 
 class BlogPage extends StatelessWidget {
   const BlogPage({Key? key}) : super(key: key);
@@ -15,22 +18,34 @@ class BlogPage extends StatelessWidget {
   }
 
   Widget _getBody(BuildContext context) {
+    var imageNames = ['a.png', 'c.png', 'r.png', 's.png'];
+    var cryptoName = ['Alchemy Pay', 'Cosmos', 'Ripple', 'Safe Moon'];
     return SafeArea(
-      
-        child: Column(
-          children: [
-            Padding(
-            padding: EdgeInsets.all(20.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image(
-                image: AssetImage('images/s.png'),
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              for (var index = 0; index < imageNames.length; index++)
+                getContents(imageNames[index], cryptoName[index]),
+              SizedBox(height: 20.0),
+              TextButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.blue,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'خروج از حساب',
+                  style: TextStyle(color: Colors.blue, fontSize: 16),
+                ),
               ),
-            ),
+              SizedBox(height: 20.0),
+            ],
           ),
-          ], 
         ),
-      
+      ),
     );
   }
 
@@ -41,7 +56,7 @@ class BlogPage extends StatelessWidget {
       elevation: 0.0,
       backgroundColor: Colors.white,
       title: Text(
-        'Second Screen',
+        'Blog page',
         style: TextStyle(color: Colors.black, fontSize: 20.0),
       ),
     );
