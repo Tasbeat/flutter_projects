@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       appBar: _getLoginPageBar(),
       body: _getBody(context),
     );
@@ -23,25 +23,10 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 40.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'خوش آمدید!',
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                ),
-                SizedBox(width: 5.0),
-                Icon(
-                  Icons.login,
-                  color: Colors.black,
-                  size: 20.0,
-                )
-              ],
-            ),
+            _getWelcomeText(),
             SizedBox(height: 15.0),
             Image(
-              image: AssetImage('images/welcome.png'),
+              image: AssetImage('images/w.png'),
               height: 300.0,
             ),
             _getSignUpButton(),
@@ -51,6 +36,25 @@ class LoginPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _getWelcomeText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'خوش آمدید!',
+          textDirection: TextDirection.rtl,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
+        SizedBox(width: 5.0),
+        Icon(
+          Icons.login,
+          color: Colors.black,
+          size: 20.0,
+        )
+      ],
     );
   }
 

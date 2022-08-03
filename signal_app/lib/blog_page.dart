@@ -1,7 +1,5 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:signal_app/navigator.dart';
 
 import 'custom_widges/post_widget.dart';
 
@@ -18,16 +16,19 @@ class BlogPage extends StatelessWidget {
   }
 
   Widget _getBody(BuildContext context) {
-    var imageNames = ['a.png', 'c.png', 'r.png', 's.png'];
-    var cryptoName = ['Alchemy Pay', 'Cosmos', 'Ripple', 'Safe Moon'];
+    final listBlogWidget = [
+      getBlogPost('a.png', 'Alchemy Pay'),
+      getBlogPost('c.png', 'Cosmos'),
+      getBlogPost('r.png', 'Ripple'),
+      getBlogPost('s.png', 'Safe Moon'),
+    ];
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              for (var index = 0; index < imageNames.length; index++)
-                getContents(imageNames[index], cryptoName[index]),
+              ...listBlogWidget,
               SizedBox(height: 20.0),
               TextButton(
                 style: TextButton.styleFrom(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget getContents(String names, String cryptoName) {
+Widget getBlogPost(String names, String cryptoName) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
