@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
-
 import 'custom_widges/post_widget.dart';
 
 class BlogPage extends StatelessWidget {
-  const BlogPage({Key? key}) : super(key: key);
+  BlogPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +28,26 @@ class BlogPage extends StatelessWidget {
             children: [
               ...listBlogWidget,
               SizedBox(height: 20.0),
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.blue,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'خروج از حساب',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
-                ),
-              ),
+              _getSignOutButton(context),
               SizedBox(height: 20.0),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _getSignOutButton(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        primary: Colors.blue,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text(
+        'خروج از حساب',
+        style: TextStyle(color: Colors.blue, fontSize: 16),
       ),
     );
   }

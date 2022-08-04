@@ -12,17 +12,21 @@ Widget getBlogPost(String names, String cryptoName) {
       SizedBox(
         height: 10.0,
       ),
-      Container(
-        width: 200.0,
-        child: Divider(
-          color: Colors.black,
-          thickness: 1,
-        ),
-      ),
+      _getDivider(),
       SizedBox(
         height: 10.0,
       ),
     ],
+  );
+}
+
+Widget _getDivider() {
+  return Container(
+    width: 200.0,
+    child: Divider(
+      color: Colors.black,
+      thickness: 1,
+    ),
   );
 }
 

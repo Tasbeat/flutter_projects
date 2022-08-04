@@ -22,20 +22,24 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 40.0),
+            SizedBox(height: 20.0),
             _getWelcomeText(),
             SizedBox(height: 15.0),
-            Image(
-              image: AssetImage('images/w.png'),
-              height: 300.0,
-            ),
+            _getWelcomeImage(),
             _getSignUpButton(),
             SizedBox(height: 10.0),
             _getSignInButton(context),
-            _ForgotPasswordButton(context),
+            _getForgotPasswordButton(context),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _getWelcomeImage() {
+    return Image(
+      image: AssetImage('images/w.png'),
+      height: 300.0,
     );
   }
 
@@ -58,13 +62,13 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _ForgotPasswordButton(BuildContext context) {
+  Widget _getForgotPasswordButton(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
         primary: Colors.black,
       ),
       onPressed: () {
-        navigator(
+        pushNavigator(
           context,
           ForgotPasswordPage(),
         );
@@ -99,7 +103,7 @@ class LoginPage extends StatelessWidget {
         style: TextStyle(fontSize: 16.0),
       ),
       onPressed: () {
-        navigator(
+        pushNavigator(
           context,
           BlogPage(),
         );
