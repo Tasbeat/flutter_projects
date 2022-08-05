@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class GamePage extends StatefulWidget {
@@ -38,8 +40,8 @@ class _GamePageState extends State<GamePage> {
             ),
             onPressed: () {
               setState(() {
-                bottom = 3;
-                top = 2;
+                bottom = Random().nextInt(3) + 1;
+                top = Random().nextInt(3) + 1;
               });
             },
             child: Text(
