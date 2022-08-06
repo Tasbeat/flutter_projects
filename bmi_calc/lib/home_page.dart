@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'package:bmi_calc/custom_widgets/right_progress_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,30 +19,9 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            width: double.infinity,
-          ),
-          Container(
-            child: Text(
-              '$index',
-              textAlign: TextAlign.center,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.amber,
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              setState(
-                () {
-                  index = Random().nextInt(1000) + 1;
-                },
-              );
-            },
-            child: Text('click me!'),
+          RightProgressBar(
+            height: 20.0,
+            width: 200.0,
           )
         ],
       ),
