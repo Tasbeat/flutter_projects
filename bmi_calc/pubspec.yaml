@@ -10,8 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
+  
+  hexcolor: ^2.0.7
+  
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -27,8 +28,8 @@ flutter:
     - images/
 
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Dana
+      fonts:
+        - asset: fonts/dm.ttf
 

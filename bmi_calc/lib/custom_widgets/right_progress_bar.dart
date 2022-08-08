@@ -1,9 +1,10 @@
+import 'package:bmi_calc/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class RightProgressBar extends StatelessWidget {
   final width;
   final height;
-  const RightProgressBar({Key? key , this.height , this.width}) : super(key: key);
+  const RightProgressBar({Key? key, this.height, this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,9 @@ class RightProgressBar extends StatelessWidget {
           width: width,
           height: height,
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: red,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(15.0),
+              topLeft: Radius.circular(15.0),
             ),
           ),
         )

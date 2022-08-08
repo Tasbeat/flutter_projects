@@ -1,6 +1,5 @@
+import 'package:bmi_calc/pages/home_page.dart';
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
 
 void main() {
   runApp(Application());
@@ -12,6 +11,7 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Dana'),
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
