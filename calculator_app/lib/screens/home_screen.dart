@@ -2,9 +2,6 @@ import 'package:calculator_app/constants/colors.dart';
 import 'package:calculator_app/custom_widgets/elements_row_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../custom_widgets/number_widget.dart';
-import '../custom_widgets/operator_widget.dart';
-
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
@@ -14,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   get blueGrey => null;
-
+  var inputText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +23,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _getBody() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
           flex: 3,
           child: Container(
+            padding: EdgeInsets.all(8.0),
             color: backgroundGreyDark,
+            child: Text(
+              inputText,
+              style: TextStyle(color: textGreen, fontSize: 26),
+              textAlign: TextAlign.end,
+            ),
           ),
         ),
         Expanded(
@@ -41,42 +45,42 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: getRowElements(
-                    firstWidget: getOperator('ac'),
-                    secondWidget: getOperator('ce'),
-                    thirdWidget: getOperator('%'),
-                    fourthWidget: getOperator('/'),
+                    firstWidget: getOperator(operator: 'ac'),
+                    secondWidget: getOperator(operator: 'ce'),
+                    thirdWidget: getOperator(operator: '%'),
+                    fourthWidget: getOperator(operator: '/'),
                   ),
                 ),
                 Expanded(
                   child: getRowElements(
-                    firstWidget: getNumber('9'),
-                    secondWidget: getNumber('8'),
-                    thirdWidget: getNumber('7'),
-                    fourthWidget: getOperator('*'),
+                    firstWidget: getNumber(number: '9'),
+                    secondWidget: getNumber(number: '8'),
+                    thirdWidget: getNumber(number: '7'),
+                    fourthWidget: getOperator(operator: '*'),
                   ),
                 ),
                 Expanded(
                   child: getRowElements(
-                    firstWidget: getNumber('6'),
-                    secondWidget: getNumber('5'),
-                    thirdWidget: getNumber('4'),
-                    fourthWidget: getOperator('+'),
+                    firstWidget: getNumber(number: '6'),
+                    secondWidget: getNumber(number: '5'),
+                    thirdWidget: getNumber(number: '4'),
+                    fourthWidget: getOperator(operator: '+'),
                   ),
                 ),
                 Expanded(
                   child: getRowElements(
-                    firstWidget: getNumber('3'),
-                    secondWidget: getNumber('2'),
-                    thirdWidget: getNumber('1'),
-                    fourthWidget: getOperator('-'),
+                    firstWidget: getNumber(number: '3'),
+                    secondWidget: getNumber(number: '2'),
+                    thirdWidget: getNumber(number: '1'),
+                    fourthWidget: getOperator(operator: '-'),
                   ),
                 ),
                 Expanded(
                   child: getRowElements(
-                    firstWidget: getNumber('00'),
-                    secondWidget: getNumber('0'),
-                    thirdWidget: getOperator('.'),
-                    fourthWidget: getOperator('='),
+                    firstWidget: getNumber(number: '00'),
+                    secondWidget: getNumber(number: '0'),
+                    thirdWidget: getNumber(number: '.'),
+                    fourthWidget: getOperator(operator: '='),
                   ),
                 ),
               ],
@@ -84,6 +88,80 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         )
       ],
+    );
+  }
+
+  Widget getOperator({int? flex = 1, required String operator}) {
+    return Expanded(
+      flex: flex!,
+      child: Container(
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            customBorder: CircleBorder(),
+            onTap: () {
+              setState(
+                () {
+                  if (operator == 'ce' && inputText != '') {
+                    inputText = inputText.substring(0, inputText.length - 1);
+                  } else {
+                    inputText = inputText + operator;
+                  }
+                },
+              );
+            },
+            child: Center(
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: backgroundGreyDark,
+                ),
+                width: 40,
+                height: 40,
+                child: Text(
+                  operator,
+                  style: TextStyle(
+                    color: textGreen,
+                    fontSize: 25.0,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget getNumber({required String number, int? flex = 1}) {
+    return Expanded(
+      flex: flex!,
+      child: Container(
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {
+              setState(
+                () {
+                  inputText = inputText + number;
+                },
+              );
+            },
+            child: Center(
+              child: Text(
+                number,
+                style: TextStyle(
+                  color: textGrey,
+                  fontSize: 30.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
