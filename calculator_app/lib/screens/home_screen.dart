@@ -102,8 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               setState(
                 () {
-                  if (operator == 'ce' && inputText != '') {
-                    inputText = inputText.substring(0, inputText.length - 1);
+                  if (operator == 'ce') {
+                    if (inputText == '') {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Cleared!"),
+                        ),
+                      );
+                    } else
+                      inputText = inputText.substring(0, inputText.length - 1);
                   } else {
                     inputText = inputText + operator;
                   }
