@@ -2,6 +2,9 @@ import 'package:calculator_app/constants/colors.dart';
 import 'package:calculator_app/custom_widgets/elements_row_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../custom_widgets/number_widget.dart';
+import '../custom_widgets/operator_widget.dart';
+
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
@@ -27,39 +30,54 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(
           flex: 3,
           child: Container(
-            color: blueGreyColor,
+            color: backgroundGreyDark,
           ),
         ),
         Expanded(
           flex: 7,
           child: Container(
-            color: blueColor,
+            color: backgroundGrey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
-                  child: getThreeRowElements(
-                      firstElement: 9,
-                      secondElement: 8,
-                      thirdElement: 7,
-                      fourthElement: '+'),
+                  child: getRowElements(
+                    firstWidget: getOperator('ac'),
+                    secondWidget: getOperator('ce'),
+                    thirdWidget: getOperator('%'),
+                    fourthWidget: getOperator('/'),
+                  ),
                 ),
                 Expanded(
-                  child: getThreeRowElements(
-                      firstElement: 6,
-                      secondElement: 5,
-                      thirdElement: 4,
-                      fourthElement: '-'),
+                  child: getRowElements(
+                    firstWidget: getNumber('9'),
+                    secondWidget: getNumber('8'),
+                    thirdWidget: getNumber('7'),
+                    fourthWidget: getOperator('*'),
+                  ),
                 ),
                 Expanded(
-                  child: getThreeRowElements(
-                      firstElement: 3,
-                      secondElement: 2,
-                      thirdElement: 1,
-                      fourthElement: '*'),
+                  child: getRowElements(
+                    firstWidget: getNumber('6'),
+                    secondWidget: getNumber('5'),
+                    thirdWidget: getNumber('4'),
+                    fourthWidget: getOperator('+'),
+                  ),
                 ),
                 Expanded(
-                  child: getLastRowElements(),
+                  child: getRowElements(
+                    firstWidget: getNumber('3'),
+                    secondWidget: getNumber('2'),
+                    thirdWidget: getNumber('1'),
+                    fourthWidget: getOperator('-'),
+                  ),
+                ),
+                Expanded(
+                  child: getRowElements(
+                    firstWidget: getNumber('00'),
+                    secondWidget: getNumber('0'),
+                    thirdWidget: getOperator('.'),
+                    fourthWidget: getOperator('='),
+                  ),
                 ),
               ],
             ),
