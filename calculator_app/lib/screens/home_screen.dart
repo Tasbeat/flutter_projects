@@ -1,6 +1,7 @@
 import 'package:calculator_app/constants/colors.dart';
 import 'package:calculator_app/custom_widgets/elements_row_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   get blueGrey => null;
   var inputText = '';
+  var resultText = '';
+  var isResult = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +26,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _getBody() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
           flex: 3,
           child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(10),
             color: backgroundGreyDark,
-            child: Text(
-              inputText,
-              style: TextStyle(color: textGreen, fontSize: 26),
-              textAlign: TextAlign.end,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  inputText,
+                  style: TextStyle(
+                    color: textGreen,
+                    fontSize: 36.0,
+                  ),
+                  textAlign: TextAlign.end,
+                ),
+                SizedBox(height: 20.0),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    resultText,
+                    style: TextStyle(
+                      color: textGrey,
+                      fontSize: 60.0,
+                    ),
+                    textAlign: TextAlign.end,
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -103,17 +125,40 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(
                 () {
                   if (operator == 'ce') {
-                    if (inputText == '') {
+                    if (inputText == '' || inputText == ' ') {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text("Cleared!"),
                         ),
                       );
-                    } else
+                      isResult = false;
+                    } else {
                       inputText = inputText.substring(0, inputText.length - 1);
-                  } else {
+                    }
+                    isResult = false;
+                  } else if (operator == '=') {
+                    Parser parser = Parser();
+                    Expression expression = parser.parse(inputText);
+                    var simply = expression.simplify();
+                    ContextModel contextModel = ContextModel();
+                    double eval =
+                        simply.evaluate(EvaluationType.REAL, contextModel);
+                    resultText = eval.toString();
+                    isResult = true;
+                  } else if (operator == 'ac') {
+                    inputText = '';
+                    resultText = '';
+                    isResult = false;
+                  } else if (isResult &&
+                      (operator == '+' ||
+                          operator == '-' ||
+                          operator == '*' ||
+                          operator == '/' ||
+                          operator == '%')) {
+                    inputText = resultText + operator;
+                    isResult = false;
+                  } else
                     inputText = inputText + operator;
-                  }
                 },
               );
             },
