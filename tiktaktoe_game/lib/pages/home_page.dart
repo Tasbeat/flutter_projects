@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +13,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: _getAppBar(),
       body: SafeArea(
         child: _getBody(),
@@ -29,9 +32,88 @@ class _HomePageState extends State<HomePage> {
   Widget _getBody() {
     return Column(
       children: [
-        SizedBox(height: 15.0),
+        SizedBox(height: 10.0),
         _getScoreBoard(),
+        SizedBox(height: 10.0),
+        _getGameGrid(),
+        SizedBox(height: 10.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _getTimer(),
+            _getTurnText(),
+          ],
+        )
       ],
+    );
+  }
+
+  Widget _getTimer() {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            startTimer();
+          },
+          child: Text("start"),
+        ),
+        Text(
+          '$_start',
+          style: TextStyle(color: Colors.white),
+        ),
+      ],
+    );
+  }
+
+  Widget _getTurnText() {
+    return Text(
+      'Turn X',
+      style: TextStyle(color: Colors.red, fontSize: 20.0),
+    );
+  }
+
+  Widget _getGameGrid() {
+    return Container(
+      padding: EdgeInsets.all(10),
+      height: 360.0,
+      child: GridView.builder(
+        itemCount: 9,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+            onTap: () {
+              print(index);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  int _start = 10;
+  void startTimer() {
+    const oneSec = Duration(seconds: 1);
+    Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+            _start = 10;
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
     );
   }
 
