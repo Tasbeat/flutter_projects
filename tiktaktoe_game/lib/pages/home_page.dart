@@ -10,6 +10,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> gridElements = ['', '', '', '', '', '', '', '', ''];
+  bool isTurnO = false;
+  bool isAllowToChoose = false;
+  var turnXColor = Colors.red;
+  var turnOColor = Colors.blue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +45,6 @@ class _HomePageState extends State<HomePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _getTimer(),
             _getTurnText(),
           ],
         )
@@ -52,6 +56,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.grey[800]),
           onPressed: () {
             startTimer();
           },
@@ -67,8 +72,18 @@ class _HomePageState extends State<HomePage> {
 
   Widget _getTurnText() {
     return Text(
-      'Turn X',
-      style: TextStyle(color: Colors.red, fontSize: 20.0),
+      isTurnO ? 'Turn O' : 'Turn X',
+      style: TextStyle(
+        color: isTurnO ? turnOColor : turnXColor,
+        fontSize: 20.0,
+        shadows: [
+          Shadow(
+            blurRadius: 8.0,
+            color: isTurnO ? turnXColor : turnOColor,
+            offset: Offset(2.0, 2.0),
+          ),
+        ],
+      ),
     );
   }
 
@@ -84,12 +99,33 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              print(index);
+              setState(
+                () {
+                  if (isAllowToChoose && gridElements[index] == '') {
+                    if (isTurnO) {
+                      gridElements[index] = 'O';
+                      isAllowToChoose = false;
+                    } else {
+                      gridElements[index] = 'X';
+                      isAllowToChoose = false;
+                    }
+                  }
+                },
+              );
             },
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
               ),
+              child: Center(
+                  child: Text(
+                gridElements[index],
+                style: TextStyle(
+                    color:
+                        gridElements[index] == 'O' ? Colors.blue : Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
+              )),
             ),
           );
         },
@@ -99,6 +135,9 @@ class _HomePageState extends State<HomePage> {
 
   int _start = 10;
   void startTimer() {
+    setState(() {
+      isAllowToChoose = true;
+    });
     const oneSec = Duration(seconds: 1);
     Timer.periodic(
       oneSec,
@@ -106,6 +145,8 @@ class _HomePageState extends State<HomePage> {
         if (_start == 0) {
           setState(() {
             timer.cancel();
+            isTurnO = !isTurnO;
+            isAllowToChoose = false;
             _start = 10;
           });
         } else {
@@ -138,6 +179,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+        _getTimer(),
         Card(
           shadowColor: Colors.red,
           elevation: 15.0,
