@@ -101,15 +101,8 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               setState(
                 () {
-                  if (isAllowToChoose && gridElements[index] == '') {
-                    if (isTurnO) {
-                      gridElements[index] = 'O';
-                      isAllowToChoose = false;
-                    } else {
-                      gridElements[index] = 'X';
-                      isAllowToChoose = false;
-                    }
-                  }
+                  checkTurnAndSetElement(index);
+                  checkGameVictory();
                 },
               );
             },
@@ -133,7 +126,54 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  int _start = 10;
+  void checkGameVictory() {
+    for (int i = 0; i < 9; i += 3) {
+      if (gridElements[i] == gridElements[i + 1] &&
+          gridElements[i] == gridElements[i + 2] &&
+          gridElements[i] != '') {
+        print('winner is ${gridElements[i]}');
+      }
+    }
+    for (int j = 0; j < 9; j += 1) {
+      if (j == 3) break;
+      if (gridElements[j] == gridElements[j + 3] &&
+          gridElements[j] == gridElements[j + 6] &&
+          gridElements[j] != '') {
+        print('winner is ${gridElements[j]}');
+      }
+    }
+    for (int z1 = 0; z1 < 9; z1 += 4) {
+      if (z1 == 4) break;
+      if (gridElements[z1] == gridElements[z1 + 4] &&
+          gridElements[z1] == gridElements[z1 + 8] &&
+          gridElements[z1] != '') {
+        print('winner is ${gridElements[z1]}');
+      }
+    }
+    for (int z2 = 2; z2 < 9; z2 += 2) {
+      if (z2 == 4) break;
+      if (gridElements[z2] == gridElements[z2 + 2] &&
+          gridElements[z2] == gridElements[z2 + 4] &&
+          gridElements[z2] != '') {
+        print('winner is ${gridElements[z2]}');
+      }
+    }
+  }
+
+  void checkTurnAndSetElement(int index) {
+    if (gridElements[index] != '') return;
+    if (isAllowToChoose) {
+      if (isTurnO) {
+        gridElements[index] = 'O';
+        isAllowToChoose = false;
+      } else {
+        gridElements[index] = 'X';
+        isAllowToChoose = false;
+      }
+    }
+  }
+
+  int _start = 5;
   void startTimer() {
     setState(() {
       isAllowToChoose = true;
@@ -147,7 +187,7 @@ class _HomePageState extends State<HomePage> {
             timer.cancel();
             isTurnO = !isTurnO;
             isAllowToChoose = false;
-            _start = 10;
+            _start = 5;
           });
         } else {
           setState(() {
