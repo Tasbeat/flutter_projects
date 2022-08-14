@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             _getTurnText(),
           ],
-        )
+        ),
       ],
     );
   }
@@ -111,14 +111,15 @@ class _HomePageState extends State<HomePage> {
                 border: Border.all(color: Colors.grey),
               ),
               child: Center(
-                  child: Text(
-                gridElements[index],
-                style: TextStyle(
-                    color:
-                        gridElements[index] == 'O' ? Colors.blue : Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
-              )),
+                child: Text(
+                  gridElements[index],
+                  style: TextStyle(
+                      color:
+                          gridElements[index] == 'O' ? Colors.blue : Colors.red,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
           );
         },
@@ -126,12 +127,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void resetGameElements() {
+    gridElements = ['', '', '', '', '', '', '', '', ''];
+    _start = 5;
+  }
+
   void checkGameVictory() {
     for (int i = 0; i < 9; i += 3) {
       if (gridElements[i] == gridElements[i + 1] &&
           gridElements[i] == gridElements[i + 2] &&
           gridElements[i] != '') {
-        print('winner is ${gridElements[i]}');
+        _showPopUp(gridElements[i]);
+        resetGameElements();
       }
     }
     for (int j = 0; j < 9; j += 1) {
@@ -239,5 +246,36 @@ class _HomePageState extends State<HomePage> {
         )
       ],
     );
+  }
+
+  void _showPopUp(String winnerPlayer) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            scrollable: true,
+            title: Text('You Win!!'),
+            content: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image(
+                      image: AssetImage('images/winner.png'),
+                      width: 200,
+                      height: 200,
+                    ),
+                    Text('Player $winnerPlayer , You Win!!'),
+                  ],
+                )),
+            actions: [
+              ElevatedButton(
+                child: Text("Close"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
   }
 }
