@@ -14,6 +14,8 @@ class _HomePageState extends State<HomePage> {
   bool isTurnO = false;
   bool isGameOver = false;
   bool isPlayerAllowToChoose = false;
+  var playerOWinCount = 0;
+  var playerXWinCount = 0;
   var turnXColor = Colors.red;
   var turnOColor = Colors.blue;
   int _start = 5;
@@ -145,6 +147,14 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void countPlayersVicrories(String winnerElement) {
+    if (winnerElement == 'X') {
+      playerXWinCount++;
+    } else {
+      playerOWinCount++;
+    }
+  }
+
   void checkGameVictory() {
     for (int i = 0; i < 9; i += 3) {
       if (gridElements[i] == gridElements[i + 1] &&
@@ -152,6 +162,7 @@ class _HomePageState extends State<HomePage> {
           gridElements[i] != '') {
         resetGameElements();
         _showWinPopUp(gridElements[i]);
+        countPlayersVicrories(gridElements[i]);
         return;
       }
     }
@@ -162,6 +173,8 @@ class _HomePageState extends State<HomePage> {
           gridElements[j] != '') {
         resetGameElements();
         _showWinPopUp(gridElements[j]);
+        countPlayersVicrories(gridElements[j]);
+        return;
       }
     }
     for (int z1 = 0; z1 < 9; z1 += 4) {
@@ -171,6 +184,8 @@ class _HomePageState extends State<HomePage> {
           gridElements[z1] != '') {
         resetGameElements();
         _showWinPopUp(gridElements[z1]);
+        countPlayersVicrories(gridElements[z1]);
+        return;
       }
     }
     for (int z2 = 2; z2 < 9; z2 += 2) {
@@ -180,6 +195,8 @@ class _HomePageState extends State<HomePage> {
           gridElements[z2] != '') {
         resetGameElements();
         _showWinPopUp(gridElements[z2]);
+        countPlayersVicrories(gridElements[z2]);
+        return;
       }
     }
     if (isGameOver == false) {
@@ -255,7 +272,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('Player O'),
                 SizedBox(height: 15.0),
-                Text('0'),
+                Text(playerXWinCount.toString()),
               ],
             ),
           ),
@@ -273,7 +290,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('Player X'),
                 SizedBox(height: 15.0),
-                Text('1'),
+                Text(playerOWinCount.toString()),
               ],
             ),
           ),
