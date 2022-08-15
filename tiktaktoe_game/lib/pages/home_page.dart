@@ -12,9 +12,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<String> gridElements = ['', '', '', '', '', '', '', '', ''];
   bool isTurnO = false;
-  bool isAllowToChoose = false;
+  bool isGameOver = false;
+  bool isPlayerAllowToChoose = false;
   var turnXColor = Colors.red;
   var turnOColor = Colors.blue;
+  int _start = 5;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +34,14 @@ class _HomePageState extends State<HomePage> {
       centerTitle: true,
       title: Text('Tik Tak Toe'),
       backgroundColor: Colors.grey[900],
+      actions: [
+        IconButton(
+          onPressed: () {
+            resetGameElements();
+          },
+          icon: Icon(Icons.refresh),
+        ),
+      ],
     );
   }
 
@@ -58,7 +69,7 @@ class _HomePageState extends State<HomePage> {
         ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.grey[800]),
           onPressed: () {
-            startTimer();
+            _startTimer();
           },
           child: Text("start"),
         ),
@@ -128,8 +139,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void resetGameElements() {
-    gridElements = ['', '', '', '', '', '', '', '', ''];
-    _start = 5;
+    setState(() {
+      gridElements = ['', '', '', '', '', '', '', '', ''];
+      isGameOver = true;
+    });
   }
 
   void checkGameVictory() {
@@ -137,8 +150,9 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[i] == gridElements[i + 1] &&
           gridElements[i] == gridElements[i + 2] &&
           gridElements[i] != '') {
-        _showPopUp(gridElements[i]);
         resetGameElements();
+        _showWinPopUp(gridElements[i]);
+        return;
       }
     }
     for (int j = 0; j < 9; j += 1) {
@@ -146,7 +160,8 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[j] == gridElements[j + 3] &&
           gridElements[j] == gridElements[j + 6] &&
           gridElements[j] != '') {
-        print('winner is ${gridElements[j]}');
+        resetGameElements();
+        _showWinPopUp(gridElements[j]);
       }
     }
     for (int z1 = 0; z1 < 9; z1 += 4) {
@@ -154,7 +169,8 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[z1] == gridElements[z1 + 4] &&
           gridElements[z1] == gridElements[z1 + 8] &&
           gridElements[z1] != '') {
-        print('winner is ${gridElements[z1]}');
+        resetGameElements();
+        _showWinPopUp(gridElements[z1]);
       }
     }
     for (int z2 = 2; z2 < 9; z2 += 2) {
@@ -162,28 +178,37 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[z2] == gridElements[z2 + 2] &&
           gridElements[z2] == gridElements[z2 + 4] &&
           gridElements[z2] != '') {
-        print('winner is ${gridElements[z2]}');
+        resetGameElements();
+        _showWinPopUp(gridElements[z2]);
       }
+    }
+    if (isGameOver == false) {
+      for (var element in gridElements) {
+        if (element == '') return;
+      }
+      _showEqualPopUp();
+      resetGameElements();
     }
   }
 
   void checkTurnAndSetElement(int index) {
     if (gridElements[index] != '') return;
-    if (isAllowToChoose) {
+    if (isPlayerAllowToChoose) {
       if (isTurnO) {
         gridElements[index] = 'O';
-        isAllowToChoose = false;
+        isPlayerAllowToChoose = false;
       } else {
         gridElements[index] = 'X';
-        isAllowToChoose = false;
+        isPlayerAllowToChoose = false;
       }
     }
   }
 
-  int _start = 5;
-  void startTimer() {
+  var isTimerPermissionToStart = false;
+  void _startTimer() {
     setState(() {
-      isAllowToChoose = true;
+      isPlayerAllowToChoose = true;
+      isTimerPermissionToStart = true;
     });
     const oneSec = Duration(seconds: 1);
     Timer.periodic(
@@ -193,12 +218,21 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             timer.cancel();
             isTurnO = !isTurnO;
-            isAllowToChoose = false;
+            isPlayerAllowToChoose = false;
             _start = 5;
           });
         } else {
           setState(() {
-            _start--;
+            if (isGameOver == true) {
+              timer.cancel();
+              _start = 5;
+              isGameOver = false;
+              isPlayerAllowToChoose = false;
+              isTimerPermissionToStart = false;
+              return;
+            } else if (isTimerPermissionToStart) {
+              _start--;
+            }
           });
         }
       },
@@ -248,7 +282,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _showPopUp(String winnerPlayer) {
+  void _showWinPopUp(String winnerPlayer) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -256,17 +290,45 @@ class _HomePageState extends State<HomePage> {
             scrollable: true,
             title: Text('You Win!!'),
             content: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Image(
-                      image: AssetImage('images/winner.png'),
-                      width: 200,
-                      height: 200,
-                    ),
-                    Text('Player $winnerPlayer , You Win!!'),
-                  ],
-                )),
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Image(
+                    image: AssetImage('images/winner.png'),
+                    width: 200,
+                    height: 200,
+                  ),
+                  Text('Player $winnerPlayer , You Win!!'),
+                ],
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                child: Text("Close"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void _showEqualPopUp() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            scrollable: true,
+            title: Text('Equal!!'),
+            content: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text('No One Win!'),
+                ],
+              ),
+            ),
             actions: [
               ElevatedButton(
                 child: Text("Close"),
