@@ -147,22 +147,14 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void countPlayersVicrories(String winnerElement) {
-    if (winnerElement == 'X') {
-      playerXWinCount++;
-    } else {
-      playerOWinCount++;
-    }
-  }
-
   void checkGameVictory() {
     for (int i = 0; i < 9; i += 3) {
       if (gridElements[i] == gridElements[i + 1] &&
           gridElements[i] == gridElements[i + 2] &&
           gridElements[i] != '') {
-        resetGameElements();
         _showWinPopUp(gridElements[i]);
         countPlayersVicrories(gridElements[i]);
+        resetGameElements();
         return;
       }
     }
@@ -171,9 +163,9 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[j] == gridElements[j + 3] &&
           gridElements[j] == gridElements[j + 6] &&
           gridElements[j] != '') {
-        resetGameElements();
         _showWinPopUp(gridElements[j]);
         countPlayersVicrories(gridElements[j]);
+        resetGameElements();
         return;
       }
     }
@@ -182,9 +174,9 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[z1] == gridElements[z1 + 4] &&
           gridElements[z1] == gridElements[z1 + 8] &&
           gridElements[z1] != '') {
-        resetGameElements();
         _showWinPopUp(gridElements[z1]);
         countPlayersVicrories(gridElements[z1]);
+        resetGameElements();
         return;
       }
     }
@@ -193,9 +185,9 @@ class _HomePageState extends State<HomePage> {
       if (gridElements[z2] == gridElements[z2 + 2] &&
           gridElements[z2] == gridElements[z2 + 4] &&
           gridElements[z2] != '') {
-        resetGameElements();
         _showWinPopUp(gridElements[z2]);
         countPlayersVicrories(gridElements[z2]);
+        resetGameElements();
         return;
       }
     }
@@ -256,6 +248,16 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void countPlayersVicrories(String winnerElement) {
+    setState(() {
+      if (winnerElement == 'X') {
+        playerXWinCount++;
+      } else if (winnerElement == 'O') {
+        playerOWinCount++;
+      }
+    });
+  }
+
   Widget _getScoreBoard() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -272,7 +274,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('Player O'),
                 SizedBox(height: 15.0),
-                Text(playerXWinCount.toString()),
+                Text(playerOWinCount.toString()),
               ],
             ),
           ),
@@ -290,7 +292,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('Player X'),
                 SizedBox(height: 15.0),
-                Text(playerOWinCount.toString()),
+                Text(playerXWinCount.toString()),
               ],
             ),
           ),
