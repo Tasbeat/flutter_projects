@@ -14,11 +14,12 @@ class _HomePageState extends State<HomePage> {
   bool isTurnO = false;
   bool isGameOver = false;
   bool isPlayerAllowToChoose = false;
-  var playerOWinCount = 0;
-  var playerXWinCount = 0;
+  var isTimerPermissionToStart = true;
+  var playerOWinsCount = 0;
+  var playerXWinsCount = 0;
   var turnXColor = Colors.red;
   var turnOColor = Colors.blue;
-  int _start = 5;
+  int _startTime = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       actions: [
         IconButton(
           onPressed: () {
-            resetGameElements();
+            _resetGameElements();
           },
           icon: Icon(Icons.refresh),
         ),
@@ -70,13 +71,15 @@ class _HomePageState extends State<HomePage> {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.grey[800]),
-          onPressed: () {
-            _startTimer();
-          },
+          onPressed: isTimerPermissionToStart
+              ? () {
+                  _startTimer();
+                }
+              : null,
           child: Text("start"),
         ),
         Text(
-          '$_start',
+          '$_startTime',
           style: TextStyle(color: Colors.white),
         ),
       ],
@@ -114,8 +117,8 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               setState(
                 () {
-                  checkTurnAndSetElement(index);
-                  checkGameVictory();
+                  _checkTurnAndSetElement(index);
+                  _checkGameVictory();
                 },
               );
             },
@@ -140,21 +143,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void resetGameElements() {
+  void _resetGameElements() {
     setState(() {
       gridElements = ['', '', '', '', '', '', '', '', ''];
       isGameOver = true;
     });
   }
 
-  void checkGameVictory() {
+  void _checkGameVictory() {
     for (int i = 0; i < 9; i += 3) {
       if (gridElements[i] == gridElements[i + 1] &&
           gridElements[i] == gridElements[i + 2] &&
           gridElements[i] != '') {
         _showWinPopUp(gridElements[i]);
-        countPlayersVicrories(gridElements[i]);
-        resetGameElements();
+        _countPlayersVicrories(gridElements[i]);
+        _resetGameElements();
         return;
       }
     }
@@ -164,8 +167,8 @@ class _HomePageState extends State<HomePage> {
           gridElements[j] == gridElements[j + 6] &&
           gridElements[j] != '') {
         _showWinPopUp(gridElements[j]);
-        countPlayersVicrories(gridElements[j]);
-        resetGameElements();
+        _countPlayersVicrories(gridElements[j]);
+        _resetGameElements();
         return;
       }
     }
@@ -175,8 +178,8 @@ class _HomePageState extends State<HomePage> {
           gridElements[z1] == gridElements[z1 + 8] &&
           gridElements[z1] != '') {
         _showWinPopUp(gridElements[z1]);
-        countPlayersVicrories(gridElements[z1]);
-        resetGameElements();
+        _countPlayersVicrories(gridElements[z1]);
+        _resetGameElements();
         return;
       }
     }
@@ -186,8 +189,8 @@ class _HomePageState extends State<HomePage> {
           gridElements[z2] == gridElements[z2 + 4] &&
           gridElements[z2] != '') {
         _showWinPopUp(gridElements[z2]);
-        countPlayersVicrories(gridElements[z2]);
-        resetGameElements();
+        _countPlayersVicrories(gridElements[z2]);
+        _resetGameElements();
         return;
       }
     }
@@ -196,11 +199,11 @@ class _HomePageState extends State<HomePage> {
         if (element == '') return;
       }
       _showEqualPopUp();
-      resetGameElements();
+      _resetGameElements();
     }
   }
 
-  void checkTurnAndSetElement(int index) {
+  void _checkTurnAndSetElement(int index) {
     if (gridElements[index] != '') return;
     if (isPlayerAllowToChoose) {
       if (isTurnO) {
@@ -213,47 +216,45 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  var isTimerPermissionToStart = false;
   void _startTimer() {
     setState(() {
       isPlayerAllowToChoose = true;
-      isTimerPermissionToStart = true;
+      isTimerPermissionToStart = false;
     });
     const oneSec = Duration(seconds: 1);
     Timer.periodic(
       oneSec,
       (Timer timer) {
-        if (_start == 0) {
-          setState(() {
+        setState(() {
+          if (_startTime == 0) {
             timer.cancel();
             isTurnO = !isTurnO;
             isPlayerAllowToChoose = false;
-            _start = 5;
-          });
-        } else {
-          setState(() {
+            isTimerPermissionToStart = true;
+            _startTime = 5;
+          } else {
             if (isGameOver == true) {
               timer.cancel();
-              _start = 5;
+              _startTime = 5;
               isGameOver = false;
               isPlayerAllowToChoose = false;
-              isTimerPermissionToStart = false;
+              isTimerPermissionToStart = true;
               return;
-            } else if (isTimerPermissionToStart) {
-              _start--;
+            } else if (!isTimerPermissionToStart) {
+              _startTime--;
             }
-          });
-        }
+          }
+        });
       },
     );
   }
 
-  void countPlayersVicrories(String winnerElement) {
+  void _countPlayersVicrories(String winnerElement) {
     setState(() {
       if (winnerElement == 'X') {
-        playerXWinCount++;
+        playerXWinsCount++;
       } else if (winnerElement == 'O') {
-        playerOWinCount++;
+        playerOWinsCount++;
       }
     });
   }
@@ -274,7 +275,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('Player O'),
                 SizedBox(height: 15.0),
-                Text(playerOWinCount.toString()),
+                Text(playerOWinsCount.toString()),
               ],
             ),
           ),
@@ -292,7 +293,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text('Player X'),
                 SizedBox(height: 15.0),
-                Text(playerXWinCount.toString()),
+                Text(playerXWinsCount.toString()),
               ],
             ),
           ),
@@ -339,7 +340,7 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context) {
           return AlertDialog(
             scrollable: true,
-            title: Text('Equal!!'),
+            title: Text('Draw Match!!'),
             content: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
