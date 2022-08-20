@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/constants/Constants.dart';
+import 'package:quiz_app/navigator.dart';
+import 'package:quiz_app/pages/result_page.dart';
 
 class QuizPage extends StatefulWidget {
   QuizPage({Key? key}) : super(key: key);
@@ -12,7 +14,11 @@ class _QuizPageState extends State<QuizPage> {
   var questions = getQuestions();
   var questionIndex = 0;
   int? selectedIndex = 0;
+  int questionNumberTitle = 1;
   var isAnswerSelected = false;
+  var userCorrectAnswersNumber = 0;
+  var userWrongAnswersNumber = 0;
+  var submitText = 'سوال بعدی';
   var trueAnswerColor;
   var wrongAnswerColor;
   var stringListOfAnswerTitleOrders = [
@@ -42,7 +48,7 @@ class _QuizPageState extends State<QuizPage> {
   Widget _getQuestionTitle() {
     return ListTile(
       subtitle: Text(
-        'سوال  1',
+        'سوال $questionNumberTitle از ${questions.length}  ',
         textAlign: TextAlign.end,
       ),
       dense: true,
@@ -57,7 +63,8 @@ class _QuizPageState extends State<QuizPage> {
 
   Widget _getQuestionImage() {
     return Image(
-      image: AssetImage('images/1.png'),
+      image:
+          AssetImage('images/${questions[questionIndex].questionNumber}.png'),
       height: 200.0,
     );
   }
@@ -67,66 +74,111 @@ class _QuizPageState extends State<QuizPage> {
       padding: EdgeInsets.all(8),
       child: Column(
         children: [
-          ...List.generate(
-            4,
-            (index) => Padding(
-              padding: EdgeInsets.only(bottom: 3),
-              child: ListTile(
-                selected: index == selectedIndex,
-                onTap: () {
-                  setState(() {
-                    selectedIndex = index;
-                  });
-                },
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black, width: 1),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                subtitle: Text(
-                  stringListOfAnswerTitleOrders[index],
-                  style: TextStyle(fontSize: 10),
-                  textAlign: TextAlign.end,
-                ),
-                dense: true,
-                title: Text(
-                  questions[questionIndex].answers[index],
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color:
-                        selectedIndex == questions[questionIndex].correctAnswer
-                            ? trueAnswerColor
-                            : Colors.black,
-                  ),
-                ),
-                trailing: Icon(Icons.question_answer_rounded),
-              ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    if (selectedIndex ==
-                        questions[questionIndex].correctAnswer) {
-                      selectedIndex = null;
-                      trueAnswerColor = Colors.green;
-                    } else {
-                      trueAnswerColor = Colors.green;
-                    }
-                  });
-                },
-                child: Text('ارسال جواب'),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('تایید جواب'),
-              )
-            ],
-          )
+          ...List.generate(4, (index) => _getListTile(index)),
+          _getButtons()
         ],
       ),
     );
+  }
+
+  var isAnswerHasSubmitted = false;
+  Widget _getButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              if (isAnswerHasSubmitted) return;
+              isUserHasPermissionToSelect = false;
+              if (selectedIndex == questions[questionIndex].correctAnswer) {
+                trueAnswerColor = Colors.green;
+                userCorrectAnswersNumber++;
+                isAnswerHasSubmitted = true;
+              } else {
+                wrongAnswerColor = Colors.red;
+                userWrongAnswersNumber++;
+                isAnswerHasSubmitted = true;
+              }
+            });
+          },
+          child: Text('ارسال جواب'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              if (questionIndex == questions.length - 1) {
+                navigator(
+                  context,
+                  ResultPage(
+                    userCorrectAnswersNumber:
+                        userCorrectAnswersNumber.toString(),
+                    userWrongAnswersNumber: userWrongAnswersNumber.toString(),
+                  ),
+                );
+                return;
+              }
+
+              isUserHasPermissionToSelect = true;
+              isAnswerHasSubmitted = false;
+              trueAnswerColor = null;
+              wrongAnswerColor = null;
+              questionNumberTitle++;
+              questionIndex++;
+            });
+          },
+          child: Text(
+            questionIndex == questions.length - 1 ? 'نتیجه' : 'سوال بعدی',
+          ),
+        )
+      ],
+    );
+  }
+
+  bool isUserHasPermissionToSelect = true;
+  Widget _getListTile(int index) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 3),
+      child: ListTile(
+        selected: index == selectedIndex,
+        onTap: () {
+          setState(() {
+            if (!isUserHasPermissionToSelect) return;
+            selectedIndex = index;
+          });
+        },
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        subtitle: Text(
+          stringListOfAnswerTitleOrders[index],
+          style: TextStyle(
+            fontSize: 10,
+            color: getSelectedAnswerColor(index),
+          ),
+          textAlign: TextAlign.end,
+        ),
+        dense: true,
+        title: Text(
+          questions[questionIndex].answers[index],
+          textAlign: TextAlign.end,
+          style: TextStyle(
+            color: getSelectedAnswerColor(index),
+          ),
+        ),
+        trailing: Icon(Icons.question_answer_rounded),
+      ),
+    );
+  }
+
+  Color? getSelectedAnswerColor(int index) {
+    if (index == selectedIndex &&
+        selectedIndex == questions[questionIndex].correctAnswer) {
+      return trueAnswerColor;
+    } else if (selectedIndex == index) {
+      return wrongAnswerColor;
+    } else
+      return null;
   }
 }
