@@ -16,6 +16,8 @@ class _QuizPageState extends State<QuizPage> {
   int? selectedIndex = 0;
   int questionNumberTitle = 1;
   var isAnswerSelected = false;
+  bool isUserHasPermissionToSelect = true;
+  var isAnswerHasSubmitted = false;
   var userCorrectAnswersNumber = 0;
   var userWrongAnswersNumber = 0;
   var submitText = 'سوال بعدی';
@@ -30,11 +32,7 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Quiz Night'),
-        centerTitle: true,
-        backgroundColor: Colors.indigo[900],
-      ),
+      appBar: _getAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -42,6 +40,14 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
       ),
+    );
+  }
+
+  PreferredSizeWidget _getAppBar() {
+    return AppBar(
+      title: Text('Quiz Night'),
+      centerTitle: true,
+      backgroundColor: Colors.indigo[900],
     );
   }
 
@@ -81,7 +87,6 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
-  var isAnswerHasSubmitted = false;
   Widget _getButtons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -105,18 +110,25 @@ class _QuizPageState extends State<QuizPage> {
           child: Text('ارسال جواب'),
         ),
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              primary:
+                  questionIndex == questions.length - 1 ? Colors.red : null),
           onPressed: () {
             setState(() {
               if (questionIndex == questions.length - 1) {
-                navigator(
-                  context,
-                  ResultPage(
-                    userCorrectAnswersNumber:
-                        userCorrectAnswersNumber.toString(),
-                    userWrongAnswersNumber: userWrongAnswersNumber.toString(),
-                  ),
-                );
-                return;
+                if (isAnswerHasSubmitted) {
+                  navigator(
+                    context,
+                    ResultPage(
+                      userCorrectAnswersNumber:
+                          userCorrectAnswersNumber.toString(),
+                      userWrongAnswersNumber: userWrongAnswersNumber.toString(),
+                    ),
+                  );
+                  return;
+                } else {
+                  return;
+                }
               }
 
               isUserHasPermissionToSelect = true;
@@ -135,7 +147,6 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
-  bool isUserHasPermissionToSelect = true;
   Widget _getListTile(int index) {
     return Padding(
       padding: EdgeInsets.only(bottom: 3),
