@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var resultBMI = 0.00;
+  var resultBMI = 0.0;
   var resultText = '';
   var resultColor = Colors.transparent;
   var healthyProgressBarWidth = 150.0;
@@ -83,7 +83,8 @@ class _HomePageState extends State<HomePage> {
     return InkWell(
       onTap: () {
         if (weightFieldTextController.text == '' ||
-            heightFieldTextController.text == '') {
+            heightFieldTextController.text == '' ||
+            heightFieldTextController.text.contains('.') == false) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Enter True Height Or Weight"),
@@ -134,12 +135,19 @@ class _HomePageState extends State<HomePage> {
         Container(
           width: 80.0,
           child: TextField(
+            cursorColor: Colors.black,
             controller: heightFieldTextController,
             style: TextStyle(color: black, fontSize: 20.0),
             maxLength: 4,
             textAlign: TextAlign.center,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
+              fillColor: Colors.black,
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              hoverColor: Colors.black,
+              prefixIconColor: Colors.black,
+              suffixIconColor: Colors.black,
               hintText: 'قد',
               icon: Icon(Icons.height),
               hintStyle: TextStyle(
@@ -171,7 +179,7 @@ class _HomePageState extends State<HomePage> {
 
   PreferredSizeWidget _getAppBar() {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.lightBlue,
       elevation: 0,
       title: Text(
         'BMI محاسبه ',
