@@ -14,13 +14,11 @@ class _GamePageState extends State<GamePage> {
   var bottom = 1;
   @override
   Widget build(BuildContext context) {
-    return 
-       Scaffold(
-        appBar: _getGamePageBar(),
-        body: SafeArea(
-          child: _getbody(),
-        ),
-      
+    return Scaffold(
+      appBar: _getGamePageBar(),
+      body: SafeArea(
+        child: _getbody(),
+      ),
     );
   }
 
