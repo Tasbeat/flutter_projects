@@ -1,33 +1,23 @@
+import 'package:connect_to_internet/pages/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 void main() {
   runApp(const Application());
 }
 
-class Application extends StatelessWidget {
+class Application extends StatefulWidget {
   const Application({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              getData();
-            },
-            child: const Text('Click Me!'),
-          ),
-        ),
-      ),
-    );
-  }
+  State<Application> createState() => _ApplicationState();
 }
 
-getData() async {
-  var uri = Uri.parse('https://jsonplaceholder.typicode.com/posts/1');
-  Response response = await get(uri);
-  print(response.body);
+class _ApplicationState extends State<Application> {
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    );
+  }
 }
