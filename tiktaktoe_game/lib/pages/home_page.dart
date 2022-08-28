@@ -41,6 +41,8 @@ class _HomePageState extends State<HomePage> {
         IconButton(
           onPressed: () {
             _resetGameElements();
+            playerOWinsCount = 0;
+            playerXWinsCount = 0;
           },
           icon: Icon(Icons.refresh),
         ),
