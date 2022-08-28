@@ -1,21 +1,20 @@
+import 'package:connect_to_internet/data/model/Crypto.dart';
 import 'package:flutter/material.dart';
 
-import '../data/model/User.dart';
-
 class SecondScreen extends StatefulWidget {
-  List<User>? userList;
-  SecondScreen({Key? key, this.userList}) : super(key: key);
+  List<Crypto>? cryptoList;
+  SecondScreen({Key? key, this.cryptoList}) : super(key: key);
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
 }
 
 class _SecondScreenState extends State<SecondScreen> {
-  List<User>? userList;
+  List<Crypto>? cryptoList;
   @override
   void initState() {
     super.initState();
-    userList = widget.userList;
+    cryptoList = widget.cryptoList;
   }
 
   @override
@@ -25,10 +24,19 @@ class _SecondScreenState extends State<SecondScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              ...List.generate(
-                10,
-                (index) => Text(userList![index].name),
-              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: cryptoList!.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      child: Text(
+                        cryptoList![index].name,
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    );
+                  },
+                ),
+              )
             ],
           ),
         ),
