@@ -36,10 +36,43 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                 ),
               ),
               subtitle: Text(cryptoList![index].symbol),
+              trailing: SizedBox(
+                width: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          cryptoList![index].priceUsd.toStringAsFixed(2),
+                        ),
+                        Text(
+                          cryptoList![index]
+                              .changePercent24Hr
+                              .toStringAsFixed(2),
+                        )
+                      ],
+                    ),
+                    const SizedBox(width: 8.0),
+                    _getTrendingIcon(index)
+                  ],
+                ),
+              ),
             );
           },
         ),
       ),
+    );
+  }
+
+  Icon _getTrendingIcon(int index) {
+    return Icon(
+      cryptoList![index].changePercent24Hr > 0
+          ? Icons.trending_up
+          : Icons.trending_down,
+      color:
+          cryptoList![index].changePercent24Hr > 0 ? Colors.green : Colors.red,
     );
   }
 }

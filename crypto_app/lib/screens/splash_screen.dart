@@ -45,15 +45,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
   goToHomeScreen() {
     var duration = const Duration(seconds: 3);
-    Future.delayed(duration, () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => CryptoListScreen(
-            cryptoList: cryptoList,
+    Future.delayed(
+      duration,
+      () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => CryptoListScreen(
+              cryptoList: cryptoList,
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
