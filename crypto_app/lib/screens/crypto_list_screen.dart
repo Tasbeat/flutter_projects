@@ -39,17 +39,25 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
     );
   }
 
-  getDataFromAPI() async {
+  Future<void> getDataFromAPI() async {
     Response response = await Dio().get('https://api.coincap.io/v2/assets');
     List<dynamic> jsonMapsList = response.data['data'];
-    setState(() {
-      cryptoList =
-          jsonMapsList.map<Crypto>((e) => Crypto.fromMapObject(e)).toList();
-    });
+    setState(
+      () {
+        cryptoList =
+            jsonMapsList.map<Crypto>((e) => Crypto.fromMapObject(e)).toList();
+      },
+    );
   }
 
   Widget _getCryptoList() {
     return RefreshIndicator(
+      backgroundColor: Colors.white,
+      displacement: 50,
+      color: greenColor,
+      strokeWidth: 3.0,
+      edgeOffset: 5.0,
+      triggerMode: RefreshIndicatorTriggerMode.onEdge,
       onRefresh: () async {
         getDataFromAPI();
       },
