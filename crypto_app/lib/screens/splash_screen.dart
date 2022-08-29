@@ -1,3 +1,4 @@
+import 'package:crypto_app/data/constants.dart/constant.dart';
 import 'package:crypto_app/data/model/crypto_model.dart';
 import 'package:crypto_app/screens/crypto_list_screen.dart';
 import 'package:dio/dio.dart';
@@ -20,13 +21,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.blue,
+    return Scaffold(
+      backgroundColor: blackColor,
       body: SafeArea(
         child: Center(
-          child: SpinKitRotatingCircle(
-            color: Colors.white,
-            size: 50.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Image(
+                image: AssetImage('assets/images/logo.png'),
+              ),
+              SpinKitWave(
+                color: Colors.white,
+                size: 50.0,
+              ),
+            ],
           ),
         ),
       ),
