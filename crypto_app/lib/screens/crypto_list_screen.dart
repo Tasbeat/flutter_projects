@@ -13,6 +13,7 @@ class CryptoListScreen extends StatefulWidget {
 }
 
 class _CryptoListScreenState extends State<CryptoListScreen> {
+  var textEditingController = TextEditingController();
   List<Crypto>? cryptoList;
   @override
   void initState() {
@@ -34,7 +35,13 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
         ),
       ),
       body: SafeArea(
-        child: _getCryptoList(),
+        child: Column(
+          children: [
+            const SizedBox(height: 12.0),
+            _getTextField(),
+            Expanded(child: _getCryptoList()),
+          ],
+        ),
       ),
     );
   }
@@ -62,57 +69,105 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
         getDataFromAPI();
       },
       child: ListView.builder(
+        shrinkWrap: true,
         itemCount: cryptoList!.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              cryptoList![index].name,
-              style: const TextStyle(color: greenColor),
-            ),
-            leading: SizedBox(
-              width: 30.0,
-              child: Center(
-                child: Text(
-                  cryptoList![index].rank.toString(),
-                  style: const TextStyle(color: greyColor),
-                ),
-              ),
-            ),
-            subtitle: Text(
-              cryptoList![index].symbol,
-              style: const TextStyle(color: greyColor),
-            ),
-            trailing: SizedBox(
-              width: 100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        cryptoList![index].priceUsd.toStringAsFixed(2),
-                        style: const TextStyle(
-                          color: greyColor,
-                          fontSize: 15,
-                        ),
-                      ),
-                      Text(
-                        cryptoList![index].changePercent24Hr.toStringAsFixed(2),
-                        style: TextStyle(
-                          color: _getChangePercent24HrTextColor(index),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(width: 8.0),
-                  _getTrendingIcon(index)
-                ],
-              ),
-            ),
-          );
+          if (textEditingController.text.isEmpty) {
+            return _getListTile(index);
+          } else if (cryptoList![index]
+              .name
+              .contains(textEditingController.text)) {
+            return _getListTile(index);
+          } else
+            return Container();
         },
+      ),
+    );
+  }
+
+  Widget _getListTile(int index) {
+    return ListTile(
+      title: Text(
+        cryptoList![index].name,
+        style: const TextStyle(color: greenColor),
+      ),
+      leading: SizedBox(
+        width: 30.0,
+        child: Center(
+          child: Text(
+            cryptoList![index].rank.toString(),
+            style: const TextStyle(color: greyColor),
+          ),
+        ),
+      ),
+      subtitle: Text(
+        cryptoList![index].symbol,
+        style: const TextStyle(color: greyColor),
+      ),
+      trailing: SizedBox(
+        width: 100,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  cryptoList![index].priceUsd.toStringAsFixed(2),
+                  style: const TextStyle(
+                    color: greyColor,
+                    fontSize: 15,
+                  ),
+                ),
+                Text(
+                  cryptoList![index].changePercent24Hr.toStringAsFixed(2),
+                  style: TextStyle(
+                    color: _getChangePercent24HrTextColor(index),
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(width: 8.0),
+            _getTrendingIcon(index)
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _getTextField() {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: TextField(
+        textAlign: TextAlign.left,
+        controller: textEditingController,
+        cursorColor: greenColor,
+        textAlignVertical: TextAlignVertical.center,
+        style: const TextStyle(
+          color: greenColor,
+          fontSize: 20,
+          fontFamily: 'moraba',
+        ),
+        decoration: InputDecoration(
+          hintText: 'e.g:bitcoin',
+          hintStyle: TextStyle(
+            color: greenColor.withOpacity(0.5),
+            fontFamily: 'moraba',
+            fontSize: 18,
+          ),
+          labelText: 'جستجو',
+          labelStyle: const TextStyle(
+            color: redColor,
+            fontFamily: 'moraba',
+            fontSize: 15,
+          ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.0),
+            ),
+          ),
+        ),
       ),
     );
   }
