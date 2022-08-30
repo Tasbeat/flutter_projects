@@ -14,6 +14,7 @@ class CryptoListScreen extends StatefulWidget {
 
 class _CryptoListScreenState extends State<CryptoListScreen> {
   var textEditingController = TextEditingController();
+  bool isLoadingVisible = false;
   List<Crypto>? cryptoList;
   @override
   void initState() {
@@ -39,8 +40,31 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
           children: [
             const SizedBox(height: 12.0),
             _getTextField(),
-            Expanded(child: _getCryptoList()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                _getLoadingText(),
+              ],
+            ),
+            Expanded(
+              child: _getCryptoList(),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _getLoadingText() {
+    return Visibility(
+      visible: isLoadingVisible,
+      child: const Text(
+        'در حال بارگذاری داده...',
+        textAlign: TextAlign.end,
+        textDirection: TextDirection.rtl,
+        style: TextStyle(
+          color: greenColor,
+          fontFamily: 'moraba',
         ),
       ),
     );
@@ -53,6 +77,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
       () {
         cryptoList =
             jsonMapsList.map<Crypto>((e) => Crypto.fromMapObject(e)).toList();
+        isLoadingVisible = false;
       },
     );
   }
@@ -66,20 +91,13 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
       edgeOffset: 5.0,
       triggerMode: RefreshIndicatorTriggerMode.onEdge,
       onRefresh: () async {
-        getDataFromAPI();
+        await getDataFromAPI();
       },
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: cryptoList!.length,
         itemBuilder: (context, index) {
-          if (textEditingController.text.isEmpty) {
-            return _getListTile(index);
-          } else if (cryptoList![index]
-              .name
-              .contains(textEditingController.text)) {
-            return _getListTile(index);
-          } else
-            return Container();
+          return _getListTile(index);
         },
       ),
     );
@@ -136,10 +154,35 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
     );
   }
 
+  void _filterSearched(String value) {
+    if (value == '') {
+      setState(() {
+        isLoadingVisible = true;
+      });
+
+      getDataFromAPI();
+      return;
+    }
+
+    List<Crypto> searchedList = [];
+    searchedList = cryptoList!.where((element) {
+      var input = value.toLowerCase();
+      var name = element.name.toLowerCase();
+      return name.contains(input);
+    }).toList();
+    setState(() {
+      cryptoList = searchedList;
+    });
+  }
+
   Widget _getTextField() {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextField(
+        keyboardType: TextInputType.text,
+        onChanged: (value) {
+          _filterSearched(value);
+        },
         textAlign: TextAlign.left,
         controller: textEditingController,
         cursorColor: greenColor,
@@ -150,6 +193,10 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
           fontFamily: 'moraba',
         ),
         decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            borderSide: BorderSide(width: 1, color: greenColor),
+          ),
           hintText: 'e.g:bitcoin',
           hintStyle: TextStyle(
             color: greenColor.withOpacity(0.5),
