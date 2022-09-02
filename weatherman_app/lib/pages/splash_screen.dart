@@ -27,6 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
+            Text(
+              'Weatherman',
+              style: TextStyle(fontSize: 30, color: Colors.blue),
+            ),
             Image(
               image: AssetImage('assets/images/ios-weather.png'),
             ),
