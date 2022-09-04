@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/assets.dart';
+import 'package:netflix_clone/data/data.dart';
 import 'package:netflix_clone/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,10 +25,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    _scrollController!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        child: CustomAppBar(),
+        child: CustomAppBar(scrollOffset: _scrollOffset),
         preferredSize: Size(
           double.infinity,
           50.0,
@@ -39,8 +46,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey[850],
       ),
       backgroundColor: Colors.black,
-      body: SafeArea(
-        child: CustomScrollView(controller: _scrollController),
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          SliverToBoxAdapter(
+              child: ContentHeader(
+            featuredContent: sintelContent,
+          ))
+        ],
       ),
     );
   }

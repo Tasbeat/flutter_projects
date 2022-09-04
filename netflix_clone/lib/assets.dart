@@ -1,5 +1,9 @@
+import 'package:flutter/material.dart';
+
 class Assets {
   static const String _images = 'assets/images/';
+
+  static const Color blueColor = Colors.blue;
 
   static const String netflixLogo0 = '${_images}netflix_logo0.png';
   static const String netflixLogo1 = '${_images}netflix_logo1.png';
