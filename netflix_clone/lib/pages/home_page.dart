@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/assets.dart';
 import 'package:netflix_clone/data/data.dart';
 import 'package:netflix_clone/widgets/widgets.dart';
 
@@ -33,26 +32,32 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        child: CustomAppBar(scrollOffset: _scrollOffset),
-        preferredSize: Size(
+        preferredSize: const Size(
           double.infinity,
           50.0,
         ),
+        child: CustomAppBar(scrollOffset: _scrollOffset),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => print('Cast'),
-        child: Icon(Icons.cast),
         backgroundColor: Colors.grey[850],
+        child: const Icon(Icons.cast),
       ),
       backgroundColor: Colors.black,
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
           SliverToBoxAdapter(
-              child: ContentHeader(
-            featuredContent: sintelContent,
-          ))
+            child: ContentHeader(
+              featuredContent: sintelContent,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: PreviewContents(
+                title: 'Previews', previewsContentList: previewsContentList),
+          )
         ],
       ),
     );

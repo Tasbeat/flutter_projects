@@ -10,20 +10,27 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color:
-          Colors.red.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
+          Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
       child: SafeArea(
         child: Row(
           children: [
-            SizedBox(width: 10.0),
-            Padding(
+            const SizedBox(width: 10.0),
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Image(
                 image: AssetImage(Assets.netflixLogo0),
               ),
             ),
-            _appBarButtonsTitles(titleString: 'TV Shows'),
-            _appBarButtonsTitles(titleString: 'Movies'),
-            _appBarButtonsTitles(titleString: 'My List'),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  _AppBarButtonsTitles(titleString: 'TV Shows'),
+                  _AppBarButtonsTitles(titleString: 'Movies'),
+                  _AppBarButtonsTitles(titleString: 'My List'),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -31,9 +38,9 @@ class CustomAppBar extends StatelessWidget {
   }
 }
 
-class _appBarButtonsTitles extends StatelessWidget {
+class _AppBarButtonsTitles extends StatelessWidget {
   final String titleString;
-  const _appBarButtonsTitles({Key? key, required this.titleString})
+  const _AppBarButtonsTitles({Key? key, required this.titleString})
       : super(key: key);
 
   @override
@@ -42,7 +49,8 @@ class _appBarButtonsTitles extends StatelessWidget {
       onTap: () => print('clicked'),
       child: Text(
         titleString,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
   }
