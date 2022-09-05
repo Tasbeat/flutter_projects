@@ -33,33 +33,75 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: const Size(
-          double.infinity,
-          50.0,
-        ),
-        child: CustomAppBar(scrollOffset: _scrollOffset),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => print('Cast'),
-        backgroundColor: Colors.grey[850],
-        child: const Icon(Icons.cast),
-      ),
+      appBar: _getAppBar(),
+      floatingActionButton: _getFloatingActionButton(),
       backgroundColor: Colors.black,
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SliverToBoxAdapter(
-            child: ContentHeader(
-              featuredContent: sintelContent,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: PreviewContents(
-                title: 'Previews', previewsContentList: previewsContentList),
-          )
-        ],
+      body: _getBody(),
+    );
+  }
+
+  PreferredSize _getAppBar() {
+    return PreferredSize(
+      preferredSize: const Size(
+        double.infinity,
+        50.0,
       ),
+      child: CustomAppBar(scrollOffset: _scrollOffset),
+    );
+  }
+
+  FloatingActionButton _getFloatingActionButton() {
+    return FloatingActionButton(
+      onPressed: () => print('Cast'),
+      backgroundColor: Colors.grey[850],
+      child: const Icon(Icons.cast),
+    );
+  }
+
+  CustomScrollView _getBody() {
+    return CustomScrollView(
+      controller: _scrollController,
+      slivers: [
+        SliverToBoxAdapter(
+          child: ContentHeader(
+            featuredContent: sintelContent,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: PreviewContents(
+            title: 'Previews',
+            previewsContentList: previewsContentList,
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 20.0),
+        ),
+        SliverToBoxAdapter(
+          child: OtherContent(
+            title: 'My List',
+            otherContentList: myList,
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 20.0),
+        ),
+        SliverToBoxAdapter(
+          child: OtherContent(
+            title: 'Orginals',
+            otherContentList: originals,
+            isOriginalsContentList: true,
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 20.0),
+        ),
+        SliverToBoxAdapter(
+          child: OtherContent(
+            title: 'Trending',
+            otherContentList: trending,
+          ),
+        ),
+      ],
     );
   }
 }
