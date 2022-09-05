@@ -24,14 +24,14 @@ class ContentHeader extends StatelessWidget {
           height: 450.0,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.transparent, Colors.black],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+                colors: [Colors.transparent, Colors.transparent, Colors.black],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0, 0.25, 0.89]),
           ),
         ),
         Positioned(
-          bottom: 100.0,
+          bottom: 85.0,
           left: 50.0,
           right: 50.0,
           child: SizedBox(

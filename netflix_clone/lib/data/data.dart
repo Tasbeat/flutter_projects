@@ -4,9 +4,9 @@ import '../assets.dart';
 import '../models/models.dart';
 
 Content sintelContent = const Content(
-  name: 'Sintel',
-  imageUrl: Assets.sintel,
-  titleImageUrl: Assets.sintelTitle,
+  name: 'Stranger Things',
+  imageUrl: Assets.strangerThings,
+  titleImageUrl: Assets.strangerThingsTitle,
   videoUrl: Assets.sintelVideoUrl,
   description:
       'A lonely young woman, Sintel, helps and befriends a dragon,\nwhom she calls Scales. But when he is kidnapped by an adult\ndragon, Sintel decides to embark on a dangerous quest to find\nher lost friend Scales.',
@@ -26,16 +26,16 @@ List<Content> previewsContentList = const [
     titleImageUrl: Assets.crownTitle,
   ),
   Content(
-    name: 'The Umbrella Academy',
-    imageUrl: Assets.umbrellaAcademy,
+    name: 'itChapterTwo',
+    imageUrl: Assets.itChapterTwo,
     color: Colors.yellow,
-    titleImageUrl: Assets.umbrellaAcademyTitle,
+    titleImageUrl: Assets.itChapterTwoTitle,
   ),
   Content(
-    name: 'Carole and Tuesday',
-    imageUrl: Assets.caroleAndTuesday,
+    name: 'joker',
+    imageUrl: Assets.joker,
     color: Colors.lightBlueAccent,
-    titleImageUrl: Assets.caroleAndTuesdayTitle,
+    titleImageUrl: Assets.jokerTitle,
   ),
   Content(
     name: 'Black Mirror',
@@ -57,15 +57,15 @@ List<Content> previewsContentList = const [
   ),
   Content(
     name: 'The Umbrella Academy',
-    imageUrl: Assets.umbrellaAcademy,
+    imageUrl: Assets.itChapterTwo,
     color: Colors.yellow,
-    titleImageUrl: Assets.umbrellaAcademyTitle,
+    titleImageUrl: Assets.itChapterTwoTitle,
   ),
   Content(
     name: 'Carole and Tuesday',
-    imageUrl: Assets.caroleAndTuesday,
+    imageUrl: Assets.joker,
     color: Colors.lightBlueAccent,
-    titleImageUrl: Assets.caroleAndTuesdayTitle,
+    titleImageUrl: Assets.jokerTitle,
   ),
   Content(
     name: 'Black Mirror',
@@ -76,27 +76,27 @@ List<Content> previewsContentList = const [
 ];
 
 List<Content> myList = const [
-  Content(name: 'Violet Evergarden', imageUrl: Assets.violetEvergarden),
-  Content(name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
-  Content(name: 'Kakegurui', imageUrl: Assets.kakegurui),
-  Content(name: 'Carole and Tuesday', imageUrl: Assets.caroleAndTuesday),
+  Content(name: 'Me Time', imageUrl: Assets.meTime),
+  Content(name: 'Separation', imageUrl: Assets.separation),
+  Content(name: 'Spiderhead', imageUrl: Assets.spiderhead),
+  Content(name: 'Joker', imageUrl: Assets.joker),
   Content(name: 'Black Mirror', imageUrl: Assets.blackMirror),
-  Content(name: 'Violet Evergarden', imageUrl: Assets.violetEvergarden),
-  Content(name: 'How to Sell Drugs Online (Fast)', imageUrl: Assets.htsdof),
-  Content(name: 'Kakegurui', imageUrl: Assets.kakegurui),
-  Content(name: 'Carole and Tuesday', imageUrl: Assets.caroleAndTuesday),
+  Content(name: 'Me Time', imageUrl: Assets.meTime),
+  Content(name: 'separation', imageUrl: Assets.separation),
+  Content(name: 'spiderhead', imageUrl: Assets.spiderhead),
+  Content(name: 'joker', imageUrl: Assets.joker),
   Content(name: 'Black Mirror', imageUrl: Assets.blackMirror),
 ];
 
 List<Content> originals = const [
   Content(name: 'Stranger Things', imageUrl: Assets.strangerThings),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
-  Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
+  Content(name: 'itChapterTwo', imageUrl: Assets.itChapterTwo),
   Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
   Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
   Content(name: 'Stranger Things', imageUrl: Assets.strangerThings),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
-  Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
+  Content(name: 'The Umbrella Academy', imageUrl: Assets.itChapterTwo),
   Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
   Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
 ];

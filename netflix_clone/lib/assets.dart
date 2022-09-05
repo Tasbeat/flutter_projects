@@ -8,6 +8,9 @@ class Assets {
   static const String netflixLogo0 = '${_images}netflix_logo0.png';
   static const String netflixLogo1 = '${_images}netflix_logo1.png';
 
+  static const String strangerThings = '${_images}stranger_things.png';
+  static const String strangerThingsTitle =
+      '${_images}Stranger-Things-Logo.png';
   static const String sintel = '${_images}sintel.jpg';
   static const String sintelTitle = '${_images}sintel_title.png';
   static const String sintelVideoUrl =
@@ -21,26 +24,24 @@ class Assets {
 
   static const String breakingBad = '${_images}breaking_bad.jpg';
 
-  static const String caroleAndTuesday = '${_images}carole_and_tuesday.jpg';
-  static const String caroleAndTuesdayTitle =
-      '${_images}carole_and_tuesday_title.png';
+  static const String joker = '${_images}joker.jpg';
+  static const String jokerTitle = '${_images}joker_title.png';
 
   static const String crown = '${_images}crown.jpg';
   static const String crownTitle = '${_images}crown_title.png';
 
   static const String dogs = '${_images}dogs.jpg';
   static const String explained = '${_images}explained.jpg';
-  static const String htsdof = '${_images}htsdof.jpg';
-  static const String kakegurui = '${_images}kakegurui.jpg';
-  static const String strangerThings = '${_images}stranger_things.jpg';
+  static const String separation = '${_images}separation.jpg';
+  static const String spiderhead = '${_images}spiderhead.jpg';
+  // static const String strangerThings = '${_images}stranger_things.jpg';
   static const String teotfw = '${_images}teotfw.jpg';
   static const String thirteenReasonsWhy = '${_images}thirteen_reasons_why.jpg';
   static const String tigerKing = '${_images}tiger_king.jpg';
 
-  static const String umbrellaAcademy = '${_images}umbrella_academy.jpg';
-  static const String umbrellaAcademyTitle =
-      '${_images}umbrella_academy_title.png';
+  static const String itChapterTwo = '${_images}it_chapter_two.jpg';
+  static const String itChapterTwoTitle = '${_images}it_logo.png';
 
-  static const String violetEvergarden = '${_images}violet_evergarden.jpg';
+  static const String meTime = '${_images}me_time.jpg';
   static const String witcher = '${_images}witcher.jpg';
 }

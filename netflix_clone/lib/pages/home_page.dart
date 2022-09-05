@@ -64,11 +64,13 @@ class _HomePageState extends State<HomePage> {
       slivers: [
         SliverToBoxAdapter(
           child: ContentHeader(
+            key: const PageStorageKey('ContentHeader'),
             featuredContent: sintelContent,
           ),
         ),
         SliverToBoxAdapter(
           child: PreviewContents(
+            key: const PageStorageKey('PreviewContents'),
             title: 'Previews',
             previewsContentList: previewsContentList,
           ),
@@ -78,6 +80,7 @@ class _HomePageState extends State<HomePage> {
         ),
         SliverToBoxAdapter(
           child: OtherContent(
+            key: const PageStorageKey('OtherContent1'),
             title: 'My List',
             otherContentList: myList,
           ),
@@ -87,6 +90,7 @@ class _HomePageState extends State<HomePage> {
         ),
         SliverToBoxAdapter(
           child: OtherContent(
+            key: const PageStorageKey('OtherContent2'),
             title: 'Orginals',
             otherContentList: originals,
             isOriginalsContentList: true,
@@ -96,6 +100,7 @@ class _HomePageState extends State<HomePage> {
           child: SizedBox(height: 20.0),
         ),
         SliverToBoxAdapter(
+          key: const PageStorageKey('OtherContent3'),
           child: OtherContent(
             title: 'Trending',
             otherContentList: trending,
