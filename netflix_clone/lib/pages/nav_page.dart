@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/pages/pages.dart';
+import 'package:netflix_clone/widgets/widgets.dart';
 
 class NavPage extends StatefulWidget {
   const NavPage({Key? key}) : super(key: key);
@@ -30,35 +31,37 @@ class _NavPageState extends State<NavPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screensList[_currentScreenIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
-        items: _navigationBarIcons
-            .map(
-              (title, icon) => MapEntry(
-                title,
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    icon,
-                    size: 30.0,
-                  ),
-                  label: title,
-                ),
-              ),
+      bottomNavigationBar: !Responsive.isDesktop(context)
+          ? BottomNavigationBar(
+              backgroundColor: Colors.black,
+              type: BottomNavigationBarType.fixed,
+              items: _navigationBarIcons
+                  .map(
+                    (title, icon) => MapEntry(
+                      title,
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          icon,
+                          size: 30.0,
+                        ),
+                        label: title,
+                      ),
+                    ),
+                  )
+                  .values
+                  .toList(),
+              currentIndex: _currentScreenIndex,
+              selectedItemColor: Colors.white,
+              selectedFontSize: 12.0,
+              unselectedFontSize: 11.0,
+              unselectedItemColor: Colors.grey,
+              onTap: (value) {
+                setState(() {
+                  _currentScreenIndex = value;
+                });
+              },
             )
-            .values
-            .toList(),
-        currentIndex: _currentScreenIndex,
-        selectedItemColor: Colors.white,
-        selectedFontSize: 12.0,
-        unselectedFontSize: 11.0,
-        unselectedItemColor: Colors.grey,
-        onTap: (value) {
-          setState(() {
-            _currentScreenIndex = value;
-          });
-        },
-      ),
+          : null,
     );
   }
 }

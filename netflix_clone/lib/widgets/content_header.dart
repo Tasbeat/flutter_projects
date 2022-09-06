@@ -35,6 +35,7 @@ class ContentHeader extends StatelessWidget {
           left: 50.0,
           right: 50.0,
           child: SizedBox(
+            height: 150.0,
             child: Image.asset(featuredContent.titleImageUrl),
           ),
         ),
