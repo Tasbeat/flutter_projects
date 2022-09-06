@@ -31,37 +31,40 @@ class _NavPageState extends State<NavPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screensList[_currentScreenIndex],
-      bottomNavigationBar: !Responsive.isDesktop(context)
-          ? BottomNavigationBar(
-              backgroundColor: Colors.black,
-              type: BottomNavigationBarType.fixed,
-              items: _navigationBarIcons
-                  .map(
-                    (title, icon) => MapEntry(
-                      title,
-                      BottomNavigationBarItem(
-                        icon: Icon(
-                          icon,
-                          size: 30.0,
-                        ),
-                        label: title,
-                      ),
-                    ),
-                  )
-                  .values
-                  .toList(),
-              currentIndex: _currentScreenIndex,
-              selectedItemColor: Colors.white,
-              selectedFontSize: 12.0,
-              unselectedFontSize: 11.0,
-              unselectedItemColor: Colors.grey,
-              onTap: (value) {
-                setState(() {
-                  _currentScreenIndex = value;
-                });
-              },
-            )
-          : null,
+      bottomNavigationBar:
+          !Responsive.isDesktop(context) ? _mobileBottomNavigationBar() : null,
+    );
+  }
+
+  BottomNavigationBar _mobileBottomNavigationBar() {
+    return BottomNavigationBar(
+      backgroundColor: Colors.black,
+      type: BottomNavigationBarType.fixed,
+      items: _navigationBarIcons
+          .map(
+            (title, icon) => MapEntry(
+              title,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  icon,
+                  size: 30.0,
+                ),
+                label: title,
+              ),
+            ),
+          )
+          .values
+          .toList(),
+      currentIndex: _currentScreenIndex,
+      selectedItemColor: Colors.white,
+      selectedFontSize: 12.0,
+      unselectedFontSize: 11.0,
+      unselectedItemColor: Colors.grey,
+      onTap: (value) {
+        setState(() {
+          _currentScreenIndex = value;
+        });
+      },
     );
   }
 }
