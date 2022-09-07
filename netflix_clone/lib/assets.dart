@@ -15,6 +15,8 @@ class Assets {
   static const String sintelTitle = '${_images}sintel_title.png';
   static const String sintelVideoUrl =
       'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4';
+//http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4
+//'https://caspian4.cdn.asset.aparat.com/aparat-video/699bacaebefbe593c7c0e02e0214842944224004-1080p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImZmN2MyZDIyZDA3ZGQzMTA2NzMxYTdhNWY1YzdmMTQxIiwiZXhwIjoxNjYyNTQ2MzY1LCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.kG6dBSTzADHGa3J4NWka6MMK7PWVf_01Bm7m3tcypp4';
 
   static const String atla = '${_images}atla.jpg';
   static const String atlaTitle = '${_images}atla_title.png';

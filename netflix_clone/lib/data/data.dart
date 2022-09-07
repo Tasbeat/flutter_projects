@@ -4,13 +4,12 @@ import '../assets.dart';
 import '../models/models.dart';
 
 Content sintelContent = const Content(
-  name: 'Stranger Things',
-  imageUrl: Assets.strangerThings,
-  titleImageUrl: Assets.strangerThingsTitle,
-  videoUrl: Assets.sintelVideoUrl,
-  description:
-      'A lonely young woman, Sintel, helps and befriends a dragon,\nwhom she calls Scales. But when he is kidnapped by an adult\ndragon, Sintel decides to embark on a dangerous quest to find\nher lost friend Scales.',
-);
+    name: 'Stranger Things',
+    imageUrl: Assets.strangerThings,
+    titleImageUrl: Assets.strangerThingsTitle,
+    videoUrl: Assets.sintelVideoUrl,
+    description:
+        'When a young boy vanishes, a small town uncovers a mystery\ninvolving secret experiments, terrifying supernatural forces and one\nstrange little girl.');
 
 List<Content> previewsContentList = const [
   Content(

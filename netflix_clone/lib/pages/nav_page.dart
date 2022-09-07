@@ -31,12 +31,13 @@ class _NavPageState extends State<NavPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screensList[_currentScreenIndex],
-      bottomNavigationBar:
-          !Responsive.isDesktop(context) ? _mobileBottomNavigationBar() : null,
+      bottomNavigationBar: !Responsive.isDesktop(context)
+          ? _getMobileBottomNavigationBar()
+          : null,
     );
   }
 
-  BottomNavigationBar _mobileBottomNavigationBar() {
+  BottomNavigationBar _getMobileBottomNavigationBar() {
     return BottomNavigationBar(
       backgroundColor: Colors.black,
       type: BottomNavigationBarType.fixed,

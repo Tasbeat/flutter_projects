@@ -50,9 +50,9 @@ class _MobileContentHeader extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 85.0,
-          left: 50.0,
-          right: 50.0,
+          bottom: 75.0,
+          left: 120.0,
+          right: 120.0,
           child: SizedBox(
             height: 150.0,
             child: Image.asset(featuredContent.titleImageUrl),
@@ -140,18 +140,27 @@ class __DesktopContentHeaderState extends State<_DesktopContentHeader> {
                     fit: BoxFit.cover,
                   ),
           ),
-          Container(
-            height: 800.0,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    Colors.transparent,
-                    Colors.black
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0, 0.25, 0.89]),
+          Positioned(
+            bottom: -1,
+            left: 0,
+            right: 0,
+            child: AspectRatio(
+              aspectRatio: _videoPlayerController.value.isInitialized
+                  ? _videoPlayerController.value.aspectRatio
+                  : 2.344,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.black
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0, 0.25, 0.89]),
+                ),
+              ),
             ),
           ),
           Positioned(
@@ -161,7 +170,8 @@ class __DesktopContentHeaderState extends State<_DesktopContentHeader> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 150.0,
+                  height: 130.0,
+                  width: 400.0,
                   child: Image.asset(featuredContent!.titleImageUrl),
                 ),
                 SizedBox(
