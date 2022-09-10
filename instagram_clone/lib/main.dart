@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/data/data.dart';
 import 'package:instagram_clone/pages/pages.dart';
