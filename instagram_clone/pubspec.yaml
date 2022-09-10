@@ -14,6 +14,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  blurrycontainer: 1.0.2
 
 
 
@@ -37,16 +38,34 @@ flutter:
   
 
   
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: GR
+      fonts:
+        - asset: fonts/GilroyRegular.ttf
+          weight: 400
+
+    - family: GM
+      fonts:
+        - asset: fonts/GilroyMedium.ttf
+          weight: 500
+
+    - family: GB
+      fonts:
+        - asset: fonts/GilroyBold.ttf
+          weight: 700
+
+    - family: GEB
+      fonts:
+        - asset: fonts/GilroyExtraBold.ttf
+          weight: 800
+          
+    - family: GH
+      fonts:
+        - asset: fonts/GilroyHeavy.ttf
+          weight: 900
+
+    - family: SM
+      fonts:
+        - asset: fonts/ShabnamMedium.ttf
+          weight: 500
   
