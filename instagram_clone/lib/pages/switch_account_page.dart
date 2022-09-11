@@ -4,6 +4,10 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
+import 'package:instagram_clone/pages/login_page.dart';
+import 'package:instagram_clone/pages/nav_page.dart';
+
+import '../navigator.dart';
 
 class SwitchAccountPage extends StatelessWidget {
   const SwitchAccountPage({Key? key}) : super(key: key);
@@ -111,7 +115,13 @@ class SwitchAccountPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ElevatedButton(
                         style: Theme.of(context).elevatedButtonTheme.style,
-                        onPressed: () {},
+                        onPressed: () {
+                          navigator(
+                            context: context,
+                            destinationPage: NavPage(),
+                            isPush: true,
+                          );
+                        },
                         child: const Text('Confirm'),
                       ),
                     ),

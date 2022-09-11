@@ -64,8 +64,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _goToAccountPage() {
     navigator(
-        context: context,
-        destinationPage: const SwitchAccountPage(),
-        isPush: true);
+      context: context,
+      destinationPage: LoginPage(),
+      isPush: true,
+    );
   }
 }
