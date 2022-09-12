@@ -7,4 +7,5 @@ class Asset {
   static const String profilePhoto = '${_imagesPath}profile_photo.png';
   static const String rocket = '${_imagesPath}rocket.png';
   static const String miniLogo = '${_imagesPath}minilogo.png';
+  static const String plusIcon = '${_imagesPath}plus_icon.png';
 }

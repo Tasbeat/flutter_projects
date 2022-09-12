@@ -13,11 +13,13 @@ const Color grey = Color(0xffC5C5C5);
 //constants
 final List<StoryContent> storyList = [
   StoryContent(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.plusIcon, borderColor: pink, profileId: '_tasbeat_'),
   StoryContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
   StoryContent(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.profilePhoto,
+      borderColor: pink,
+      profileId: '_tasbeat_sssss'),
   StoryContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
   StoryContent(
