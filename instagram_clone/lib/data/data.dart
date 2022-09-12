@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/asset.dart';
-import 'package:instagram_clone/data/model/story_content.dart';
+import 'package:instagram_clone/data/model/models.dart';
 
 //colors
 const Color transparent = Colors.transparent;
@@ -11,21 +11,74 @@ const Color blue = Colors.blue;
 const Color grey = Color(0xffC5C5C5);
 
 //constants
-final List<StoryContent> storyList = [
-  StoryContent(
+final List<AccountContent> storyList = [
+  AccountContent(
       imageUrl: Asset.plusIcon, borderColor: pink, profileId: '_tasbeat_'),
-  StoryContent(
+  AccountContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
-  StoryContent(
+  AccountContent(
       imageUrl: Asset.profilePhoto,
       borderColor: pink,
       profileId: '_tasbeat_sssss'),
-  StoryContent(
+  AccountContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
-  StoryContent(
+  AccountContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
-  StoryContent(
+  AccountContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
-  StoryContent(
+  AccountContent(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+];
+
+final List<PostContent> postList = [
+  PostContent(
+      postImageUrl: Asset.postImage,
+      likesCounter: '2.6k',
+      commentsCounter: '1k',
+      isLike: false,
+      isSaved: false,
+      profileImageUrl: Asset.profilePhoto,
+      profileId: 'profileId',
+      borderColor: pink,
+      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+  PostContent(
+      postImageUrl: Asset.postImage,
+      likesCounter: '2.6k',
+      commentsCounter: '1k',
+      isLike: false,
+      isSaved: false,
+      profileImageUrl: Asset.profilePhoto,
+      profileId: 'profileId',
+      borderColor: pink,
+      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+  PostContent(
+      postImageUrl: Asset.postImage,
+      likesCounter: '2.6k',
+      commentsCounter: '1k',
+      isLike: false,
+      isSaved: false,
+      profileImageUrl: Asset.profilePhoto,
+      profileId: 'profileId',
+      borderColor: pink,
+      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+  PostContent(
+      postImageUrl: Asset.postImage,
+      likesCounter: '2.6k',
+      commentsCounter: '1k',
+      isLike: false,
+      isSaved: false,
+      profileImageUrl: Asset.profilePhoto,
+      profileId: 'profileId',
+      borderColor: pink,
+      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+  PostContent(
+      postImageUrl: Asset.postImage,
+      likesCounter: '2.6k',
+      commentsCounter: '1k',
+      isLike: false,
+      isSaved: false,
+      profileImageUrl: Asset.profilePhoto,
+      profileId: 'profileId',
+      borderColor: pink,
+      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
 ];

@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-class StoryContent {
+class AccountContent {
   String imageUrl;
   String profileId;
   Color borderColor;
 
-  StoryContent(
+  AccountContent(
       {required this.imageUrl,
       required this.borderColor,
       required this.profileId});
