@@ -13,8 +13,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: black,
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: black,
+        elevation: 0.0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Image.asset(Asset.moodinegarLogo),
+        ),
+        actions: [Image.asset(Asset.directIcon)],
+        leadingWidth: 130.0,
+      ),
       body: Column(
         children: [
           SizedBox(
@@ -65,7 +75,7 @@ class HomePage extends StatelessWidget {
                           Stack(
                             alignment: Alignment.topCenter,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 400.0,
                               ),
                               Image.asset(alreadyPostContent.postImageUrl),
@@ -74,7 +84,9 @@ class HomePage extends StatelessWidget {
                                 child: ClipRRect(
                                   child: BackdropFilter(
                                     filter: ImageFilter.blur(
-                                        sigmaX: 5.0, sigmaY: 5.0),
+                                      sigmaX: 5.0,
+                                      sigmaY: 5.0,
+                                    ),
                                     child: Container(
                                       width: 310.0,
                                       height: 40.0,
@@ -104,17 +116,17 @@ class HomePage extends StatelessWidget {
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        children: [
+                                        children: const [
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10.0),
+                                            padding:
+                                                EdgeInsets.only(left: 10.0),
                                             child: Icon(Icons.comment),
                                           ),
                                           Icon(Icons.comment),
                                           Icon(Icons.comment),
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 10.0),
+                                            padding:
+                                                EdgeInsets.only(right: 10.0),
                                             child: Icon(Icons.comment),
                                           ),
                                         ],
@@ -140,6 +152,7 @@ class HomePage extends StatelessWidget {
 
   ListTile _getPostHeader(int index, PostContent alreadyPostContent) {
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
       leading: _getPostListTileLeading(index, 44.0, 44.0),
       title: Text(
         alreadyPostContent.profileId,
@@ -196,31 +209,28 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Padding _getPostListTileLeading(int index, double width, double height) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(),
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(13.0),
-          ),
-          border: Border.all(
-            width: 2.0,
-            color: postList[index].borderColor,
-          ),
+  Container _getPostListTileLeading(int index, double width, double height) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(13.0),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(10.0),
-            ),
-            child: Image(
-              image: AssetImage(
-                postList[index].profileImageUrl,
-              ),
+        border: Border.all(
+          width: 2.0,
+          color: postList[index].borderColor,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+          child: Image(
+            image: AssetImage(
+              postList[index].profileImageUrl,
             ),
           ),
         ),
