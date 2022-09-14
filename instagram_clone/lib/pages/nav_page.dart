@@ -30,30 +30,25 @@ class _NavPageState extends State<NavPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: black,
+      extendBody: true,
+      backgroundColor: Colors.transparent,
       body: pages[_currentScreenIndex],
       bottomNavigationBar: Container(
-        height: 70.0,
+        height: 60.0,
         decoration: const BoxDecoration(
           color: Color(0xff272B40),
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(15),
             topLeft: Radius.circular(15),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black38,
-              spreadRadius: 0,
-              blurRadius: 10,
-            ),
-          ],
         ),
         child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(15.0),
-              topRight: Radius.circular(15.0),
-            ),
-            child: _getBottomNavigationBar()),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(15.0),
+            topRight: Radius.circular(15.0),
+          ),
+          child: _getBottomNavigationBar(),
+        ),
       ),
     );
   }
@@ -70,10 +65,10 @@ class _NavPageState extends State<NavPage> {
               title,
               BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
+                    padding: const EdgeInsets.only(bottom: 8.0),
                     child: Icon(
                       icon,
-                      size: 30.0,
+                      size: 25.0,
                     ),
                   ),
                   label: title),
