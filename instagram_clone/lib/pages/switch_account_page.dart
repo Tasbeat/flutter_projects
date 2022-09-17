@@ -1,10 +1,8 @@
-import 'dart:ui';
-
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
-import 'package:instagram_clone/pages/login_page.dart';
+
 import 'package:instagram_clone/pages/nav_page.dart';
 
 import '../navigator.dart';
@@ -89,18 +87,17 @@ class SwitchAccountPage extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          image: const DecorationImage(
+                            image: AssetImage(Asset.profilePhoto),
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                        child: Image(
-                          image: AssetImage(Asset.profilePhoto),
-                          width: 100.0,
-                          height: 100.0,
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
                     ),
@@ -118,7 +115,7 @@ class SwitchAccountPage extends StatelessWidget {
                         onPressed: () {
                           navigator(
                             context: context,
-                            destinationPage: NavPage(),
+                            destinationPage: const NavPage(),
                             isPush: true,
                           );
                         },

@@ -32,53 +32,152 @@ final List<AccountContent> storyList = [
 
 final List<PostContent> postList = [
   PostContent(
-      postImageUrl: Asset.postImage,
+      postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
       profileImageUrl: Asset.profilePhoto,
-      profileId: 'profileId',
+      profileId: '_tasbeat_',
       borderColor: pink,
-      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+      profileDescription: 'علی علیرحیمی'),
   PostContent(
-      postImageUrl: Asset.postImage,
+      postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
       profileImageUrl: Asset.profilePhoto,
-      profileId: 'profileId',
+      profileId: '_tasbeat_',
       borderColor: pink,
-      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+      profileDescription: 'علی علیرحیمی'),
   PostContent(
-      postImageUrl: Asset.postImage,
+      postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
       profileImageUrl: Asset.profilePhoto,
-      profileId: 'profileId',
+      profileId: '_tasbeat_',
       borderColor: pink,
-      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+      profileDescription: 'علی علیرحیمی'),
   PostContent(
-      postImageUrl: Asset.postImage,
+      postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
       profileImageUrl: Asset.profilePhoto,
-      profileId: 'profileId',
+      profileId: '_tasbeat_',
       borderColor: pink,
-      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+      profileDescription: 'علی علیرحیمی'),
   PostContent(
-      postImageUrl: Asset.postImage,
+      postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
       profileImageUrl: Asset.profilePhoto,
-      profileId: 'profileId',
+      profileId: '_tasbeat_',
       borderColor: pink,
-      profileDescription: 'امیراحمد برنامه‌نویس موبایل'),
+      profileDescription: 'علی علیرحیمی'),
+];
+
+final List<AccountContent> followerList = [
+  AccountContent(
+      imageUrl: Asset.followerImage1,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage2,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage3,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage4,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage5,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage6,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage7,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage8,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage1,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage2,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage3,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage4,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage5,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage6,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage7,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage8,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage1,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage2,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage3,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage4,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage5,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage6,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage7,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
+  AccountContent(
+      imageUrl: Asset.followerImage8,
+      borderColor: pink,
+      profileId: '_tasbeat_'),
 ];
