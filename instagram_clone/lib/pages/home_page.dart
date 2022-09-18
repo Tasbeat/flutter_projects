@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
       delegate: SliverChildBuilderDelegate(
         childCount: followerList.length,
         (context, index) {
-          AccountContent shareFollower = followerList[index];
+          Content shareFollower = followerList[index];
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -242,7 +242,7 @@ class _HomePageState extends State<HomePage> {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          PostContent alreadyPostContent = postList[index];
+          Content alreadyPostContent = postList[index];
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -256,7 +256,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding _getPostElement(PostContent alreadyPostContent) {
+  Padding _getPostElement(Content alreadyPostContent) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Stack(
@@ -402,7 +402,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  ListTile _getPostHeader(int index, PostContent alreadyPostContent) {
+  ListTile _getPostHeader(int index, Content alreadyPostContent) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
       leading: _getPostListTileLeading(index, 44.0, 44.0),

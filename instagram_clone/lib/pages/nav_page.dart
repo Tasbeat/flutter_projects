@@ -32,14 +32,6 @@ class _NavPageState extends State<NavPage> {
   ];
   int _currentScreenIndex = 0;
 
-  final Map<String, String> _icons = {
-    'home': Asset.homeIcon,
-    'explore': Asset.exploreIcon,
-    'new_post': Asset.newPostIcon,
-    'notification': Asset.notificationIcon,
-    'profile': Asset.homeIcon,
-  };
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
