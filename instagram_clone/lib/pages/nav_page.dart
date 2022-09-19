@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
+import 'package:instagram_clone/navigator.dart';
 
 import 'pages.dart';
 
@@ -31,13 +32,12 @@ class _NavPageState extends State<NavPage> {
     ),
   ];
   int _currentScreenIndex = 0;
-
+  int previousLastIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.transparent,
-      body: pages[_currentScreenIndex],
+      body: _currentScreenIndex == 2 ? null : pages[_currentScreenIndex],
       bottomNavigationBar: Container(
         height: 60.0,
         decoration: const BoxDecoration(
@@ -66,46 +66,58 @@ class _NavPageState extends State<NavPage> {
       type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Asset.homeIcon,
-              color: _currentScreenIndex == 0 ? pink : white,
-            ),
-            label: 'homeIcon'),
+          icon: SvgPicture.asset(
+            Asset.homeIcon,
+            color: _currentScreenIndex == 0 ? pink : white,
+          ),
+          label: 'home',
+        ),
         BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Asset.exploreIcon,
-              color: _currentScreenIndex == 1 ? pink : white,
-            ),
-            label: 'homeIcon'),
+          icon: SvgPicture.asset(
+            Asset.exploreIcon,
+            color: _currentScreenIndex == 1 ? pink : white,
+          ),
+          label: 'explore',
+        ),
         BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Asset.newPostIcon,
-              color: _currentScreenIndex == 2 ? pink : white,
-            ),
-            label: 'homeIcon'),
+          icon: SvgPicture.asset(
+            Asset.newPostIcon,
+            color: _currentScreenIndex == 2 ? pink : white,
+          ),
+          label: 'newPost',
+        ),
         BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Asset.notificationIcon,
-              color: _currentScreenIndex == 3 ? pink : white,
-            ),
-            label: 'homeIcon'),
+          icon: SvgPicture.asset(
+            Asset.notificationIcon,
+            color: _currentScreenIndex == 3 ? pink : white,
+          ),
+          label: 'notifications',
+        ),
         BottomNavigationBarItem(
-            icon: Image.asset(
-              Asset.followerImage6,
-              height: 30.0,
-              width: 30.0,
-            ),
-            label: 'homeIcon'),
+          icon: Image.asset(
+            Asset.followerImage6,
+            height: 30.0,
+            width: 30.0,
+          ),
+          label: 'profile',
+        ),
       ],
       currentIndex: _currentScreenIndex,
-      selectedItemColor: pink,
-      selectedFontSize: 12.0,
-      unselectedFontSize: 11.0,
-      unselectedItemColor: grey,
       onTap: (value) {
-        setState(() {
-          _currentScreenIndex = value;
-        });
+        setState(
+          () {
+            _currentScreenIndex = value;
+            if (value == 2) {
+              navigator(
+                  context: context,
+                  destinationPage: const NewPostPage(),
+                  isPush: true);
+              _currentScreenIndex = previousLastIndex;
+            } else {
+              previousLastIndex = value;
+            }
+          },
+        );
       },
     );
   }

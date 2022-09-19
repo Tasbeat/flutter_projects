@@ -15,7 +15,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       backgroundColor: black,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50),

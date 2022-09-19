@@ -79,7 +79,60 @@ final List<Content> postList = [
       borderColor: pink,
       profileDescription: 'علی علیرحیمی'),
 ];
-
+final List<Text> categoryList = [
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+  const Text(
+    'Sport',
+    style: TextStyle(color: white, fontFamily: 'GM', fontSize: 10.0),
+  ),
+];
 final List<Content> followerList = [
   Content(
       imageUrl: Asset.followerImage1,
@@ -177,4 +230,17 @@ final List<Content> followerList = [
       imageUrl: Asset.followerImage8,
       borderColor: pink,
       profileId: '_tasbeat_'),
+];
+
+final List<Content> exploreList = [
+  Content(imageUrl: Asset.explorePhoto2),
+  Content(imageUrl: Asset.explorePhoto1),
+  Content(imageUrl: Asset.explorePhoto3),
+  Content(imageUrl: Asset.explorePhoto4),
+  Content(imageUrl: Asset.explorePhoto5),
+  Content(imageUrl: Asset.explorePhoto6),
+  Content(imageUrl: Asset.explorePhoto7),
+  Content(imageUrl: Asset.explorePhoto8),
+  Content(imageUrl: Asset.explorePhoto9),
+  Content(imageUrl: Asset.explorePhoto10),
 ];
