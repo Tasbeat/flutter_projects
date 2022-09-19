@@ -1,11 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
-import 'package:instagram_clone/data/model/models.dart';
 import 'package:instagram_clone/navigator.dart';
-import 'package:instagram_clone/widgets/custom_bottom_sheet.dart';
 import 'package:instagram_clone/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
