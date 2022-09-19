@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
 import 'package:instagram_clone/navigator.dart';
 import 'package:instagram_clone/widgets/widgets.dart';
@@ -18,7 +19,16 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: black,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50),
-        child: const HomeAppBar(),
+        child: CustomAppBar(
+          leadingWidth: 130.0,
+          leadingWidget: Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Image.asset(Asset.moodinegarLogo),
+          ),
+          actions: [
+            Image.asset(Asset.directIcon),
+          ],
+        ),
       ),
       body: CustomScrollView(
         slivers: [

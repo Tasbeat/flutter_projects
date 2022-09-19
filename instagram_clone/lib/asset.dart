@@ -15,6 +15,8 @@ class Asset {
   static const String moonWallpaper = '${_imagesPath}moon_wallpaper.png';
   static const String shareIcon = '${_imagesPath}share_icon.png';
   static const String scanIcon = '${_imagesPath}scan_icon.png';
+  static const String bottomArrowIcon = '${_imagesPath}arrow_icon.png';
+  static const String nextIcon = '${_imagesPath}next_icon.png';
 
   static const String sendIcon = '${_imagesPath}sent_icon.svg';
   static const String likeIcon = '${_imagesPath}like_icon.svg';
