@@ -4,6 +4,7 @@ import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
 
 import 'package:instagram_clone/pages/nav_page.dart';
+import 'package:instagram_clone/widgets/widgets.dart';
 
 import '../navigator.dart';
 
@@ -110,16 +111,15 @@ class SwitchAccountPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        style: Theme.of(context).elevatedButtonTheme.style,
-                        onPressed: () {
-                          navigator(
-                            context: context,
-                            destinationPage: const NavPage(),
-                            isPush: true,
-                          );
-                        },
-                        child: const Text('Confirm'),
+                      child: CustomElevatedButton(
+                        buttonStyle:
+                            Theme.of(context).elevatedButtonTheme.style!,
+                        buttonText: const Text('Confirm'),
+                        onPressedFunction: () => navigator(
+                          context: context,
+                          destinationPage: const NavPage(),
+                          isPush: true,
+                        ),
                       ),
                     ),
                     Padding(

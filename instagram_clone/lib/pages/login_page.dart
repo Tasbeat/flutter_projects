@@ -3,6 +3,7 @@ import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
 import 'package:instagram_clone/navigator.dart';
 import 'package:instagram_clone/pages/pages.dart';
+import 'package:instagram_clone/widgets/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -144,8 +145,8 @@ class _LoginPageState extends State<LoginPage> {
   Padding _getSignInButton() {
     return Padding(
       padding: const EdgeInsets.all(15.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
+      child: CustomElevatedButton(
+        buttonStyle: ElevatedButton.styleFrom(
           backgroundColor: pink,
           minimumSize: const Size(110.0, 40.0),
           textStyle:
@@ -154,16 +155,14 @@ class _LoginPageState extends State<LoginPage> {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        onPressed: () {
-          navigator(
-              context: context,
-              destinationPage: const SwitchAccountPage(),
-              isPush: true);
-        },
-        child: const Text(
+        buttonText: const Text(
           'Sign in',
           style: TextStyle(fontSize: 16),
         ),
+        onPressedFunction: () => navigator(
+            context: context,
+            destinationPage: const SwitchAccountPage(),
+            isPush: true),
       ),
     );
   }
