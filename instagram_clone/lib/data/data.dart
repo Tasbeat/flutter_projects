@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/model/models.dart';
 
@@ -243,4 +244,23 @@ final List<Content> exploreList = [
   Content(imageUrl: Asset.explorePhoto8),
   Content(imageUrl: Asset.explorePhoto9),
   Content(imageUrl: Asset.explorePhoto10),
+];
+
+List<QuiltedGridTile> patternList = [
+  const QuiltedGridTile(2, 1),
+  const QuiltedGridTile(2, 2),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(2, 2),
+  const QuiltedGridTile(2, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
+  const QuiltedGridTile(1, 1),
 ];

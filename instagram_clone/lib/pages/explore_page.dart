@@ -33,11 +33,12 @@ class ExplorePage extends StatelessWidget {
                   right: 10.0,
                 ),
                 gridDelegate: SliverQuiltedGridDelegate(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 4,
-                    crossAxisSpacing: 4,
-                    repeatPattern: QuiltedGridRepeatPattern.same,
-                    pattern: patternList),
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  repeatPattern: QuiltedGridRepeatPattern.same,
+                  pattern: patternList,
+                ),
                 childrenDelegate: SliverChildBuilderDelegate(
                   (context, index) {
                     return Container(

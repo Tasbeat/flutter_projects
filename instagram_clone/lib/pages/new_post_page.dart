@@ -35,7 +35,9 @@ class _NewPostPageState extends State<NewPostPage> {
           SliverToBoxAdapter(
             child: Container(
               decoration: BoxDecoration(
-                color: pink,
+                image: const DecorationImage(
+                  image: AssetImage(Asset.moonWallpaper),
+                ),
                 borderRadius: BorderRadius.circular(15.0),
               ),
               height: 320.0,
@@ -50,11 +52,14 @@ class _NewPostPageState extends State<NewPostPage> {
               (context, index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: white,
+                    image: const DecorationImage(
+                      image: AssetImage(Asset.moonWallpaper),
+                    ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 );
               },
+              childCount: 30,
             ),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,

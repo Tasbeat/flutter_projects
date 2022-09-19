@@ -5,6 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
 import 'package:instagram_clone/data/model/models.dart';
+import 'package:instagram_clone/navigator.dart';
+import 'package:instagram_clone/widgets/widgets.dart';
+
+import '../pages/pages.dart';
 
 class PostContent extends StatefulWidget {
   final postList;
@@ -128,10 +132,23 @@ class _PostContentState extends State<PostContent> {
                         style: Theme.of(context).textTheme.headline1,
                       ),
                       const Spacer(),
-                      SvgPicture.asset(
-                        Asset.sendIcon,
-                        color: white,
-                        semanticsLabel: 'send',
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            barrierColor: transparent,
+                            backgroundColor: transparent,
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (context) => _makeDismissible(
+                              child: _getDraggableScrollableSheet(),
+                            ),
+                          );
+                        },
+                        child: SvgPicture.asset(
+                          Asset.sendIcon,
+                          color: white,
+                          semanticsLabel: 'send',
+                        ),
                       ),
                       const Spacer(),
                       Padding(
@@ -204,5 +221,25 @@ class _PostContentState extends State<PostContent> {
         ),
       ),
     );
+  }
+
+  Widget _makeDismissible({required Widget child}) => GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          print('Hit Test');
+          navigator(
+              context: context,
+              destinationPage: const HomePage(),
+              isPush: false);
+        },
+        child: GestureDetector(
+          onTap: () {
+            print('Hit Child');
+          },
+          child: child,
+        ),
+      );
+  CustomButtomSheet _getDraggableScrollableSheet() {
+    return CustomButtomSheet(followerList: followerList);
   }
 }

@@ -32,31 +32,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: CustomScrollView(
         slivers: [
-          _getCustomElevatedButton(context),
           _getStoryContent(screenSize),
           PostContent(postList: postList),
           const SliverPadding(
             padding: EdgeInsets.only(bottom: 30.0),
           )
         ],
-      ),
-    );
-  }
-
-  SliverToBoxAdapter _getCustomElevatedButton(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: CustomElevatedButton(
-        onPressedFunction: () => showModalBottomSheet(
-          barrierColor: transparent,
-          backgroundColor: transparent,
-          isScrollControlled: true,
-          context: context,
-          builder: (context) => _makeDismissible(
-            child: _getDraggableScrollableSheet(),
-          ),
-        ),
-        buttonText: const Text('Open Bottom Sheet'),
-        buttonStyle: Theme.of(context).elevatedButtonTheme.style!,
       ),
     );
   }
@@ -70,25 +51,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  CustomButtomSheet _getDraggableScrollableSheet() {
-    return CustomButtomSheet(followerList: followerList);
-  }
-
-  Widget _makeDismissible({required Widget child}) => GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          print('Hit Test');
-          navigator(
-              context: context,
-              destinationPage: const HomePage(),
-              isPush: false);
-        },
-        child: GestureDetector(
-          onTap: () {
-            print('Hit Child');
-          },
-          child: child,
-        ),
-      );
 }
