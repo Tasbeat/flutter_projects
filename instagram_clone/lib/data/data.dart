@@ -246,21 +246,99 @@ final List<Content> exploreList = [
   Content(imageUrl: Asset.explorePhoto10),
 ];
 
-List<QuiltedGridTile> patternList = [
-  const QuiltedGridTile(2, 1),
-  const QuiltedGridTile(2, 2),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(2, 2),
-  const QuiltedGridTile(2, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
-  const QuiltedGridTile(1, 1),
+const List<QuiltedGridTile> patternList = [
+  QuiltedGridTile(2, 1),
+  QuiltedGridTile(2, 2),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(2, 2),
+  QuiltedGridTile(2, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+  QuiltedGridTile(1, 1),
+];
+
+List<Content> newNotificationList = [
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage1,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: SizedBox(
+      width: 75.0,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: white,
+          side: const BorderSide(color: white, width: 2.0),
+        ),
+        onPressed: () {},
+        child: const Text(
+          'Message',
+          style: TextStyle(
+            color: white,
+            fontFamily: 'GS',
+            fontSize: 10.0,
+          ),
+        ),
+      ),
+    ),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage1,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: SizedBox(
+      width: 75.0,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: white,
+          side: const BorderSide(color: white, width: 2.0),
+        ),
+        onPressed: () {},
+        child: const Text(
+          'Message',
+          style: TextStyle(
+            color: white,
+            fontFamily: 'GS',
+            fontSize: 10.0,
+          ),
+        ),
+      ),
+    ),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage1,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 6min',
+    holderWidget: SizedBox(
+      width: 75.0,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: white,
+          side: const BorderSide(color: white, width: 2.0),
+        ),
+        onPressed: () {},
+        child: const Text(
+          'Message',
+          style: TextStyle(
+            color: white,
+            fontFamily: 'GS',
+            fontSize: 10.0,
+          ),
+        ),
+      ),
+    ),
+  ),
 ];

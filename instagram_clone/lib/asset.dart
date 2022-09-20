@@ -17,6 +17,7 @@ class Asset {
   static const String scanIcon = '${_imagesPath}scan_icon.png';
   static const String bottomArrowIcon = '${_imagesPath}arrow_icon.png';
   static const String nextIcon = '${_imagesPath}next_icon.png';
+  static const String pointIcon = '${_imagesPath}point_icon.png';
 
   static const String sendIcon = '${_imagesPath}sent_icon.svg';
   static const String likeIcon = '${_imagesPath}like_icon.svg';
