@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
-
-import '../asset.dart';
+import 'package:instagram_clone/widgets/widgets.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({Key? key}) : super(key: key);
@@ -60,86 +61,14 @@ class _NotificationPageState extends State<NotificationPage>
                 CustomScrollView(
                   slivers: [
                     const SliverPadding(padding: EdgeInsets.only(top: 8.0)),
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 30.0),
-                        child: Text(
-                          'New',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
-                      ),
-                    ),
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ListTile(
-                              title: SizedBox(
-                                width: 80.0,
-                                height: 35.0,
-                                child: RichText(
-                                  softWrap: true,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            '${newNotificationList[index].profileId}  ',
-                                        style: const TextStyle(
-                                          fontFamily: 'GB',
-                                          fontSize: 12.0,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: newNotificationList[index]
-                                            .profileDescription,
-                                        style: const TextStyle(
-                                          color: grey,
-                                          fontFamily: 'GS',
-                                          fontSize: 12.0,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: newNotificationList[index].time,
-                                        style: const TextStyle(
-                                          color: grey,
-                                          fontFamily: 'GB',
-                                          fontSize: 12.0,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              trailing: newNotificationList[index].holderWidget,
-                              leading: SizedBox(
-                                width: 48.0,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const Image(
-                                      image: AssetImage(Asset.pointIcon),
-                                    ),
-                                    const SizedBox(
-                                      width: 7.0,
-                                    ),
-                                    Image(
-                                      width: 35.0,
-                                      height: 35.0,
-                                      image: AssetImage(
-                                        newNotificationList[index]
-                                            .profileImageUrl,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                        childCount: newNotificationList.length,
-                      ),
-                    )
+                    _getNewNotificationsTitle(context),
+                    _getNewNotificationList(),
+                    const SliverPadding(padding: EdgeInsets.only(top: 30.0)),
+                    _getTodayNotificationTitle(context),
+                    _getTodayNotificationList(),
+                    const SliverPadding(padding: EdgeInsets.only(top: 30.0)),
+                    _getThisWeekNotificationTitle(context),
+                    _getThisWeekNotificationList(),
                   ],
                 ),
                 CustomScrollView(
@@ -157,6 +86,72 @@ class _NotificationPageState extends State<NotificationPage>
           ),
         ],
       ),
+    );
+  }
+
+  CustomNotificagtionList _getThisWeekNotificationList() {
+    return CustomNotificagtionList(
+      leadingIconWidget: SvgPicture.asset(
+        Asset.pointIcon,
+        color: black,
+      ),
+      notificationList: thisWeekNotificationList,
+    );
+  }
+
+  SliverToBoxAdapter _getThisWeekNotificationTitle(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 30.0),
+        child: Text(
+          'This week',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _getTodayNotificationTitle(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 30.0),
+        child: Text(
+          'Today',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _getNewNotificationsTitle(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 30.0),
+        child: Text(
+          'New',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
+    );
+  }
+
+  CustomNotificagtionList _getTodayNotificationList() {
+    return CustomNotificagtionList(
+      leadingIconWidget: SvgPicture.asset(
+        Asset.pointIcon,
+        color: black,
+      ),
+      notificationList: todayNotificationList,
+    );
+  }
+
+  CustomNotificagtionList _getNewNotificationList() {
+    return CustomNotificagtionList(
+      leadingIconWidget: SvgPicture.asset(
+        Asset.pointIcon,
+        color: pink,
+      ),
+      notificationList: newNotificationList,
     );
   }
 }

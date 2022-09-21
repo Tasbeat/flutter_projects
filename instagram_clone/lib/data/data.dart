@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/model/models.dart';
+import 'package:instagram_clone/widgets/custom_elevated_button.dart';
 
 //colors
 const Color transparent = Colors.transparent;
@@ -10,6 +11,7 @@ const Color pink = Color(0xffF35383);
 const Color white = Colors.white;
 const Color blue = Colors.blue;
 const Color grey = Color(0xffC5C5C5);
+const Color blue2 = Color(0xff55B9F7);
 
 //constants
 final List<Content> storyList = [
@@ -26,6 +28,43 @@ final List<Content> storyList = [
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
   Content(
       imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+];
+
+final List<Content> highlightList = [
+  Content(
+    imageUrl: Asset.plusIcon,
+    borderColor: pink,
+  ),
+  Content(
+    imageUrl: Asset.highlight2,
+    borderColor: black,
+    profileId: 'Shopping',
+  ),
+  Content(
+    imageUrl: Asset.highlight3,
+    borderColor: black,
+    profileId: 'Flutter',
+  ),
+  Content(
+    imageUrl: Asset.highlight4,
+    borderColor: black,
+    profileId: 'Projects',
+  ),
+  Content(
+    imageUrl: Asset.highlight2,
+    borderColor: black,
+    profileId: 'Shopping',
+  ),
+  Content(
+    imageUrl: Asset.highlight3,
+    borderColor: black,
+    profileId: 'Flutter',
+  ),
+  Content(
+    imageUrl: Asset.highlight4,
+    borderColor: black,
+    profileId: 'Projects',
+  ),
 ];
 
 final List<Content> postList = [
@@ -246,7 +285,7 @@ final List<Content> exploreList = [
   Content(imageUrl: Asset.explorePhoto10),
 ];
 
-const List<QuiltedGridTile> patternList = [
+List<QuiltedGridTile> patternList = const [
   QuiltedGridTile(2, 1),
   QuiltedGridTile(2, 2),
   QuiltedGridTile(1, 1),
@@ -272,24 +311,157 @@ List<Content> newNotificationList = [
     borderColor: pink,
     profileDescription: 'Started following you',
     time: ' 3min',
-    holderWidget: SizedBox(
-      width: 75.0,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: white,
-          side: const BorderSide(color: white, width: 2.0),
-        ),
-        onPressed: () {},
-        child: const Text(
-          'Message',
-          style: TextStyle(
-            color: white,
-            fontFamily: 'GS',
-            fontSize: 10.0,
-          ),
-        ),
-      ),
-    ),
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage2,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: _getFollowButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage3,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+];
+
+List<Content> todayNotificationList = [
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage1,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage2,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: _getFollowButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage3,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage4,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage5,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: _getFollowButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage6,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+];
+
+List<Content> thisWeekNotificationList = [
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage1,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage2,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: _getFollowButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage3,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage4,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage5,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: _getFollowButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage6,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage7,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage8,
+    borderColor: pink,
+    profileDescription: 'Liked your post',
+    time: ' 5min',
+    holderWidget: _getFollowButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.followerImage8,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+  Content(
+    profileId: '_tasbeat_',
+    profileImageUrl: Asset.profilePhoto,
+    borderColor: pink,
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
   ),
   Content(
     profileId: '_tasbeat_',
@@ -297,48 +469,53 @@ List<Content> newNotificationList = [
     borderColor: pink,
     profileDescription: 'Liked your post',
     time: ' 5min',
-    holderWidget: SizedBox(
-      width: 75.0,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: white,
-          side: const BorderSide(color: white, width: 2.0),
-        ),
-        onPressed: () {},
-        child: const Text(
-          'Message',
-          style: TextStyle(
-            color: white,
-            fontFamily: 'GS',
-            fontSize: 10.0,
-          ),
-        ),
-      ),
-    ),
+    holderWidget: _getFollowButton(),
   ),
   Content(
     profileId: '_tasbeat_',
-    profileImageUrl: Asset.followerImage1,
+    profileImageUrl: Asset.followerImage5,
     borderColor: pink,
-    profileDescription: 'Liked your post',
-    time: ' 6min',
-    holderWidget: SizedBox(
-      width: 75.0,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: white,
-          side: const BorderSide(color: white, width: 2.0),
-        ),
-        onPressed: () {},
-        child: const Text(
-          'Message',
-          style: TextStyle(
-            color: white,
-            fontFamily: 'GS',
-            fontSize: 10.0,
-          ),
+    profileDescription: 'Started following you',
+    time: ' 3min',
+    holderWidget: _getMessageButton(),
+  ),
+];
+
+SizedBox _getMessageButton() {
+  return SizedBox(
+    width: 75.0,
+    child: OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: white,
+        side: const BorderSide(color: white, width: 2.0),
+      ),
+      onPressed: () {},
+      child: const Text(
+        'Message',
+        style: TextStyle(
+          color: white,
+          fontFamily: 'GS',
+          fontSize: 10.0,
         ),
       ),
     ),
-  ),
-];
+  );
+}
+
+SizedBox _getFollowButton() {
+  return SizedBox(
+    width: 70.0,
+    child: CustomElevatedButton(
+      buttonStyle: ElevatedButton.styleFrom(
+        backgroundColor: pink,
+        textStyle:
+            const TextStyle(color: white, fontFamily: 'GB', fontSize: 10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+        ),
+      ),
+      buttonText: const Text('Follow'),
+      onPressedFunction: () => {},
+    ),
+  );
+}

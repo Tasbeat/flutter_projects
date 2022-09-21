@@ -22,41 +22,46 @@ class ExplorePage extends StatelessWidget {
           ),
           _getExploreSearchBox(),
           _getCategories(),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              width: 200.0,
-              height: 450.0,
-              child: GridView.custom(
-                padding: const EdgeInsets.only(
-                  bottom: 0.0,
-                  left: 10.0,
-                  right: 10.0,
-                ),
-                gridDelegate: SliverQuiltedGridDelegate(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 4,
-                  crossAxisSpacing: 4,
-                  repeatPattern: QuiltedGridRepeatPattern.same,
-                  pattern: patternList,
-                ),
-                childrenDelegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(exploreList[index].imageUrl),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    );
-                  },
-                  childCount: exploreList.length,
-                ),
-              ),
-            ),
-          )
+          _getCustomGrid()
         ],
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _getCustomGrid() {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        width: 200.0,
+        height: 450.0,
+        child: GridView.custom(
+          padding: const EdgeInsets.only(
+            bottom: 0.0,
+            left: 10.0,
+            right: 10.0,
+          ),
+          gridDelegate: SliverQuiltedGridDelegate(
+            crossAxisCount: 3,
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 4,
+            repeatPattern: QuiltedGridRepeatPattern.same,
+            pattern: patternList,
+          ),
+          childrenDelegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(exploreList[index].imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                  color: pink,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              );
+            },
+            childCount: exploreList.length,
+          ),
+        ),
       ),
     );
   }

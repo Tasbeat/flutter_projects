@@ -17,7 +17,10 @@ class Asset {
   static const String scanIcon = '${_imagesPath}scan_icon.png';
   static const String bottomArrowIcon = '${_imagesPath}arrow_icon.png';
   static const String nextIcon = '${_imagesPath}next_icon.png';
-  static const String pointIcon = '${_imagesPath}point_icon.png';
+  static const String editProfileIcon = '${_imagesPath}edit_profile_icon.png';
+  static const String linkIcon = '${_imagesPath}link_icon.png';
+  static const String locationIcon = '${_imagesPath}location_icon.png';
+  static const String jobIcon = '${_imagesPath}job_icon.png';
 
   static const String sendIcon = '${_imagesPath}sent_icon.svg';
   static const String likeIcon = '${_imagesPath}like_icon.svg';
@@ -27,6 +30,7 @@ class Asset {
   static const String exploreIcon = '${_imagesPath}explore_icon.svg';
   static const String newPostIcon = '${_imagesPath}new_post_icon.svg';
   static const String notificationIcon = '${_imagesPath}notification_icon.svg';
+  static const String pointIcon = '${_imagesPath}point_icon.svg';
 
   static const String followerImage1 = '${_imagesPath}follower_image1.png';
   static const String followerImage2 = '${_imagesPath}follower_image2.png';
@@ -36,6 +40,11 @@ class Asset {
   static const String followerImage6 = '${_imagesPath}follower_image6.png';
   static const String followerImage7 = '${_imagesPath}follower_image7.png';
   static const String followerImage8 = '${_imagesPath}follower_image8.png';
+
+  static const String highlight1 = '${_imagesPath}highlight1.png';
+  static const String highlight2 = '${_imagesPath}highlight2.png';
+  static const String highlight3 = '${_imagesPath}highlight3.png';
+  static const String highlight4 = '${_imagesPath}highlight4.png';
 
   static const String explorePhoto1 = '${_imagesPath}explore_photo1.png';
   static const String explorePhoto2 = '${_imagesPath}explore_photo2.png';
