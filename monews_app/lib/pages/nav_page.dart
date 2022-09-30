@@ -25,7 +25,6 @@ class _NavPageState extends State<NavPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       body: pages[_currentScreenIndex],
       bottomNavigationBar: Directionality(
         textDirection: TextDirection.rtl,

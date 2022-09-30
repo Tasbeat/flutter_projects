@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:monews_app/pages/nav_page.dart';
+
+import 'package:monews_app/pages/pages.dart';
 
 void main() {
   runApp(const Application());
@@ -12,7 +13,7 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavPage(),
+      home: SplashScreen(),
     );
   }
 }

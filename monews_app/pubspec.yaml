@@ -10,7 +10,8 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
-  
+  marquee: ^2.2.3
+  carousel_slider: ^4.1.1
   flutter:
     sdk: flutter
   flutter_svg: ^1.1.5

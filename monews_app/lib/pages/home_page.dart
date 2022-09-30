@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:monews_app/asset.dart';
 import 'package:monews_app/data/data.dart';
+import 'package:monews_app/navigator.dart';
+import 'package:monews_app/pages/pages.dart';
 import 'package:monews_app/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,10 +14,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isReportPage = false;
+
+  // bool _showModal = false;
+  // final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // PersistentBottomSheetController? _bottomSheetController;
+
+  // void _showOrHide(bool show) {
+  //   setState(() {
+  //     _showModal = show;
+  //     if (_showModal) {
+  //       _bottomSheetController = _scaffoldKey.currentState!.showBottomSheet(
+  //         (_) => Container(
+  //           height: MediaQuery.of(context).size.height,
+  //           width: MediaQuery.of(context).size.width,
+  //           child: Stack(
+  //             children: [
+  //               Image.asset(Asset.playerPhoto),
+  //               CustomButtomSheet(),
+  //             ],
+  //           ),
+  //         ),
+  //         backgroundColor: Colors.white,
+  //       );
+  //     } else {
+  //       if (_bottomSheetController != null) _bottomSheetController!.close();
+  //       _bottomSheetController = null;
+  //     }
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      // key: _scaffoldKey,
       appBar: _getHomeAppBar(),
       backgroundColor: white,
       body: DefaultTabController(
@@ -23,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             _getTabBar(screenSize),
             Expanded(
-              child: _getTabBarView(),
+              child: _getTabBarView(context),
             ),
           ],
         ),
@@ -31,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  TabBarView _getTabBarView() {
+  TabBarView _getTabBarView(BuildContext context) {
     return TabBarView(
       children: [
         CustomScrollView(
@@ -41,7 +76,8 @@ class _HomePageState extends State<HomePage> {
             _getHotNewsList(),
             const SliverPadding(padding: EdgeInsets.only(top: 32.0)),
             _getNewsTitle(more: 'مشاهده بیشتر', title: 'خبرهایی که علاقه داری'),
-            _getSuggestionNewsList()
+            _getSuggestionNewsList(),
+            const SliverPadding(padding: EdgeInsets.only(bottom: 10.0)),
           ],
         ),
         const CustomScrollView(
@@ -65,10 +101,60 @@ class _HomePageState extends State<HomePage> {
           height: 280.0,
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return const HotNewsContent();
+              return GestureDetector(
+                onTap: () {
+                  _showModalBottomSheet(context);
+                },
+                child: const HotNewsContent(),
+              );
             },
             scrollDirection: Axis.horizontal,
+            itemCount: 6,
           ),
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> _showModalBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      barrierColor: transparent,
+      backgroundColor: transparent,
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => Container(
+        margin: const EdgeInsets.only(bottom: 60.0),
+        color: black,
+        child: Stack(
+          children: [
+            Image.asset(Asset.playerPhoto),
+            Positioned(
+              top: 25.0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0, left: 10.0),
+                      child: SvgPicture.asset(Asset.verticalShortMenu),
+                    ),
+                    SvgPicture.asset(Asset.addBookmark),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () => navigator(
+                        context: context,
+                        destinationPage: const HomePage(),
+                        isPush: false,
+                      ),
+                      child: SvgPicture.asset(Asset.arrowRight),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const CustomButtomSheet(),
+          ],
         ),
       ),
     );
@@ -83,6 +169,7 @@ class _HomePageState extends State<HomePage> {
             child: SuggestionNewsContent(),
           );
         },
+        childCount: 6,
       ),
     );
   }
