@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
+import 'package:instagram_clone/navigator.dart';
 import 'package:instagram_clone/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {

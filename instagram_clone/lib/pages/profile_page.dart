@@ -1,7 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/asset.dart';
 import 'package:instagram_clone/data/data.dart';
 import 'package:instagram_clone/widgets/widgets.dart';
@@ -15,6 +14,13 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
+  late TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(length: 2, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,36 +34,41 @@ class _ProfilePageState extends State<ProfilePage>
               _getHeaderProfileTile(),
               _getProfileBio(),
               _getBioLink(),
-              const SliverPadding(padding: EdgeInsets.only(top: 15.0)),
+              const SliverPadding(
+                padding: EdgeInsets.only(top: 15.0),
+              ),
               _getJobAndLocation(),
-              const SliverPadding(padding: EdgeInsets.only(top: 20.0)),
+              const SliverPadding(
+                padding: EdgeInsets.only(top: 20.0),
+              ),
               _getActivities(),
-              const SliverPadding(padding: EdgeInsets.only(top: 30.0)),
+              const SliverPadding(
+                padding: EdgeInsets.only(top: 30.0),
+              ),
               _getButtons(),
-              const SliverPadding(padding: EdgeInsets.only(top: 20.0)),
+              const SliverPadding(
+                padding: EdgeInsets.only(top: 20.0),
+              ),
               _getHighlights(),
               SliverPersistentHeader(
                 pinned: true,
                 floating: true,
                 delegate: TabBarViewDelegate(
-                  TabBar(
-                    indicatorColor: pink,
-                    indicatorWeight: 2,
-                    indicatorSize: TabBarIndicatorSize.tab,
+                  const TabBar(
                     tabs: [
                       Tab(
-                        icon: SvgPicture.asset(Asset.postsIcon),
+                        child: Text('text1'),
                       ),
                       Tab(
-                        icon: SvgPicture.asset(Asset.bookmarksIcon),
-                      ),
+                        child: Text('text2'),
+                      )
                     ],
                   ),
                 ),
               ),
             ];
           },
-          body: _getTabBarView(),
+          body: _getNestedScrollViewBody(),
         ),
       ),
     );
@@ -99,68 +110,59 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  TabBarView _getTabBarView() {
+  _getNestedScrollViewBody() {
     return TabBarView(
+      controller: _tabController,
       children: [
-        _getCustomGrid(),
-        _getCustomGrid(),
+        CustomScrollView(
+          slivers: [_getCustomGrid()],
+        ),
+        CustomScrollView(
+          slivers: [_getCustomGrid()],
+        ),
       ],
     );
   }
 
-  CustomScrollView _getCustomGrid() {
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
+  SliverToBoxAdapter _getCustomGrid() {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        width: 200.0,
+        height: 450.0,
+        child: GridView.custom(
           padding: const EdgeInsets.only(
-            top: 15,
-            left: 12,
-            right: 12,
+            bottom: 0.0,
+            left: 10.0,
+            right: 10.0,
           ),
-          sliver: SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              ((context, index) {
-                return Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+          gridDelegate: SliverQuiltedGridDelegate(
+            crossAxisCount: 3,
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 4,
+            repeatPattern: QuiltedGridRepeatPattern.same,
+            pattern: [
+              QuiltedGridTile(2, 2),
+              QuiltedGridTile(1, 1),
+              QuiltedGridTile(1, 1),
+            ],
+          ),
+          childrenDelegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(exploreList[index].imageUrl),
+                    fit: BoxFit.cover,
                   ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.asset(Asset.moonWallpaper),
-                    ),
-                  ),
-                );
-              }),
-              childCount: 12,
-            ),
-            gridDelegate: SliverQuiltedGridDelegate(
-              crossAxisCount: 3,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              repeatPattern: QuiltedGridRepeatPattern.inverted,
-              pattern: [
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(2, 2),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
-              ],
-            ),
+                  color: pink,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              );
+            },
+            childCount: exploreList.length,
           ),
         ),
-        const SliverPadding(
-          padding: EdgeInsets.only(
-            bottom: 70.0,
-          ),
-        )
-      ],
+      ),
     );
   }
 
@@ -409,7 +411,6 @@ class TabBarViewDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: black,
       child: _tabBar,
     );
   }

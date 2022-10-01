@@ -31,8 +31,6 @@ class Asset {
   static const String newPostIcon = '${_imagesPath}new_post_icon.svg';
   static const String notificationIcon = '${_imagesPath}notification_icon.svg';
   static const String pointIcon = '${_imagesPath}point_icon.svg';
-  static const String postsIcon = '${_imagesPath}posts_icon.svg';
-  static const String bookmarksIcon = '${_imagesPath}bookmarks_icon.svg';
 
   static const String followerImage1 = '${_imagesPath}follower_image1.png';
   static const String followerImage2 = '${_imagesPath}follower_image2.png';
