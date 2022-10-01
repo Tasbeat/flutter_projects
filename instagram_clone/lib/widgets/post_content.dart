@@ -27,6 +27,7 @@ class _PostContentState extends State<PostContent> {
   }
 
   bool isPostLiked = false;
+  bool isPostSaved = false;
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -153,10 +154,21 @@ class _PostContentState extends State<PostContent> {
                       const Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(right: 7.0),
-                        child: SvgPicture.asset(
-                          Asset.savedIcon,
-                          color: white,
-                          semanticsLabel: 'save',
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (isPostSaved) {
+                                isPostSaved = false;
+                              } else {
+                                isPostSaved = true;
+                              }
+                            });
+                          },
+                          child: SvgPicture.asset(
+                            Asset.savedIcon,
+                            color: isPostSaved ? pink : white,
+                            semanticsLabel: 'like',
+                          ),
                         ),
                       ),
                     ],
