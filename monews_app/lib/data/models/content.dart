@@ -4,11 +4,14 @@ class Content {
   String agency;
   String agencyLogoUrl;
   String reportTime;
-  Content({
-    required this.imageUrl,
-    required this.catergories,
-    required this.agency,
-    required this.agencyLogoUrl,
-    required this.reportTime,
-  });
+  String shortDescription;
+  String longDescription;
+  Content(
+      {required this.imageUrl,
+      required this.catergories,
+      required this.agency,
+      required this.agencyLogoUrl,
+      required this.reportTime,
+      this.shortDescription = '',
+      this.longDescription = ''});
 }

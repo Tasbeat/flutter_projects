@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:monews_app/asset.dart';
 import 'package:monews_app/data/data.dart';
 
+import '../data/models/content.dart';
+
 class HotNewsContent extends StatelessWidget {
-  const HotNewsContent({super.key});
+  final List<Content> hotNewsList;
+  final int index;
+  const HotNewsContent(
+      {super.key, required this.hotNewsList, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class HotNewsContent extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Image.asset(
-                        Asset.newsImage1,
+                        hotNewsList[index].imageUrl,
                         width: 240.0,
                         height: 150.0,
                       ),
@@ -43,10 +48,10 @@ class HotNewsContent extends StatelessWidget {
                         color: pink.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(16.0),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'ورزشی',
-                          style: TextStyle(
+                          hotNewsList[index].catergories[0],
+                          style: const TextStyle(
                             color: white,
                             fontSize: 10.0,
                             fontFamily: 'SM',
@@ -75,9 +80,9 @@ class HotNewsContent extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const Text(
-                      '5 دقیقه پیش',
-                      style: TextStyle(
+                    Text(
+                      hotNewsList[index].reportTime,
+                      style: const TextStyle(
                         color: grey,
                         fontSize: 10.0,
                         fontFamily: 'SM',
@@ -91,12 +96,11 @@ class HotNewsContent extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 3.0),
                 child: RichText(
                   softWrap: true,
-                  text: const TextSpan(
+                  text: TextSpan(
                     children: [
                       TextSpan(
-                        text:
-                            'پاسخ منفی پورتو به چلسی برای جذب طارمی با طعم تهدید!',
-                        style: TextStyle(
+                        text: hotNewsList[index].shortDescription,
+                        style: const TextStyle(
                           fontFamily: 'SM',
                           color: black,
                           fontSize: 14.0,
@@ -113,11 +117,13 @@ class HotNewsContent extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 4.0),
-                      child: Image.asset(Asset.akharinKhabarLogo),
+                      child: Image.asset(
+                        hotNewsList[index].agencyLogoUrl,
+                      ),
                     ),
-                    const Text(
-                      'خبرگذاری آخرین خبر',
-                      style: TextStyle(
+                    Text(
+                      hotNewsList[index].agency,
+                      style: const TextStyle(
                         color: black,
                         fontSize: 8.0,
                         fontFamily: 'SM',

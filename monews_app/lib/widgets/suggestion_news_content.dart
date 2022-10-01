@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:monews_app/asset.dart';
 import 'package:monews_app/data/data.dart';
+import 'package:monews_app/data/models/content.dart';
 
 class SuggestionNewsContent extends StatelessWidget {
-  const SuggestionNewsContent({super.key});
+  final List<Content> suggestionNewsList;
+  final int index;
+  const SuggestionNewsContent({
+    Key? key,
+    required this.suggestionNewsList,
+    required this.index,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,7 @@ class SuggestionNewsContent extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Image.asset(
-                        Asset.suggestionNewsPhoto1,
+                        suggestionNewsList[index].imageUrl,
                       ),
                     ),
                     Positioned(
@@ -39,10 +47,10 @@ class SuggestionNewsContent extends StatelessWidget {
                           color: pink.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'تکنولوژی',
-                            style: TextStyle(
+                            suggestionNewsList[index].catergories[0],
+                            style: const TextStyle(
                               color: white,
                               fontSize: 10.0,
                               fontFamily: 'SM',
@@ -61,12 +69,11 @@ class SuggestionNewsContent extends StatelessWidget {
                     children: [
                       RichText(
                         softWrap: true,
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: [
                             TextSpan(
-                              text:
-                                  'سـاعـت هوشـمـنـد گــارمـیـن Venu Sq 2 بـا عمر باتری ۱۱ روزه معرفی شد',
-                              style: TextStyle(
+                              text: suggestionNewsList[index].shortDescription,
+                              style: const TextStyle(
                                 fontFamily: 'SM',
                                 color: black,
                                 fontWeight: FontWeight.bold,
@@ -80,12 +87,11 @@ class SuggestionNewsContent extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 6.0),
                         child: RichText(
                           softWrap: true,
-                          text: const TextSpan(
+                          text: TextSpan(
                             children: [
                               TextSpan(
-                                text:
-                                    'گارمین در رویداد IFA ۲۰۲۲ ساعت هوشمند Venu Sq 2 و ردیاب سلامت کودکان موسوم به Black Panther Vivofit Jr 3 را معرفی کرد.',
-                                style: TextStyle(
+                                text: suggestionNewsList[index].longDescription,
+                                style: const TextStyle(
                                   fontFamily: 'SM',
                                   color: grey,
                                   fontSize: 7.0,
@@ -102,11 +108,15 @@ class SuggestionNewsContent extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 4.0),
-                              child: Image.asset(Asset.akharinKhabarLogo),
+                              child: Image.asset(
+                                suggestionNewsList[index].agencyLogoUrl,
+                                width: 15.0,
+                                height: 15.0,
+                              ),
                             ),
-                            const Text(
-                              'خبرگذاری آخرین خبر',
-                              style: TextStyle(
+                            Text(
+                              suggestionNewsList[index].agency,
+                              style: const TextStyle(
                                 color: black,
                                 fontSize: 8.0,
                                 fontFamily: 'SM',

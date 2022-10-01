@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:monews_app/asset.dart';
 import 'package:monews_app/data/data.dart';
 import 'package:monews_app/navigator.dart';
-import 'package:monews_app/pages/pages.dart';
 import 'package:monews_app/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -105,11 +104,11 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   _showModalBottomSheet(context);
                 },
-                child: const HotNewsContent(),
+                child: HotNewsContent(hotNewsList: hotNewsList, index: index),
               );
             },
             scrollDirection: Axis.horizontal,
-            itemCount: 6,
+            itemCount: hotNewsList.length,
           ),
         ),
       ),
@@ -164,12 +163,13 @@ class _HomePageState extends State<HomePage> {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return const Directionality(
+          return Directionality(
             textDirection: TextDirection.rtl,
-            child: SuggestionNewsContent(),
+            child: SuggestionNewsContent(
+                suggestionNewsList: suggestionNewsList, index: index),
           );
         },
-        childCount: 6,
+        childCount: suggestionNewsList.length,
       ),
     );
   }

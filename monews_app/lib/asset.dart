@@ -28,6 +28,12 @@ class Asset {
   static const String zoomitIcon = '${_imagesPath}zoomit_logo.png';
   static const String playerPhoto = '${_imagesPath}player_photo.png';
   static const String secondBanner = '${_imagesPath}second_banner.png';
+  static const String digiatoLogo = '${_imagesPath}digiato_logo.png';
+  static const String medicalAndSciencePhoto =
+      '${_imagesPath}medical_and_science_photo.png';
+  static const String varzesh3Logo = '${_imagesPath}varzesh3_logo.png';
+  static const String varzesh3SmallLogo =
+      '${_imagesPath}varzesh3_small_logo.png';
   static const String splashScreenPattern =
       '${_imagesPath}splash_screen_pattern.png';
 }
