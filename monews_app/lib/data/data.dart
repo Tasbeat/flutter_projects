@@ -102,3 +102,149 @@ List<Content> suggestionNewsList = [
         'گارمین در رویداد IFA ۲۰۲۲ ساعت هوشمند Venu Sq 2 و ردیاب سلامت کودکان موسوم به Black Panther Vivofit Jr 3 را معرفی کرد.',
   ),
 ];
+
+List<Content> categoryList = [
+  Content(
+    imageUrl: '',
+    catergories: [
+      'ورزشی',
+    ],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [
+      'تکنولوژی',
+    ],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [
+      'علمی',
+    ],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [
+      'اقتصادی',
+    ],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [
+      'سیاسی',
+    ],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [
+      'فرهنگی',
+    ],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+];
+
+List<Content> agenciesList = [
+  Content(
+    imageUrl: '',
+    catergories: [],
+    agency: 'زومیت',
+    agencyLogoUrl: Asset.zoomitIcon,
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [],
+    agency: 'ورزش سه',
+    agencyLogoUrl: Asset.varzesh3Logo,
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [],
+    agency: 'دیجیاتو',
+    agencyLogoUrl: Asset.digiatoLogo,
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [],
+    agency: 'زومیت',
+    agencyLogoUrl: Asset.zoomitIcon,
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [],
+    agency: 'ورزش سه',
+    agencyLogoUrl: Asset.varzesh3Logo,
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: '',
+    catergories: [],
+    agency: 'دیجیاتو',
+    agencyLogoUrl: Asset.digiatoLogo,
+    reportTime: '',
+  ),
+];
+List<Content> editorCategorySuggestionList = [
+  Content(
+    imageUrl: Asset.newsImage1,
+    catergories: ['ورزشی'],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: Asset.medicalAndSciencePhoto,
+    catergories: ['علمی پزشکی'],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: Asset.newsImage1,
+    catergories: ['ورزشی'],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: Asset.medicalAndSciencePhoto,
+    catergories: ['علمی پزشکی'],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: Asset.newsImage1,
+    catergories: ['ورزشی'],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+  Content(
+    imageUrl: Asset.medicalAndSciencePhoto,
+    catergories: ['علمی پزشکی'],
+    agency: '',
+    agencyLogoUrl: '',
+    reportTime: '',
+  ),
+];

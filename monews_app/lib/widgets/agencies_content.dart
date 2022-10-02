@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:monews_app/asset.dart';
 import 'package:monews_app/data/data.dart';
 
+import '../data/models/content.dart';
+
 class AgenciesContent extends StatelessWidget {
-  const AgenciesContent({super.key});
+  final List<Content> agenciesList;
+  final int index;
+  const AgenciesContent(
+      {super.key, required this.agenciesList, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +22,15 @@ class AgenciesContent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
-              child: Image.asset(Asset.zoomitIcon),
+              child: Image.asset(
+                agenciesList[index].agencyLogoUrl,
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 16.0),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
               child: Text(
-                'زومیت',
-                style: TextStyle(
+                agenciesList[index].agency,
+                style: const TextStyle(
                   color: black,
                   fontFamily: 'SM',
                   fontSize: 12.0,

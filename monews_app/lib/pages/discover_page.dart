@@ -50,118 +50,84 @@ class _DiscoverPageState extends State<DiscoverPage> {
         children: [
           CustomScrollView(
             slivers: [
-              const SliverToBoxAdapter(
-                child: CarouselWithIndicatorDemo(),
-              ),
+              _getCarouselSlider(),
               _getCategoryList(),
               _getNewsTitle(more: 'مشاهده بیشتر', title: 'خبرگذاری ها'),
               _getAgenciesContentList(),
               _getNewsTitle(more: 'مشاهده بیشتر', title: 'پیشنهاد سر دبیر'),
-              SliverToBoxAdapter(
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: SizedBox(
-                    height: 158.0,
-                    child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
-                          child: SizedBox(
-                            width: 255.0,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Stack(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 0.0, left: 4.0, right: 4.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                          child: Image.asset(
-                                            Asset.newsImage1,
-                                            width: 240.0,
-                                            height: 150.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                        top: 18.0,
-                                        right: 14.0,
-                                        child: Container(
-                                          height: 28.0,
-                                          width: 58.0,
-                                          decoration: BoxDecoration(
-                                            color: pink.withOpacity(0.5),
-                                            borderRadius:
-                                                BorderRadius.circular(16.0),
-                                          ),
-                                          child: const Center(
-                                            child: Text(
-                                              'ورزشی',
-                                              style: TextStyle(
-                                                color: white,
-                                                fontSize: 10.0,
-                                                fontFamily: 'SM',
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                      itemCount: 6,
-                      scrollDirection: Axis.horizontal,
-                    ),
-                  ),
-                ),
-              ),
+              _getEditorCategorySuggestionList(),
               const SliverPadding(
                 padding: EdgeInsets.only(bottom: 60.0),
               )
             ],
           ),
-          Positioned(
-            bottom: 0.0,
-            child: Container(
-              height: 46.0,
-              width: 428.0,
-              color: pink,
-              child: Marquee(
-                textDirection: TextDirection.rtl,
-                text:
-                    'بی‌نظمی شدید در مراسم رونمایی از کاپ جام جهانی و قهر نماینده فیفا       ***       برانکو تکذیب کرد/ نه با عمان فسخ کردم، نه با ایران مذاکره داشتم',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: white,
-                  fontFamily: 'SM',
-                  fontSize: 12,
-                ),
-                scrollAxis: Axis.horizontal,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                blankSpace: 50.0,
-                velocity: 50.0,
-                pauseAfterRound: const Duration(seconds: 0),
-                startPadding: 65.0,
-                accelerationDuration: const Duration(seconds: 0),
-                accelerationCurve: Curves.linear,
-                decelerationDuration: const Duration(milliseconds: 0),
-                decelerationCurve: Curves.easeOut,
-              ),
-            ),
-          )
+          _getAuomaticScrollSubtitle()
         ],
+      ),
+    );
+  }
+
+  Positioned _getAuomaticScrollSubtitle() {
+    return Positioned(
+      bottom: 0.0,
+      child: Container(
+        height: 46.0,
+        width: 428.0,
+        color: pink,
+        child: Marquee(
+          textDirection: TextDirection.rtl,
+          text:
+              'بی‌نظمی شدید در مراسم رونمایی از کاپ جام جهانی و قهر نماینده فیفا       ***       برانکو تکذیب کرد/ نه با عمان فسخ کردم، نه با ایران مذاکره داشتم',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: white,
+            fontFamily: 'SM',
+            fontSize: 12,
+          ),
+          scrollAxis: Axis.horizontal,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          blankSpace: 50.0,
+          velocity: 50.0,
+          pauseAfterRound: const Duration(seconds: 0),
+          startPadding: 65.0,
+          accelerationDuration: const Duration(seconds: 0),
+          accelerationCurve: Curves.linear,
+          decelerationDuration: const Duration(milliseconds: 0),
+          decelerationCurve: Curves.easeOut,
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _getCarouselSlider() {
+    return const SliverToBoxAdapter(
+      child: CarouselWithIndicatorDemo(),
+    );
+  }
+
+  SliverToBoxAdapter _getEditorCategorySuggestionList() {
+    return SliverToBoxAdapter(
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: SizedBox(
+          height: 158.0,
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 5.0),
+                child: SizedBox(
+                  width: 255.0,
+                  child: EditorCategorySuggestionContent(
+                    editorCategorySuggestionList: editorCategorySuggestionList,
+                    index: index,
+                  ),
+                ),
+              );
+            },
+            itemCount: editorCategorySuggestionList.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
       ),
     );
   }
@@ -175,7 +141,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
           textDirection: TextDirection.rtl,
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return const AgenciesContent();
+              return AgenciesContent(
+                agenciesList: agenciesList,
+                index: index,
+              );
             },
             itemCount: 6,
             scrollDirection: Axis.horizontal,
@@ -205,10 +174,11 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 child: CategoryContent(
                   currentCategorySelectedIndex: _currentCategorySelectedIndex,
                   index: index,
+                  categoryList: categoryList,
                 ),
               );
             },
-            itemCount: 6,
+            itemCount: categoryList.length,
             scrollDirection: Axis.horizontal,
           ),
         ),
