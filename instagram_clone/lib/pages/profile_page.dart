@@ -259,7 +259,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           Text(
-            'yek.link/Amirahmad',
+            'yek.link/...',
             style: TextStyle(
               color: blue2,
             ),
@@ -288,7 +288,7 @@ class _ProfilePageState extends State<ProfilePage>
                   children: [
                     TextSpan(
                       text:
-                          'علی علیرحیمی هستم برنامه نویس اندروید با سابقه کاری 3 سال و مدیر بخش کنترل کیفی شرکت اصل فولاد دارای بیمه و همچنین دارای برند فلان و فلان و فلان',
+                          'علی علیرحیمی هستم برنامه نویس اندروید وفلاتر با سابقه کاری 3 سال و مدیر بخش کنترل کیفی شرکت اصل فولاد ',
                       style: TextStyle(
                         fontFamily: 'GM',
                         fontSize: 12.0,
@@ -330,7 +330,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           subtitle: const Text(
-            'profileId',
+            '_tasbeat_',
             style: TextStyle(
               color: grey,
               fontFamily: 'GB',
@@ -354,7 +354,7 @@ class _ProfilePageState extends State<ProfilePage>
                   child: const ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     child: Image(
-                      image: AssetImage(Asset.followerImage1),
+                      image: AssetImage(Asset.followerImage8),
                     ),
                   ),
                 ),
