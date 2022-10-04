@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import '../data/models/car.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,7 +12,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var box = Hive.box('testBox');
-  var _controller = TextEditingController();
+  var carBox = Hive.box<Car>('carBox');
+  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,27 +22,30 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               ElevatedButton(
-                onPressed: () => box.put(1, 'Ali'),
-                child: Text('Create'),
+                onPressed: () =>
+                    carBox.put(2, Car(name: 'benz', model: 2020, price: 10000)),
+                child: const Text('Create'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  var name = box.get(1);
+                  if (carBox.get(2) == null) return;
+
+                  var name = carBox.get(2)!.name;
                   print(name);
                 },
-                child: Text('Read'),
+                child: const Text('Read'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  box.put(1, 'hello');
+                  carBox.get(2)!.name = 'bmw';
                 },
-                child: Text('Update'),
+                child: const Text('Update'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  box.delete(1);
+                  carBox.delete(2);
                 },
-                child: Text('Delete'),
+                child: const Text('Delete'),
               ),
               TextField(
                 controller: _controller,
@@ -50,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                   box.put(2, _controller.text);
                   setState(() {});
                 },
-                child: Text('Read From Text Field'),
+                child: const Text('Read From Text Field'),
               ),
             ],
           ),
