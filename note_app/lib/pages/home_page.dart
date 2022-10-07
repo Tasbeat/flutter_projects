@@ -1,5 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:note_app/asset.dart';
+import 'package:note_app/navigator.dart';
+import 'package:note_app/pages/add_task_page.dart';
 import 'package:note_app/widgets/widgets.dart';
 import '../data/data.dart';
 import '../data/models/task.dart';
@@ -17,12 +22,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: myWhite,
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          var task = taskBox.values.toList()[index];
-          return TaskWidget(task: task);
+      body: ValueListenableBuilder(
+        valueListenable: taskBox.listenable(),
+        builder: (context, value, child) {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              var task = taskBox.values.toList()[index];
+              return TaskWidget(task: task);
+            },
+            itemCount: taskBox.values.length,
+          );
         },
-        itemCount: taskBox.values.length,
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: myGreen,
+        child: Image.asset(Asset.iconAdd),
+        onPressed: (() => navigator(
+              context: context,
+              destinationPage: AddTaskPage(),
+              isPush: true,
+            )),
       ),
     );
   }

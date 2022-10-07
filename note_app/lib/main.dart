@@ -5,7 +5,6 @@ import 'package:note_app/pages/pages.dart';
 
 void main() async {
   await Hive.initFlutter();
-  await Hive.openBox('testBox');
   Hive.registerAdapter(TaskAdapter());
   await Hive.openBox<Task>('taskBox');
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'SM'),
       debugShowCheckedModeBanner: false,
-      home: NavPage(),
+      home: HomePage(),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:note_app/navigator.dart';
+import 'package:note_app/pages/home_page.dart';
 
 import '../data/data.dart';
 import '../data/models/task.dart';
@@ -77,6 +79,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           subTitle: _taskSubTitleController.text,
                         ),
                       );
+                      Navigator.pop(context);
                     },
                     child: Text('اضافه کردن تسک'),
                   ),
