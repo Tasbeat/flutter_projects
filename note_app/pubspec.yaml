@@ -13,6 +13,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   msh_checkbox: ^1.1.1
+  roundcheckbox: ^2.0.5
 
 dev_dependencies:
   build_runner: ^2.2.1

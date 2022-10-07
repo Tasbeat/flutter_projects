@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/data/models/task.dart';
-import 'package:note_app/pages/add_task_page.dart';
-import 'package:note_app/pages/home_page.dart';
+import 'package:note_app/pages/pages.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'SM'),
       debugShowCheckedModeBanner: false,
-      home: AddTaskPage(),
+      home: NavPage(),
     );
   }
 }

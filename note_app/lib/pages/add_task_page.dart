@@ -15,16 +15,15 @@ class _AddTaskPageState extends State<AddTaskPage> {
   TextEditingController _taskTitleController = TextEditingController();
   TextEditingController _taskSubTitleController = TextEditingController();
   var taskBox = Hive.box<Task>('taskBox');
-  FocusNode passwordFocusNode = FocusNode();
-
-  FocusNode emailFocusNode = FocusNode();
-
+  FocusNode taskSubTitleFocusNode = FocusNode();
+  FocusNode taskTitleFocusNode = FocusNode();
+  late Task task;
   @override
   void initState() {
-    passwordFocusNode.addListener(() {
+    taskSubTitleFocusNode.addListener(() {
       setState(() {});
     });
-    emailFocusNode.addListener(() {
+    taskTitleFocusNode.addListener(() {
       setState(() {});
     });
     super.initState();
@@ -72,14 +71,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   padding: const EdgeInsets.only(bottom: 15.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      taskBox.put(
-                        1,
+                      taskBox.add(
                         Task(
                           title: _taskTitleController.text,
                           subTitle: _taskSubTitleController.text,
                         ),
                       );
-                      print(taskBox.get(1)!.subTitle);
                     },
                     child: Text('اضافه کردن تسک'),
                   ),
@@ -94,8 +91,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   @override
   void dispose() {
-    passwordFocusNode.dispose();
-    emailFocusNode.dispose();
+    taskSubTitleFocusNode.dispose();
+    taskTitleFocusNode.dispose();
     super.dispose();
   }
 
@@ -106,7 +103,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
       required TextEditingController controller}) {
     return TextField(
       controller: controller,
-      focusNode: labelText == 'عنوان تسک' ? emailFocusNode : passwordFocusNode,
+      focusNode:
+          labelText == 'عنوان تسک' ? taskTitleFocusNode : taskSubTitleFocusNode,
       autofocus: false,
       keyboardType: inputType,
       cursorColor: myWhite,
@@ -149,8 +147,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
         labelText: '$labelText',
         labelStyle: TextStyle(
           color: labelText == 'عنوان تسک'
-              ? (emailFocusNode.hasFocus ? myGreen : myWhite)
-              : (passwordFocusNode.hasFocus ? myGreen : myWhite),
+              ? (taskTitleFocusNode.hasFocus ? myGreen : myWhite)
+              : (taskSubTitleFocusNode.hasFocus ? myGreen : myWhite),
           fontSize: 14,
         ),
         border: OutlineInputBorder(
