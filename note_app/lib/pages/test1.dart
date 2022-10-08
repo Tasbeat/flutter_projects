@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/navigator.dart';
 import 'package:note_app/pages/test2.dart';
@@ -13,7 +12,7 @@ class Test1 extends StatefulWidget {
 }
 
 class _Test1State extends State<Test1> {
-  late int counter = 0;
+  int counter = 0;
   ValueNotifier valueNotifier = ValueNotifier(0);
 
   @override

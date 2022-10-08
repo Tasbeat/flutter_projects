@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/asset.dart';
 import 'package:note_app/navigator.dart';
@@ -17,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isFabVisible = true;
   var taskBox = Hive.box<Task>('taskBox');
   @override
   Widget build(BuildContext context) {
@@ -25,23 +25,38 @@ class _HomePageState extends State<HomePage> {
       body: ValueListenableBuilder(
         valueListenable: taskBox.listenable(),
         builder: (context, value, child) {
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              var task = taskBox.values.toList()[index];
-              return TaskWidget(task: task);
+          return NotificationListener<UserScrollNotification>(
+            onNotification: (notification) {
+              setState(() {
+                if (notification.direction == ScrollDirection.forward) {
+                  isFabVisible = true;
+                } else if (notification.direction == ScrollDirection.reverse) {
+                  isFabVisible = false;
+                }
+              });
+              return true;
             },
-            itemCount: taskBox.values.length,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                var task = taskBox.values.toList()[index];
+                return TaskWidget(task: task);
+              },
+              itemCount: taskBox.values.length,
+            ),
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: myGreen,
-        child: Image.asset(Asset.iconAdd),
-        onPressed: (() => navigator(
-              context: context,
-              destinationPage: AddTaskPage(),
-              isPush: true,
-            )),
+      floatingActionButton: Visibility(
+        visible: isFabVisible,
+        child: FloatingActionButton(
+          backgroundColor: myGreen,
+          child: Image.asset(Asset.iconAdd),
+          onPressed: (() => navigator(
+                context: context,
+                destinationPage: AddTaskPage(),
+                isPush: true,
+              )),
+        ),
       ),
     );
   }
