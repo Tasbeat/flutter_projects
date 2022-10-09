@@ -136,7 +136,9 @@ class _TaskWidgetState extends State<TaskWidget> {
                 Padding(
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Text(
-                    '10:00',
+                    task.dateTime == null
+                        ? 'نامشخص'
+                        : '${task.dateTime!.minute}:${task.dateTime!.hour} ',
                     style: TextStyle(
                       fontSize: 12.0,
                       color: Colors.white,

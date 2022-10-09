@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -17,7 +18,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
   var taskBox = Hive.box<Task>('taskBox');
   FocusNode taskSubTitleFocusNode = FocusNode();
   FocusNode taskTitleFocusNode = FocusNode();
-  late Task task;
+  late int taskHour;
+  late int taskMinute;
   @override
   void initState() {
     taskSubTitleFocusNode.addListener(() {
@@ -66,6 +68,27 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        showPicker(
+                          context: context,
+                          value: TimeOfDay.now(),
+                          onChange: (p0) {
+                            taskHour = p0.hour;
+                            taskMinute = p0.minute;
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "زمان تسک رو انتخاب کن",
+                      style: TextStyle(color: myWhite),
+                    ),
+                  ),
+                ),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
@@ -75,6 +98,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         Task(
                           title: _taskTitleController.text,
                           subTitle: _taskSubTitleController.text,
+                          dateTime: DateTime(2022, 5, 20, taskMinute, taskHour),
                         ),
                       );
                       Navigator.pop(context);
