@@ -18,8 +18,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
   var taskBox = Hive.box<Task>('taskBox');
   FocusNode taskSubTitleFocusNode = FocusNode();
   FocusNode taskTitleFocusNode = FocusNode();
-  late int taskHour;
-  late int taskMinute;
+  int taskHour = 0;
+  int taskMinute = 0;
   @override
   void initState() {
     taskSubTitleFocusNode.addListener(() {
@@ -98,7 +98,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         Task(
                           title: _taskTitleController.text,
                           subTitle: _taskSubTitleController.text,
-                          dateTime: DateTime(2022, 5, 20, taskMinute, taskHour),
+                          dateTime: DateTime(
+                              DateTime.now().year,
+                              DateTime.now().month,
+                              DateTime.now().day,
+                              taskHour,
+                              taskMinute),
                         ),
                       );
                       Navigator.pop(context);
