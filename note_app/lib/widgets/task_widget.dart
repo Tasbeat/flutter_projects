@@ -193,6 +193,7 @@ class _TaskWidgetState extends State<TaskWidget> {
       children: [
         Text(
           task.title,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
@@ -203,6 +204,7 @@ class _TaskWidgetState extends State<TaskWidget> {
         ),
         Text(
           task.subTitle,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 10,
           ),

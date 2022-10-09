@@ -39,7 +39,29 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 var task = taskBox.values.toList()[index];
-                return TaskWidget(task: task);
+                return Dismissible(
+                  key: UniqueKey(),
+                  background: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: Icon(Icons.delete, size: 50.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                  direction: DismissDirection.startToEnd,
+                  confirmDismiss: (direction) {
+                    return _showConfirmDialog(context, task);
+                  },
+                  onDismissed: (direction) {},
+                  child: TaskWidget(task: task),
+                );
               },
               itemCount: taskBox.values.length,
             ),
@@ -56,6 +78,32 @@ class _HomePageState extends State<HomePage> {
                 destinationPage: AddTaskPage(),
                 isPush: true,
               )),
+        ),
+      ),
+    );
+  }
+
+  Future<bool?> _showConfirmDialog(BuildContext context, Task task) {
+    return showDialog(
+      context: context,
+      builder: (context) => Directionality(
+        textDirection: TextDirection.rtl,
+        child: AlertDialog(
+          title: const Text('مطمئنید؟'),
+          content: const Text('آیا از پاک کردن تسک مطمئن هستید؟'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('خیر'),
+            ),
+            TextButton(
+              onPressed: () {
+                task.delete();
+                Navigator.of(context).pop();
+              },
+              child: const Text('بله'),
+            ),
+          ],
         ),
       ),
     );
