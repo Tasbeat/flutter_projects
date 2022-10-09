@@ -1,6 +1,7 @@
 import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:note_app/asset.dart';
 
 import '../data/data.dart';
 import '../data/models/task.dart';
@@ -69,11 +70,35 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: myGreen,
+                      minimumSize: Size(200.0, 60.0),
+                    ),
                     onPressed: () {
                       Navigator.of(context).push(
                         showPicker(
+                          buttonsSpacing: 120,
+                          displayHeader: true,
+                          focusMinutePicker: false,
+                          accentColor: myGreen,
+                          borderRadius: 20,
+                          blurredBackground: true,
+                          cancelText: 'بازگشت',
+                          okText: 'ذخیره',
+                          okStyle: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontFamily: 'SM',
+                          ),
+                          cancelStyle: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontFamily: 'SM',
+                          ),
                           context: context,
                           value: TimeOfDay.now(),
                           onChange: (p0) {
@@ -85,7 +110,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     },
                     child: Text(
                       "زمان تسک رو انتخاب کن",
-                      style: TextStyle(color: myWhite),
                     ),
                   ),
                 ),
@@ -93,17 +117,19 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: myGreen),
                     onPressed: () {
                       taskBox.add(
                         Task(
                           title: _taskTitleController.text,
                           subTitle: _taskSubTitleController.text,
                           dateTime: DateTime(
-                              DateTime.now().year,
-                              DateTime.now().month,
-                              DateTime.now().day,
-                              taskHour,
-                              taskMinute),
+                            DateTime.now().year,
+                            DateTime.now().month,
+                            DateTime.now().day,
+                            taskHour,
+                            taskMinute,
+                          ),
                         ),
                       );
                       Navigator.pop(context);
