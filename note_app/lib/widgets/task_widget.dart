@@ -1,10 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:msh_checkbox/msh_checkbox.dart';
-
 import 'package:note_app/data/data.dart';
+import 'package:note_app/navigator.dart';
+import 'package:note_app/pages/pages.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
-
 import '../asset.dart';
 import '../data/models/task.dart';
 
@@ -80,25 +78,34 @@ class _TaskWidgetState extends State<TaskWidget> {
               color: myWhite,
               borderRadius: BorderRadius.circular(18),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    right: 5.0,
-                    left: 10.0,
+            child: GestureDetector(
+              onTap: () {
+                navigator(
+                  context: context,
+                  destinationPage: EditTaskPage(currentTask: task),
+                  isPush: true,
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 5.0,
+                      left: 10.0,
+                    ),
+                    child: Image.asset(Asset.iconEdit),
                   ),
-                  child: Image.asset(Asset.iconEdit),
-                ),
-                Text(
-                  'ویرایش',
-                  style: TextStyle(
-                    color: myGreen,
-                    fontSize: 12.0,
+                  Text(
+                    'ویرایش',
+                    style: TextStyle(
+                      color: myGreen,
+                      fontSize: 12.0,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(

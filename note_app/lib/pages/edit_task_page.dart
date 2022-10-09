@@ -4,28 +4,34 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../data/data.dart';
 import '../data/models/task.dart';
 
-class AddTaskPage extends StatefulWidget {
-  const AddTaskPage({super.key});
+class EditTaskPage extends StatefulWidget {
+  final Task currentTask;
+  const EditTaskPage({super.key, required this.currentTask});
 
   @override
-  State<AddTaskPage> createState() => _AddTaskPageState();
+  State<EditTaskPage> createState() => _EditTaskPageState();
 }
 
-class _AddTaskPageState extends State<AddTaskPage> {
-  TextEditingController _taskTitleController = TextEditingController();
-  TextEditingController _taskSubTitleController = TextEditingController();
+class _EditTaskPageState extends State<EditTaskPage> {
+  late TextEditingController _taskTitleController;
+  late TextEditingController _taskSubTitleController;
   var taskBox = Hive.box<Task>('taskBox');
   FocusNode taskSubTitleFocusNode = FocusNode();
   FocusNode taskTitleFocusNode = FocusNode();
-  late Task task;
+  late Task currentTask;
+
   @override
   void initState() {
+    currentTask = widget.currentTask;
+    _taskTitleController = TextEditingController(text: currentTask.title);
+    _taskSubTitleController = TextEditingController(text: currentTask.subTitle);
     taskSubTitleFocusNode.addListener(() {
       setState(() {});
     });
     taskTitleFocusNode.addListener(() {
       setState(() {});
     });
+
     super.initState();
   }
 
@@ -71,15 +77,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   padding: const EdgeInsets.only(bottom: 15.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      taskBox.add(
-                        Task(
-                          title: _taskTitleController.text,
-                          subTitle: _taskSubTitleController.text,
-                        ),
-                      );
+                      currentTask.title = _taskTitleController.text;
+                      currentTask.subTitle = _taskSubTitleController.text;
+                      currentTask.save();
                       Navigator.pop(context);
                     },
-                    child: Text('اضافه کردن تسک'),
+                    child: Text('ویرایش تسک'),
                   ),
                 )
               ],
