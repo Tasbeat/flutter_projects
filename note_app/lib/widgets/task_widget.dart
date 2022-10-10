@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/data/data.dart';
 import 'package:note_app/navigator.dart';
@@ -57,7 +58,7 @@ class _TaskWidgetState extends State<TaskWidget> {
             children: [
               _getTaskExplainsAndCheckbox(),
               Spacer(),
-              _getTaskItemButton()
+              _getTaskItemButtons()
             ],
           ),
         )
@@ -65,27 +66,27 @@ class _TaskWidgetState extends State<TaskWidget> {
     );
   }
 
-  Padding _getTaskItemButton() {
+  Padding _getTaskItemButtons() {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, bottom: 16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            width: 85.0,
-            height: 28.0,
-            decoration: BoxDecoration(
-              color: myWhite,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: GestureDetector(
-              onTap: () {
-                navigator(
-                  context: context,
-                  destinationPage: EditTaskPage(currentTask: task),
-                  isPush: true,
-                );
-              },
+          GestureDetector(
+            onTap: () {
+              navigator(
+                context: context,
+                destinationPage: EditTaskPage(currentTask: task),
+                isPush: true,
+              );
+            },
+            child: Container(
+              width: 85.0,
+              height: 28.0,
+              decoration: BoxDecoration(
+                color: myWhite,
+                borderRadius: BorderRadius.circular(18),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,44 +112,86 @@ class _TaskWidgetState extends State<TaskWidget> {
           SizedBox(
             width: 10.0,
           ),
-          Container(
-            width: 85.0,
-            height: 28.0,
-            decoration: BoxDecoration(
-              color: myGreen,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10.0,
-                    right: 5.0,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                showPicker(
+                  buttonsSpacing: 120,
+                  displayHeader: false,
+                  focusMinutePicker: false,
+                  accentColor: myGreen,
+                  borderRadius: 20,
+                  blurredBackground: true,
+                  cancelText: 'بازگشت',
+                  okText: 'ذخیره',
+                  okStyle: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    fontFamily: 'SM',
                   ),
-                  child: Image.asset(
-                    Asset.iconTime,
-                    width: 15.0,
-                    height: 15.0,
+                  cancelStyle: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    fontFamily: 'SM',
                   ),
+                  context: context,
+                  value: TimeOfDay.now(),
+                  onChange: (p0) {
+                    setState(() {
+                      task.dateTime = DateTime(
+                        DateTime.now().year,
+                        DateTime.now().month,
+                        DateTime.now().day,
+                        p0.hour,
+                        p0.minute,
+                      );
+                      task.save();
+                    });
+                  },
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 3.0),
-                  child: Text(
-                    task.dateTime == null ||
-                            task.dateTime!.hour == 0 ||
-                            task.dateTime!.minute == 0
-                        ? 'نامشخص'
-                        : '${task.dateTime!.hour}:${task.dateTime!.minute} ',
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.white,
+              );
+            },
+            child: Container(
+              width: 85.0,
+              height: 28.0,
+              decoration: BoxDecoration(
+                color: myGreen,
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10.0,
+                      right: 5.0,
                     ),
-                    textAlign: TextAlign.center,
+                    child: Image.asset(
+                      Asset.iconTime,
+                      width: 15.0,
+                      height: 15.0,
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3.0),
+                    child: Text(
+                      task.dateTime == null ||
+                              task.dateTime!.hour == 0 ||
+                              task.dateTime!.minute == 0
+                          ? 'نامشخص'
+                          : '${task.dateTime!.hour}:${task.dateTime!.minute} ',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

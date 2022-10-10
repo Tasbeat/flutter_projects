@@ -1,7 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:note_app/asset.dart';
+import 'package:note_app/data/models/task_type.dart';
+import 'package:note_app/utility.dart';
 
 import '../data/data.dart';
 import '../data/models/task.dart';
@@ -21,6 +25,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   FocusNode taskTitleFocusNode = FocusNode();
   int taskHour = 0;
   int taskMinute = 0;
+  int _currentTaskTypeIndex = 0;
   @override
   void initState() {
     taskSubTitleFocusNode.addListener(() {
@@ -70,78 +75,117 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: myGreen,
-                      minimumSize: Size(200.0, 60.0),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        showPicker(
-                          buttonsSpacing: 120,
-                          displayHeader: true,
-                          focusMinutePicker: false,
-                          accentColor: myGreen,
-                          borderRadius: 20,
-                          blurredBackground: true,
-                          cancelText: 'بازگشت',
-                          okText: 'ذخیره',
-                          okStyle: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            fontFamily: 'SM',
-                          ),
-                          cancelStyle: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            fontFamily: 'SM',
-                          ),
-                          context: context,
-                          value: TimeOfDay.now(),
-                          onChange: (p0) {
-                            taskHour = p0.hour;
-                            taskMinute = p0.minute;
-                          },
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "زمان تسک رو انتخاب کن",
-                    ),
-                  ),
+                  padding: const EdgeInsets.only(top: 30.0),
+                  child: getChooseTaskTimeButton(context),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 30.0),
+                  height: 200.0,
+                  child: _getTaskTypeList(),
                 ),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: myGreen),
-                    onPressed: () {
-                      taskBox.add(
-                        Task(
-                          title: _taskTitleController.text,
-                          subTitle: _taskSubTitleController.text,
-                          dateTime: DateTime(
-                            DateTime.now().year,
-                            DateTime.now().month,
-                            DateTime.now().day,
-                            taskHour,
-                            taskMinute,
-                          ),
-                        ),
-                      );
-                      Navigator.pop(context);
-                    },
-                    child: Text('اضافه کردن تسک'),
-                  ),
+                  child: _getAddTaskButton(context),
                 )
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  ListView _getTaskTypeList() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        var taskType = getTaskTypeList()[index];
+        return InkWell(
+          onTap: () {
+            setState(() {
+              _currentTaskTypeIndex = index;
+            });
+          },
+          child: TaskTypeItem(
+            taskType: taskType,
+            currentTaskBarIndex: _currentTaskTypeIndex,
+            index: index,
+          ),
+        );
+      },
+      itemCount: getTaskTypeList().length,
+    );
+  }
+
+  ElevatedButton _getAddTaskButton(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(backgroundColor: myGreen),
+      onPressed: () {
+        taskBox.add(
+          Task(
+            title: _taskTitleController.text,
+            subTitle: _taskSubTitleController.text,
+            dateTime: DateTime(
+              DateTime.now().year,
+              DateTime.now().month,
+              DateTime.now().day,
+              taskHour,
+              taskMinute,
+            ),
+          ),
+        );
+        Navigator.pop(context);
+      },
+      child: Text('اضافه کردن تسک'),
+    );
+  }
+
+  ElevatedButton getChooseTaskTimeButton(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: myGreen,
+        minimumSize: Size(200.0, 60.0),
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+          _showTimePicker(context),
+        );
+      },
+      child: Text(
+        "زمان تسک رو انتخاب کن",
+      ),
+    );
+  }
+
+  PageRouteBuilder<dynamic> _showTimePicker(BuildContext context) {
+    return showPicker(
+      buttonsSpacing: 120,
+      displayHeader: true,
+      focusMinutePicker: false,
+      accentColor: myGreen,
+      borderRadius: 20,
+      blurredBackground: true,
+      cancelText: 'بازگشت',
+      okText: 'ذخیره',
+      okStyle: TextStyle(
+        color: Colors.blue,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+        fontFamily: 'SM',
+      ),
+      cancelStyle: TextStyle(
+        color: Colors.red,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+        fontFamily: 'SM',
+      ),
+      context: context,
+      value: TimeOfDay.now(),
+      onChange: (p0) {
+        taskHour = p0.hour;
+        taskMinute = p0.minute;
+      },
     );
   }
 
@@ -218,6 +262,40 @@ class _AddTaskPageState extends State<AddTaskPage> {
             color: myGreen,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class TaskTypeItem extends StatelessWidget {
+  final TaskType taskType;
+  final int index;
+  final int currentTaskBarIndex;
+  TaskTypeItem({
+    Key? key,
+    required this.taskType,
+    required this.index,
+    required this.currentTaskBarIndex,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      width: 150.0,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: currentTaskBarIndex == index ? 3 : 2,
+          color: currentTaskBarIndex == index
+              ? myGreen
+              : Colors.grey.withOpacity(0.5),
+        ),
+      ),
+      child: Column(
+        children: [
+          taskType.taskTypeHeaderWidget,
+          Text(taskType.taskTypeTitle),
+        ],
       ),
     );
   }

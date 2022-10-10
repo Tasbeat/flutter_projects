@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -19,7 +20,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
   FocusNode taskSubTitleFocusNode = FocusNode();
   FocusNode taskTitleFocusNode = FocusNode();
   late Task currentTask;
-
+  late int newTaskHour;
+  late int newTaskMinute;
   @override
   void initState() {
     currentTask = widget.currentTask;
@@ -72,6 +74,50 @@ class _EditTaskPageState extends State<EditTaskPage> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: myGreen,
+                      minimumSize: Size(200.0, 60.0),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        showPicker(
+                          buttonsSpacing: 120,
+                          displayHeader: true,
+                          focusMinutePicker: false,
+                          accentColor: myGreen,
+                          borderRadius: 20,
+                          blurredBackground: true,
+                          cancelText: 'بازگشت',
+                          okText: 'ذخیره',
+                          okStyle: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontFamily: 'SM',
+                          ),
+                          cancelStyle: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontFamily: 'SM',
+                          ),
+                          context: context,
+                          value: TimeOfDay.now(),
+                          onChange: (p0) {
+                            newTaskHour = p0.hour;
+                            newTaskMinute = p0.minute;
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "زمان تسک رو انتخاب کن",
+                    ),
+                  ),
+                ),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
@@ -79,6 +125,13 @@ class _EditTaskPageState extends State<EditTaskPage> {
                     onPressed: () {
                       currentTask.title = _taskTitleController.text;
                       currentTask.subTitle = _taskSubTitleController.text;
+                      currentTask.dateTime = DateTime(
+                        DateTime.now().year,
+                        DateTime.now().month,
+                        DateTime.now().day,
+                        newTaskHour,
+                        newTaskMinute,
+                      );
                       currentTask.save();
                       Navigator.pop(context);
                     },
