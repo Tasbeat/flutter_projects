@@ -2,16 +2,8 @@
 import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-<<<<<<< Updated upstream
 import 'package:note_app/utility.dart';
 import 'package:note_app/widgets/widgets.dart';
-=======
-
-import 'package:note_app/asset.dart';
-import 'package:note_app/data/models/task_type.dart';
-import 'package:note_app/utility.dart';
-
->>>>>>> Stashed changes
 import '../data/data.dart';
 import '../data/models/task.dart';
 
@@ -114,7 +106,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
           },
           child: TaskTypeItem(
             taskType: taskType,
-            currentTaskBarIndex: _currentTaskTypeIndex,
+            currentTaskTypeIndex: _currentTaskTypeIndex,
             index: index,
           ),
         );
@@ -138,8 +130,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
               taskHour,
               taskMinute,
             ),
+            taskType: getTaskTypeList()[_currentTaskTypeIndex],
           ),
         );
+        print(getTaskTypeList()[_currentTaskTypeIndex].taskTypeTitle);
         Navigator.pop(context);
       },
       child: Text('اضافه کردن تسک'),
@@ -267,40 +261,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
             color: myGreen,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TaskTypeItem extends StatelessWidget {
-  final TaskType taskType;
-  final int index;
-  final int currentTaskBarIndex;
-  TaskTypeItem({
-    Key? key,
-    required this.taskType,
-    required this.index,
-    required this.currentTaskBarIndex,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      width: 150.0,
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: currentTaskBarIndex == index ? 3 : 2,
-          color: currentTaskBarIndex == index
-              ? myGreen
-              : Colors.grey.withOpacity(0.5),
-        ),
-      ),
-      child: Column(
-        children: [
-          taskType.taskTypeHeaderWidget,
-          Text(taskType.taskTypeTitle),
-        ],
       ),
     );
   }

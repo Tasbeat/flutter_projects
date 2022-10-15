@@ -1,19 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:note_app/data/data.dart';
+import 'package:note_app/data/models/models.dart';
 
 import '../data/models/task_type.dart';
+import '../data/models/task_type_enum.dart';
 
 class TaskTypeItem extends StatelessWidget {
   final TaskType taskType;
   final int index;
-  final int currentTaskBarIndex;
+  final int currentTaskTypeIndex;
+  final Task? currentTask;
   TaskTypeItem({
     Key? key,
     required this.taskType,
     required this.index,
-    required this.currentTaskBarIndex,
+    required this.currentTaskTypeIndex,
+    this.currentTask,
   }) : super(key: key);
-
+  var currentIndex;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,18 +27,27 @@ class TaskTypeItem extends StatelessWidget {
       width: 150.0,
       decoration: BoxDecoration(
         border: Border.all(
-          width: currentTaskBarIndex == index ? 3 : 2,
-          color: currentTaskBarIndex == index
-              ? myGreen
-              : Colors.grey.withOpacity(0.5),
-        ),
+            width: currentTaskTypeIndex == index ? 3 : 2,
+            color: currentTask == null
+                ? (currentTaskTypeIndex == index ? myGreen : Colors.grey)
+                : (currentTaskTypeIndex == index
+                    ? myGreen
+                    : Colors.grey.withOpacity(0.5))),
       ),
       child: Column(
         children: [
-          taskType.taskTypeHeaderWidget,
+          Image.asset(taskType.taskTypeHeader),
           Text(taskType.taskTypeTitle),
         ],
       ),
     );
+  }
+
+  getColor(Task? currentTask) {
+    if (currentTask == null) {
+      currentTaskTypeIndex == index ? myGreen : Colors.grey;
+    } else {
+      taskType.taskTypeEnum == currentTask.taskType!.taskTypeEnum;
+    }
   }
 }

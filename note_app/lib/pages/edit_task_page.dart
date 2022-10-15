@@ -1,9 +1,13 @@
 import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:note_app/data/models/models.dart';
 
 import '../data/data.dart';
 import '../data/models/task.dart';
+import '../data/models/task_type_enum.dart';
+import '../utility.dart';
+import '../widgets/task_item_widget.dart';
 
 class EditTaskPage extends StatefulWidget {
   final Task currentTask;
@@ -22,6 +26,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
   late Task currentTask;
   late int newTaskHour;
   late int newTaskMinute;
+  int _currentTaskTypeIndex = 0;
+
   @override
   void initState() {
     currentTask = widget.currentTask;
@@ -33,7 +39,13 @@ class _EditTaskPageState extends State<EditTaskPage> {
     taskTitleFocusNode.addListener(() {
       setState(() {});
     });
-
+    setState(() {
+      if (currentTask.taskType == null) {
+        currentTask.taskType = getTaskTypeList()[0];
+      }
+      _currentTaskTypeIndex =
+          getCurrentTaskTypeIndex(currentTask.taskType!.taskTypeEnum);
+    });
     super.initState();
   }
 
@@ -118,6 +130,11 @@ class _EditTaskPageState extends State<EditTaskPage> {
                     ),
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.only(top: 30.0),
+                  height: 200.0,
+                  child: _getTaskTypeList(),
+                ),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
@@ -132,6 +149,9 @@ class _EditTaskPageState extends State<EditTaskPage> {
                         newTaskHour,
                         newTaskMinute,
                       );
+                      currentTask.taskType =
+                          getTaskTypeList()[_currentTaskTypeIndex];
+                      print(currentTask.taskType!.taskTypeTitle);
                       currentTask.save();
                       Navigator.pop(context);
                     },
@@ -221,5 +241,49 @@ class _EditTaskPageState extends State<EditTaskPage> {
         ),
       ),
     );
+  }
+
+  ListView _getTaskTypeList() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        var taskType = getTaskTypeList()[index];
+
+        return InkWell(
+          onTap: () {
+            setState(() {
+              _currentTaskTypeIndex = index;
+            });
+          },
+          child: TaskTypeItem(
+            currentTask: currentTask,
+            taskType: taskType,
+            currentTaskTypeIndex: _currentTaskTypeIndex,
+            index: index,
+          ),
+        );
+      },
+      itemCount: getTaskTypeList().length,
+    );
+  }
+
+  int getCurrentTaskTypeIndex(TaskTypeEnum taskTypeEnum) {
+    switch (taskTypeEnum) {
+      case TaskTypeEnum.banking:
+        return 0;
+      case TaskTypeEnum.hardWorking:
+        return 1;
+      case TaskTypeEnum.meditate:
+        return 2;
+      case TaskTypeEnum.socialFriends:
+        return 3;
+      case TaskTypeEnum.workMeeting:
+        return 4;
+      case TaskTypeEnum.workout:
+        return 5;
+
+      default:
+        return 0;
+    }
   }
 }
