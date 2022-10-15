@@ -38,54 +38,57 @@ class _AddTaskPageState extends State<AddTaskPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 20.0,
-                  ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: _getTextField(
-                      controller: _taskTitleController,
-                      hintText: 'عنوان تسک',
-                      inputType: TextInputType.emailAddress,
-                      labelText: 'عنوان تسک',
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            height: 600.0,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 20.0,
+                    ),
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: _getTextField(
+                        controller: _taskTitleController,
+                        hintText: 'عنوان تسک',
+                        inputType: TextInputType.emailAddress,
+                        labelText: 'عنوان تسک',
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15.0),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: _getTextField(
-                      controller: _taskSubTitleController,
-                      hintText: '2عنوان تسک',
-                      inputType: TextInputType.visiblePassword,
-                      labelText: 'عنوان تسک2',
+                  const SizedBox(height: 15.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: _getTextField(
+                        controller: _taskSubTitleController,
+                        hintText: 'توضیحات',
+                        inputType: TextInputType.visiblePassword,
+                        labelText: 'توضیحات',
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
-                  child: getChooseTaskTimeButton(context),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 30.0),
-                  height: 200.0,
-                  child: _getTaskTypeList(),
-                ),
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 15.0),
-                  child: _getAddTaskButton(context),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: getChooseTaskTimeButton(context),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 30.0),
+                    height: 200.0,
+                    child: _getTaskTypeList(),
+                  ),
+                  Spacer(),
+                  _getAddTaskButton(context)
+                ],
+              ),
             ),
           ),
         ),

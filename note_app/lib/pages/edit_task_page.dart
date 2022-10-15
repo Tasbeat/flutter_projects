@@ -24,8 +24,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
   FocusNode taskSubTitleFocusNode = FocusNode();
   FocusNode taskTitleFocusNode = FocusNode();
   late Task currentTask;
-  late int newTaskHour;
-  late int newTaskMinute;
+  int newTaskHour = 0;
+  int newTaskMinute = 0;
   int _currentTaskTypeIndex = 0;
 
   @override
@@ -53,113 +53,119 @@ class _EditTaskPageState extends State<EditTaskPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 20.0,
-                  ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: _getTextField(
-                      controller: _taskTitleController,
-                      hintText: 'عنوان تسک',
-                      inputType: TextInputType.emailAddress,
-                      labelText: 'عنوان تسک',
+        child: SingleChildScrollView(
+          child: Container(
+            height: 600.0,
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 20.0,
+                    ),
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: _getTextField(
+                        controller: _taskTitleController,
+                        hintText: 'عنوان تسک',
+                        inputType: TextInputType.emailAddress,
+                        labelText: 'عنوان تسک',
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15.0),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: _getTextField(
-                      controller: _taskSubTitleController,
-                      hintText: '2عنوان تسک',
-                      inputType: TextInputType.visiblePassword,
-                      labelText: 'عنوان تسک2',
+                  const SizedBox(height: 15.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: _getTextField(
+                        controller: _taskSubTitleController,
+                        hintText: 'توضیحات',
+                        inputType: TextInputType.visiblePassword,
+                        labelText: 'توضیحات',
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: myGreen,
-                      minimumSize: Size(200.0, 60.0),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        showPicker(
-                          buttonsSpacing: 120,
-                          displayHeader: true,
-                          focusMinutePicker: false,
-                          accentColor: myGreen,
-                          borderRadius: 20,
-                          blurredBackground: true,
-                          cancelText: 'بازگشت',
-                          okText: 'ذخیره',
-                          okStyle: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            fontFamily: 'SM',
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: myGreen,
+                        minimumSize: Size(200.0, 60.0),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          showPicker(
+                            buttonsSpacing: 120,
+                            displayHeader: true,
+                            focusMinutePicker: false,
+                            accentColor: myGreen,
+                            borderRadius: 20,
+                            blurredBackground: true,
+                            cancelText: 'بازگشت',
+                            okText: 'ذخیره',
+                            okStyle: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              fontFamily: 'SM',
+                            ),
+                            cancelStyle: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              fontFamily: 'SM',
+                            ),
+                            context: context,
+                            value: TimeOfDay.now(),
+                            onChange: (p0) {
+                              newTaskHour = p0.hour;
+                              newTaskMinute = p0.minute;
+                            },
                           ),
-                          cancelStyle: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            fontFamily: 'SM',
-                          ),
-                          context: context,
-                          value: TimeOfDay.now(),
-                          onChange: (p0) {
-                            newTaskHour = p0.hour;
-                            newTaskMinute = p0.minute;
-                          },
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "زمان تسک رو انتخاب کن",
+                        );
+                      },
+                      child: Text(
+                        "زمان تسک رو انتخاب کن",
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 30.0),
-                  height: 200.0,
-                  child: _getTaskTypeList(),
-                ),
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 15.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: myGreen),
-                    onPressed: () {
-                      currentTask.title = _taskTitleController.text;
-                      currentTask.subTitle = _taskSubTitleController.text;
-                      currentTask.dateTime = DateTime(
-                        DateTime.now().year,
-                        DateTime.now().month,
-                        DateTime.now().day,
-                        newTaskHour,
-                        newTaskMinute,
-                      );
-                      currentTask.taskType =
-                          getTaskTypeList()[_currentTaskTypeIndex];
-                      print(currentTask.taskType!.taskTypeTitle);
-                      currentTask.save();
-                      Navigator.pop(context);
-                    },
-                    child: Text('ویرایش تسک'),
+                  Container(
+                    margin: EdgeInsets.only(top: 30.0),
+                    height: 200.0,
+                    child: _getTaskTypeList(),
                   ),
-                )
-              ],
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: myGreen),
+                      onPressed: () {
+                        currentTask.title = _taskTitleController.text;
+                        currentTask.subTitle = _taskSubTitleController.text;
+                        currentTask.dateTime = DateTime(
+                          DateTime.now().year,
+                          DateTime.now().month,
+                          DateTime.now().day,
+                          newTaskHour,
+                          newTaskMinute,
+                        );
+                        currentTask.taskType =
+                            getTaskTypeList()[_currentTaskTypeIndex];
+                        print(currentTask.taskType!.taskTypeTitle);
+                        currentTask.save();
+                        Navigator.pop(context);
+                      },
+                      child: Text('ویرایش تسک'),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -225,8 +231,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
         labelText: '$labelText',
         labelStyle: TextStyle(
           color: labelText == 'عنوان تسک'
-              ? (taskTitleFocusNode.hasFocus ? myGreen : myWhite)
-              : (taskSubTitleFocusNode.hasFocus ? myGreen : myWhite),
+              ? (taskTitleFocusNode.hasFocus ? myGreen : Colors.grey)
+              : (taskSubTitleFocusNode.hasFocus ? myGreen : Colors.grey),
           fontSize: 14,
         ),
         border: OutlineInputBorder(
