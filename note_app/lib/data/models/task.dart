@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
+import 'package:note_app/data/models/models.dart';
 
 part 'task.g.dart';
 
@@ -13,10 +14,14 @@ class Task extends HiveObject {
   bool isDone;
   @HiveField(3, defaultValue: null)
   DateTime? dateTime;
+  @HiveField(4, defaultValue: null)
+  TaskType? taskType;
+
   Task({
     required this.title,
     required this.subTitle,
     this.isDone = false,
     DateTime? dateTime,
+    this.taskType,
   }) : this.dateTime = dateTime;
 }
