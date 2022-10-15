@@ -1,11 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:note_app/data/data.dart';
 import 'package:note_app/data/models/models.dart';
-
-import '../data/models/task_type.dart';
-import '../data/models/task_type_enum.dart';
 
 class TaskTypeItem extends StatelessWidget {
   final TaskType taskType;
@@ -19,7 +15,6 @@ class TaskTypeItem extends StatelessWidget {
     required this.currentTaskTypeIndex,
     this.currentTask,
   }) : super(key: key);
-  var currentIndex;
   @override
   Widget build(BuildContext context) {
     return Container(
