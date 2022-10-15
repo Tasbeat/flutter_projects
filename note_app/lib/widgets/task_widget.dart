@@ -6,6 +6,7 @@ import 'package:note_app/pages/pages.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import '../asset.dart';
 import '../data/models/task.dart';
+import '../utility.dart';
 
 class TaskWidget extends StatefulWidget {
   final Task task;
@@ -23,6 +24,9 @@ class _TaskWidgetState extends State<TaskWidget> {
   @override
   void initState() {
     task = widget.task;
+    if (task.taskType == null) {
+      task.taskType = getTaskTypeList()[0];
+    }
     super.initState();
   }
 
@@ -266,7 +270,7 @@ class _TaskWidgetState extends State<TaskWidget> {
         horizontal: 12.0,
         vertical: 12.0,
       ),
-      child: Image.asset(Asset.workout),
+      child: Image.asset(task.taskType!.taskTypeHeader),
     );
   }
 }

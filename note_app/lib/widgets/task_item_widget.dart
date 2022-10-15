@@ -26,18 +26,35 @@ class TaskTypeItem extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       width: 150.0,
       decoration: BoxDecoration(
+        color: currentTask == null
+            ? (currentTaskTypeIndex == index ? myGreen : Colors.white)
+            : (currentTaskTypeIndex == index ? myGreen : Colors.white),
         border: Border.all(
-            width: currentTaskTypeIndex == index ? 3 : 2,
-            color: currentTask == null
-                ? (currentTaskTypeIndex == index ? myGreen : Colors.grey)
-                : (currentTaskTypeIndex == index
-                    ? myGreen
-                    : Colors.grey.withOpacity(0.5))),
+          width: currentTaskTypeIndex == index ? 3 : 2,
+          color: currentTask == null
+              ? (currentTaskTypeIndex == index ? myGreen : Colors.grey)
+              : (currentTaskTypeIndex == index
+                  ? myGreen
+                  : Colors.grey.withOpacity(0.5)),
+        ),
       ),
       child: Column(
         children: [
           Image.asset(taskType.taskTypeHeader),
-          Text(taskType.taskTypeTitle),
+          Text(
+            taskType.taskTypeTitle,
+            style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+              color: currentTask == null
+                  ? (currentTaskTypeIndex == index
+                      ? Colors.white
+                      : Colors.black)
+                  : (currentTaskTypeIndex == index
+                      ? Colors.white
+                      : Colors.black),
+            ),
+          ),
         ],
       ),
     );

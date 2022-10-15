@@ -139,6 +139,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: myGreen),
                     onPressed: () {
                       currentTask.title = _taskTitleController.text;
                       currentTask.subTitle = _taskSubTitleController.text;
