@@ -11,34 +11,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SnakeGame(),
+      home: snakeGame(),
     );
   }
 }
 
-class SnakeGame extends StatefulWidget {
-  const SnakeGame({super.key});
+class snakeGame extends StatefulWidget {
+  const snakeGame({super.key});
 
   @override
-  State<SnakeGame> createState() => _SnakeGameState();
+  State<snakeGame> createState() => _snakeGameState();
 }
 
-class _SnakeGameState extends State<SnakeGame> {
+class _snakeGameState extends State<snakeGame> {
   var snakeDirection = 'right';
 
   final int itemPerRow = 25;
   final int itemPerCol = 40;
   final randomGenerator = Random();
   List<List<int>> snakeCoor = [
-    [0, 0],
-    [0, 1]
+    [0, 1],
+    [0, 0]
   ];
+  var foodCoor = [0, 2];
+
   var isPlaying = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           children: [
@@ -68,10 +70,25 @@ class _SnakeGameState extends State<SnakeGame> {
                       ),
                       itemCount: itemPerRow * itemPerCol,
                       itemBuilder: (BuildContext context, int index) {
+                        Color? color;
+                        var x = index % itemPerRow;
+                        var y = (index / itemPerRow).floor();
+
+                        if (snakeCoor.first[0] == x &&
+                            snakeCoor.first[1] == y) {
+                          color = Colors.green;
+                        } else if (snakeCoor[1][0] == x &&
+                            snakeCoor[1][1] == y) {
+                          color = Colors.green[200];
+                        } else if (foodCoor[0] == x && foodCoor[1] == y) {
+                          color = Colors.red;
+                        } else {
+                          color = Colors.grey[800];
+                        }
                         return Container(
                           margin: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
-                            color: Colors.grey[800],
+                            color: color,
                             shape: BoxShape.circle,
                           ),
                         );
@@ -79,12 +96,33 @@ class _SnakeGameState extends State<SnakeGame> {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                startGame();
-              },
-              child: Text('start'),
-            )
+            Padding(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isPlaying ? Colors.red : Colors.blue,
+                        ),
+                        child: Text(
+                          isPlaying ? 'End' : 'Start',
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          if (isPlaying) {
+                            isPlaying = false;
+                          } else {
+                            startGame();
+                          }
+                        }),
+                    Text(
+                      'Score: ${snakeCoor.length - 2}',
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ],
+                )),
           ],
         ),
       ),
@@ -95,11 +133,11 @@ class _SnakeGameState extends State<SnakeGame> {
     const duration = Duration(milliseconds: 300);
     isPlaying = true;
     Timer.periodic(duration, (Timer timer) {
-      moveSnake();
+      movesnake();
     });
   }
 
-  void moveSnake() {
+  void movesnake() {
     setState(() {
       switch (snakeDirection) {
         case 'up':
