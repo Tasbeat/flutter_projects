@@ -191,14 +191,30 @@ class _SnakeGameState extends State<SnakeGame> {
   }
 
   bool _checkGameOver() {
-    if (!_isGamePlaying ||
-        _snakeCoors.first[1] < 0 ||
-        _snakeCoors.first[1] >= _itemsPerCol ||
-        _snakeCoors.first[0] < 0 ||
-        _snakeCoors.first[0] > _itemsPerRow) {
-      return true;
+    if (_snakeCoors.first[0] >= _itemsPerRow) {
+      setState(() {
+        _snakeCoors.first[0] = _snakeCoors.first[0] - _itemsPerRow;
+      });
+      return false;
     }
-
+    if (_snakeCoors.first[0] < 0) {
+      setState(() {
+        _snakeCoors.first[0] = _snakeCoors.first[0] + _itemsPerRow;
+      });
+      return false;
+    }
+    if (_snakeCoors.first[1] < 0) {
+      setState(() {
+        _snakeCoors.first[1] = _snakeCoors.first[1] + _itemsPerCol;
+      });
+      return false;
+    }
+    if (_snakeCoors.first[1] >= _itemsPerCol) {
+      setState(() {
+        _snakeCoors.first[1] = _snakeCoors.first[1] - _itemsPerCol;
+      });
+      return false;
+    }
     for (var i = 1; i < _snakeCoors.length; ++i) {
       if (_snakeCoors[i][0] == _snakeCoors.first[0] &&
           _snakeCoors[i][1] == _snakeCoors.first[1]) {
