@@ -191,6 +191,9 @@ class _SnakeGameState extends State<SnakeGame> {
   }
 
   bool _checkGameOver() {
+    if (!_isGamePlaying) {
+      return true;
+    }
     if (_snakeCoors.first[0] >= _itemsPerRow) {
       setState(() {
         _snakeCoors.first[0] = _snakeCoors.first[0] - _itemsPerRow;
