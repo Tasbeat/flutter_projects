@@ -15,12 +15,8 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: null,
-        actions: <Widget>[
-          IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                //Implement logout functionality
-              }),
+        actions: [
+          IconButton(icon: const Icon(Icons.close), onPressed: () {}),
         ],
         title: const Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,
@@ -29,7 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
+          children: [
             Container(
               decoration: const BoxDecoration(
                 border: Border(
@@ -38,12 +34,10 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Expanded(
                     child: TextField(
-                      onChanged: (value) {
-                        //Do something with the user input.
-                      },
+                      onChanged: (value) {},
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 20.0),
@@ -53,9 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      //Implement send functionality.
-                    },
+                    onPressed: () {},
                     child: const Text(
                       'Send',
                       style: TextStyle(

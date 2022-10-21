@@ -21,18 +21,19 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            SizedBox(
-              height: 200.0,
-              child: Image.asset(Asset.logo),
+          children: [
+            Hero(
+              tag: 'logo',
+              child: SizedBox(
+                height: 200.0,
+                child: Image.asset(Asset.logo),
+              ),
             ),
             const SizedBox(
               height: 48.0,
             ),
             TextField(
-              onChanged: (value) {
-                //Do something with the user input.
-              },
+              onChanged: (value) {},
               decoration: const InputDecoration(
                 hintText: 'Enter your email',
                 contentPadding:
@@ -56,9 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 8.0,
             ),
             TextField(
-              onChanged: (value) {
-                //Do something with the user input.
-              },
+              onChanged: (value) {},
               decoration: const InputDecoration(
                 hintText: 'Enter your password.',
                 contentPadding:
@@ -88,9 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                 elevation: 5.0,
                 child: MaterialButton(
-                  onPressed: () {
-                    //Implement login functionality.
-                  },
+                  onPressed: () {},
                   minWidth: 200.0,
                   height: 42.0,
                   child: const Text(
