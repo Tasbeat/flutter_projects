@@ -34,7 +34,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     // });
     animationController.addListener(() {
       setState(() {});
-      print(animation.value);
     });
     super.initState();
   }

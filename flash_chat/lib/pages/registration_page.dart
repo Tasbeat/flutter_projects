@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash_chat/pages/chat_page.dart';
 import 'package:flutter/material.dart';
 
 import '../asset.dart';
@@ -12,6 +14,9 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  var email;
+  var password;
+  var auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +35,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 48.0,
             ),
             TextField(
-              onChanged: (value) {},
+              onChanged: (value) {
+                email = value;
+              },
               decoration: const InputDecoration(
                 hintText: 'Enter your email',
                 contentPadding:
@@ -52,7 +59,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 8.0,
             ),
             TextField(
-              onChanged: (value) {},
+              onChanged: (value) {
+                password = value;
+              },
               decoration: const InputDecoration(
                 hintText: 'Enter your password',
                 contentPadding:
@@ -80,7 +89,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                 elevation: 5.0,
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    try {
+                      final UserCredential newUser =
+                          await auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    } catch (e) {}
+                  },
                   minWidth: 200.0,
                   height: 42.0,
                   child: const Text(
