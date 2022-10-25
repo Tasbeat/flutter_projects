@@ -40,7 +40,12 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         leading: null,
         actions: [
-          IconButton(icon: const Icon(Icons.close), onPressed: () {}),
+          IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                auth.signOut();
+                Navigator.pop(context);
+              }),
         ],
         title: const Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,
