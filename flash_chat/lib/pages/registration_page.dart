@@ -25,6 +25,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
+        opacity: 0.7,
+        blur: 1.0,
         inAsyncCall: isSpinnerShow,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -69,6 +71,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               TextField(
                 style: TextStyle(color: Colors.black),
+                obscureText: true,
                 onChanged: (value) {
                   password = value;
                 },
