@@ -1,6 +1,3 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,18 +10,26 @@ class ChatScreen extends StatefulWidget {
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
+// jlkjafl
 class _ChatScreenState extends State<ChatScreen> {
   final auth = FirebaseAuth.instance;
   @override
   void initState() {
     super.initState();
     getCurrentUser();
+    auth.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
   }
 
   User? loggedInUser;
   void getCurrentUser() async {
     try {
-      final user = await auth.currentUser;
+      final user = auth.currentUser;
       if (user != null) {
         loggedInUser = user;
         print(loggedInUser!.email);
