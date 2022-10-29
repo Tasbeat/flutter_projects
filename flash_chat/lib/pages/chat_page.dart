@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,9 @@ class ChatScreen extends StatefulWidget {
 // jlkjafl
 class _ChatScreenState extends State<ChatScreen> {
   final auth = FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance;
+  String? messageText;
+  User? loggedInUser;
   @override
   void initState() {
     super.initState();
@@ -26,7 +30,6 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  User? loggedInUser;
   void getCurrentUser() async {
     try {
       final user = auth.currentUser;
@@ -39,6 +42,14 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
+  void messagesStream() async {
+    await for (var snapshot in firestore.collection('messages').snapshots()) {
+      for (var message in snapshot.docs) {
+        print(message.data());
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +59,9 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               icon: const Icon(Icons.close),
               onPressed: () {
-                auth.signOut();
-                Navigator.pop(context);
+                // auth.signOut();
+                // Navigator.pop(context);
+                messagesStream();
               }),
         ],
         title: const Text('⚡️Chat'),
@@ -71,7 +83,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: [
                   Expanded(
                     child: TextField(
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        messageText = value;
+                      },
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 20.0),
@@ -81,7 +95,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      firestore.collection('messages').add(
+                          {'text': messageText, 'sender': loggedInUser!.email});
+                    },
                     child: const Text(
                       'Send',
                       style: TextStyle(
