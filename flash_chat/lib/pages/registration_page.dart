@@ -35,32 +35,45 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
-                height: 200.0,
-                child: Image.asset(Asset.logo),
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: SizedBox(
+                    height: 200.0,
+                    child: Image.asset(Asset.logo),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 48.0,
               ),
               TextField(
-                style: const TextStyle(color: Colors.black),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
                 onChanged: (value) {
                   email = value;
                 },
                 decoration: textFieldsInputDecorations.copyWith(
-                    hintText: 'Enter your Email'),
+                  hintText: 'Enter your Email',
+                  hintStyle: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 8.0,
               ),
               TextField(
+                textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.black),
-                obscureText: true,
                 onChanged: (value) {
                   password = value;
                 },
                 decoration: textFieldsInputDecorations.copyWith(
-                    hintText: 'Enter your Password'),
+                    hintText: 'Enter your Password',
+                    hintStyle: const TextStyle(color: Colors.grey)),
               ),
               const SizedBox(
                 height: 24.0,

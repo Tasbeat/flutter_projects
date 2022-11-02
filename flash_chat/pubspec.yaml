@@ -36,6 +36,7 @@ dependencies:
   flutter:
     sdk: flutter
   modal_progress_hud_nsn: ^0.3.0
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
 

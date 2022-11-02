@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flash_chat/asset.dart';
 import 'package:flash_chat/pages/login_page.dart';
 import 'package:flash_chat/pages/registration_page.dart';
@@ -22,16 +23,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       duration: const Duration(seconds: 3),
       vsync: this,
     );
-    animation = ColorTween(begin: Colors.red, end: Colors.blue)
+    animation = ColorTween(begin: Colors.blue, end: Colors.blueGrey)
         .animate(animationController);
     animationController.forward();
-    // animationController.addStatusListener((status) {
-    //   if (status == AnimationStatus.completed) {
-    //     animationController.reverse();
-    //   } else if (status == AnimationStatus.dismissed) {
-    //     animationController.forward();
-    //   }
-    // });
     animationController.addListener(() {
       setState(() {});
     });
@@ -57,11 +51,25 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: Image.asset(Asset.logo),
                   ),
                 ),
-                const Text(
-                  'Flash Chat',
-                  style: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
+                SizedBox(
+                  width: 250.0,
+                  child: DefaultTextStyle(
+                    style: const TextStyle(
+                      fontSize: 40.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          'Flash Chat',
+                          speed: const Duration(milliseconds: 300),
+                        ),
+                      ],
+                      onTap: () {
+                        print("Tap Event");
+                      },
+                    ),
                   ),
                 ),
               ],
