@@ -24,7 +24,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white38,
       body: ModalProgressHUD(
         opacity: 0.7,
         blur: 1.0,
@@ -50,7 +50,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextField(
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 onChanged: (value) {
                   email = value;

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -23,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white38,
       body: ModalProgressHUD(
         inAsyncCall: isSpinnerShow,
         child: Padding(
@@ -47,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 onChanged: (value) {
                   email = value;
@@ -102,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 42.0,
                     child: const Text(
                       'Log In',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
