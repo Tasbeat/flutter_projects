@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:flash_chat/pages/chat_page.dart';
@@ -24,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white38,
+      backgroundColor: Colors.white10,
       body: ModalProgressHUD(
         opacity: 0.7,
         blur: 1.0,
@@ -69,7 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.white),
                 onChanged: (value) {
                   password = value;
                 },
@@ -97,10 +98,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 email: email!, password: password!);
                         Navigator.pushNamed(context, ChatScreen.id);
                       } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Wrong email or password!'),
-                          ),
+                        AnimatedSnackBar.rectangle(
+                          'Error',
+                          'Wrong Email Or Password',
+                          type: AnimatedSnackBarType.error,
+                          brightness: Brightness.light,
+                          mobileSnackBarPosition: MobileSnackBarPosition.top,
+                        ).show(
+                          context,
                         );
                       }
                       setState(() {

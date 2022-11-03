@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -25,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white38,
+      backgroundColor: Colors.white10,
       body: ModalProgressHUD(
         inAsyncCall: isSpinnerShow,
         child: Padding(
@@ -68,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.white),
                 onChanged: (value) {
                   password = value;
                 },
@@ -96,10 +97,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 email: email!, password: password!);
                         Navigator.pushNamed(context, ChatScreen.id);
                       } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Wrong email or password!'),
-                          ),
+                        AnimatedSnackBar.rectangle(
+                          'Error',
+                          'Wrong Email Or Password',
+                          type: AnimatedSnackBarType.error,
+                          brightness: Brightness.light,
+                          mobileSnackBarPosition: MobileSnackBarPosition.top,
+                        ).show(
+                          context,
                         );
                       }
                       setState(() {

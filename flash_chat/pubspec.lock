@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  animated_snack_bar:
+    dependency: "direct main"
+    description:
+      name: animated_snack_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   animated_text_kit:
     dependency: "direct main"
     description:
