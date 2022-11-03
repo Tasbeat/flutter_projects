@@ -47,6 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 48.0,
               ),
               TextField(
+                keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
@@ -65,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 8.0,
               ),
               TextField(
+                obscureText: true,
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.black),
                 onChanged: (value) {
@@ -94,7 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 email: email!, password: password!);
                         Navigator.pushNamed(context, ChatScreen.id);
                       } catch (e) {
-                        print(e);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Wrong email or password!'),
+                          ),
+                        );
                       }
                       setState(() {
                         isSpinnerShow = false;
