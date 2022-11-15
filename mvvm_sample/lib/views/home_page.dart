@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var cryptolistViewmodel = CryptolistViewmodel();
+  var cryptolistViewmodel = CryptoListViewModel();
   @override
   void initState() {
     cryptolistViewmodel.loadData();
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: ChangeNotifierProvider(
         create: (context) => cryptolistViewmodel,
-        child: Consumer<CryptolistViewmodel>(
+        child: Consumer<CryptoListViewModel>(
           builder: (context, value, child) {
             return getScaffold(value);
           },
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Scaffold getScaffold(CryptolistViewmodel cryptolistViewmodel) {
+  Scaffold getScaffold(CryptoListViewModel cryptolistViewmodel) {
     return Scaffold(
       body: ListView.builder(
         itemBuilder: (context, index) {
