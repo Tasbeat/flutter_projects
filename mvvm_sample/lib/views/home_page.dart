@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mvvm_sample/view_models/cryptolist_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var cryptolistViewmodel = CryptoListViewModel();
+  CryptoListViewModel cryptolistViewmodel = GetIt.I.get<CryptoListViewModel>();
   @override
   void initState() {
     cryptolistViewmodel.loadData();
