@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:bloc_sample/bloc/home_bloc/home_event.dart';
-import 'package:bloc_sample/bloc/home_bloc/home_state.dart';
+import 'package:bloc_sample/bloc/home_event.dart';
+import 'package:bloc_sample/bloc/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,6 @@
-import 'package:bloc_sample/bloc/home_bloc/home_bloc.dart';
+import 'package:bloc_sample/bloc/counter_bloc.dart';
+import 'package:bloc_sample/bloc/home_bloc.dart';
+import 'package:bloc_sample/ui/pages/counter_page.dart';
 import 'package:bloc_sample/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: BlocProvider(
-        create: (context) => HomeBloc(),
-        child: const HomePage(),
+        create: (context) => CounterBloc(),
+        child: const CounterPage(),
       ),
     );
   }
