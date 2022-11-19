@@ -14,28 +14,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        if (state is HomeInitial) {
+          return getScaffold(context, state.color);
+        }
+        if (state is HomeRePaintInprogress) {
+          return getScaffold(context, state.color);
+        }
+        return Container();
+      },
+    );
+  }
+
+  Scaffold getScaffold(BuildContext context, Color scaffoldBackgroundColor) {
     return Scaffold(
+      backgroundColor: scaffoldBackgroundColor,
       body: Stack(
         children: [
-          BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) {
-              if (state is HomeInitial) {
-                return Container(
-                  color: state.color,
-                );
-              }
-              if (state is HomeRePaintInprogress) {
-                return Container(
-                  color: state.color,
-                );
-              }
-              return Container();
-            },
-          ),
           Center(
             child: ElevatedButton(
               onPressed: () {
-                context.read<HomeBloc>().add(HomeChangeColorEvent());
+                context.read<HomeBloc>().add(
+                      HomeChangeColorEvent(),
+                    );
               },
               child: const Text(
                 'Click me to change color!',
