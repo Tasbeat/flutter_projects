@@ -91,10 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {
                         isSpinnerShow = true;
                       });
+
                       try {
                         final UserCredential loggedInUser =
                             await auth.signInWithEmailAndPassword(
                                 email: email!, password: password!);
+                        if (!mounted) return;
                         Navigator.pushNamed(context, ChatScreen.id);
                       } catch (e) {
                         AnimatedSnackBar.rectangle(
