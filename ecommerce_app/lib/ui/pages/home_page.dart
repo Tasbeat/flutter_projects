@@ -1,5 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -9,11 +9,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  var pageViewController = PageController(viewportFraction: 0.8);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Stack(
+          alignment: AlignmentDirectional.bottomCenter,
           children: [
             SizedBox(
               height: 200.0,
@@ -21,7 +23,7 @@ class _HomepageState extends State<Homepage> {
                 textDirection: TextDirection.rtl,
                 child: PageView.builder(
                   itemCount: 3,
-                  controller: PageController(viewportFraction: 0.8),
+                  controller: pageViewController,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(left: 12.0, right: 12.0),
@@ -31,6 +33,23 @@ class _HomepageState extends State<Homepage> {
                       ),
                     );
                   },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: SmoothPageIndicator(
+                  controller: pageViewController,
+                  count: 3,
+                  effect: const ExpandingDotsEffect(
+                    expansionFactor: 4,
+                    dotHeight: 10,
+                    dotWidth: 10,
+                    dotColor: Colors.black,
+                    activeDotColor: Colors.red,
+                  ),
                 ),
               ),
             )
