@@ -3,7 +3,7 @@ class Asset {
 
   static const String activeFavProduct = '${_imagesPath}active_fav_product.png';
   static const String appleIconBlue = '${_imagesPath}icon_apple_blue.png';
-  static const String backIcon = '${_imagesPath}icon_back.png';
+  static const String blackIcon = '${_imagesPath}icon_back.png';
   static const String basketActiveIcon = '${_imagesPath}icon_basket_active.png';
   static const String basketIcon = '${_imagesPath}icon_basket.png';
   static const String categoryActiveIcon =

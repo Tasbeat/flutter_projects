@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/constants/colors.dart';
 import 'package:ecommerce_app/ui/pages/home_page.dart';
+import 'package:ecommerce_app/ui/pages/nav_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +12,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowMaterialGrid: false,
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            color: Colors.black,
+            fontFamily: 'SB',
+            fontSize: 14.0,
+          ),
+          headline2: TextStyle(
+            color: CustomColors.grey,
+            fontFamily: 'SB',
+            fontSize: 12.0,
+          ),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      home: const NavPage(),
     );
   }
 }
