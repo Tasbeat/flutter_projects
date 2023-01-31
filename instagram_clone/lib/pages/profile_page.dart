@@ -145,12 +145,12 @@ class _ProfilePageState extends State<ProfilePage>
               crossAxisSpacing: 10,
               repeatPattern: QuiltedGridRepeatPattern.inverted,
               pattern: [
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(2, 2),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
+                const QuiltedGridTile(1, 1),
+                const QuiltedGridTile(2, 2),
+                const QuiltedGridTile(1, 1),
+                const QuiltedGridTile(1, 1),
+                const QuiltedGridTile(1, 1),
+                const QuiltedGridTile(1, 1),
               ],
             ),
           ),
@@ -226,7 +226,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           Text(
-            'developer',
+            'Developer',
             style: TextStyle(
               color: grey,
             ),
@@ -238,7 +238,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           Text(
-            'IRAN',
+            'Freelancer',
             style: TextStyle(
               color: grey,
             ),
@@ -259,7 +259,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           Text(
-            'yek.link/...',
+            'tasbeat.ir',
             style: TextStyle(
               color: blue2,
             ),
@@ -278,7 +278,7 @@ class _ProfilePageState extends State<ProfilePage>
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 100.0,
+              height: 60.0,
               width: 195.0,
               child: RichText(
                 maxLines: 4,
@@ -287,8 +287,7 @@ class _ProfilePageState extends State<ProfilePage>
                 text: const TextSpan(
                   children: [
                     TextSpan(
-                      text:
-                          'علی علیرحیمی هستم برنامه نویس اندروید وفلاتر با سابقه کاری 3 سال و مدیر بخش کنترل کیفی شرکت اصل فولاد ',
+                      text: 'Hello im Ali Alirahimi! Mobile And Web Developer',
                       style: TextStyle(
                         fontFamily: 'GM',
                         fontSize: 12.0,
@@ -322,7 +321,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           title: const Text(
-            'برنامه نویس موبایل',
+            'Mobile And Web Developer',
             style: TextStyle(
               color: white,
               fontFamily: 'SM',
@@ -330,7 +329,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ),
           subtitle: const Text(
-            '_tasbeat_',
+            'tasbeat.ir',
             style: TextStyle(
               color: grey,
               fontFamily: 'GB',

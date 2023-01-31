@@ -95,7 +95,7 @@ class SwitchAccountPage extends StatelessWidget {
                         height: 100.0,
                         decoration: BoxDecoration(
                           image: const DecorationImage(
-                            image: AssetImage(Asset.profilePhoto),
+                            image: AssetImage(Asset.explorePhoto3),
                             fit: BoxFit.cover,
                           ),
                           borderRadius: BorderRadius.circular(15.0),
@@ -105,7 +105,7 @@ class SwitchAccountPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        '_tasbeat_',
+                        'tasbeat.ir',
                         style: Theme.of(context).textTheme.headline1,
                       ),
                     ),

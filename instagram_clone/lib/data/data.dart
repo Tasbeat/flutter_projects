@@ -15,19 +15,31 @@ const Color blue2 = Color(0xff55B9F7);
 
 //constants
 final List<Content> storyList = [
-  Content(imageUrl: Asset.plusIcon, borderColor: pink, profileId: '_tasbeat_'),
+  Content(imageUrl: Asset.plusIcon, borderColor: pink, profileId: 'tasbeat.ir'),
   Content(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.explorePhoto3,
+      borderColor: pink,
+      profileId: 'tasbeat.ir'),
   Content(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.explorePhoto3,
+      borderColor: pink,
+      profileId: 'tasbeat.ir'),
   Content(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.explorePhoto3,
+      borderColor: pink,
+      profileId: 'tasbeat.ir'),
   Content(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.explorePhoto3,
+      borderColor: pink,
+      profileId: 'tasbeat.ir'),
   Content(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.explorePhoto3,
+      borderColor: pink,
+      profileId: 'tasbeat.ir'),
   Content(
-      imageUrl: Asset.profilePhoto, borderColor: pink, profileId: '_tasbeat_'),
+      imageUrl: Asset.explorePhoto3,
+      borderColor: pink,
+      profileId: 'tasbeat.ir'),
 ];
 
 final List<Content> highlightList = [
@@ -74,50 +86,50 @@ final List<Content> postList = [
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
-      profileImageUrl: Asset.profilePhoto,
-      profileId: '_tasbeat_',
+      profileImageUrl: Asset.explorePhoto3,
+      profileId: 'tasbeat.ir',
       borderColor: pink,
-      profileDescription: 'علی علیرحیمی'),
+      profileDescription: 'Ali Alirahimi'),
   Content(
       postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
-      profileImageUrl: Asset.profilePhoto,
-      profileId: '_tasbeat_',
+      profileImageUrl: Asset.explorePhoto3,
+      profileId: 'tasbeat.ir',
       borderColor: pink,
-      profileDescription: 'علی علیرحیمی'),
+      profileDescription: 'Ali Alirahimi'),
   Content(
       postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
-      profileImageUrl: Asset.profilePhoto,
-      profileId: '_tasbeat_',
+      profileImageUrl: Asset.explorePhoto3,
+      profileId: 'tasbeat.ir',
       borderColor: pink,
-      profileDescription: 'علی علیرحیمی'),
+      profileDescription: 'Ali Alirahimi'),
   Content(
       postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
-      profileImageUrl: Asset.profilePhoto,
-      profileId: '_tasbeat_',
+      profileImageUrl: Asset.explorePhoto3,
+      profileId: 'tasbeat.ir',
       borderColor: pink,
-      profileDescription: 'علی علیرحیمی'),
+      profileDescription: 'Ali Alirahimi'),
   Content(
       postImageUrl: Asset.moonWallpaper,
       likesCounter: '2.6k',
       commentsCounter: '1k',
       isLike: false,
       isSaved: false,
-      profileImageUrl: Asset.profilePhoto,
-      profileId: '_tasbeat_',
+      profileImageUrl: Asset.explorePhoto3,
+      profileId: 'tasbeat.ir',
       borderColor: pink,
-      profileDescription: 'علی علیرحیمی'),
+      profileDescription: 'Ali Alirahimi'),
 ];
 final List<Text> categoryList = [
   const Text(
@@ -177,99 +189,99 @@ final List<Content> followerList = [
   Content(
       imageUrl: Asset.followerImage1,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage2,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage3,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage4,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage5,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage6,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage7,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage8,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage1,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage2,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage3,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage4,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage5,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage6,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage7,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage8,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage1,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage2,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage3,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage4,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage5,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage6,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage7,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
   Content(
       imageUrl: Asset.followerImage8,
       borderColor: pink,
-      profileId: '_tasbeat_'),
+      profileId: 'tasbeat.ir'),
 ];
 
 final List<Content> exploreList = [
@@ -306,7 +318,7 @@ List<QuiltedGridTile> patternList = const [
 
 List<Content> newNotificationList = [
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage1,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -314,7 +326,7 @@ List<Content> newNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage2,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -322,7 +334,7 @@ List<Content> newNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage3,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -333,7 +345,7 @@ List<Content> newNotificationList = [
 
 List<Content> todayNotificationList = [
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage1,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -341,7 +353,7 @@ List<Content> todayNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage2,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -349,7 +361,7 @@ List<Content> todayNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage3,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -357,7 +369,7 @@ List<Content> todayNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage4,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -365,7 +377,7 @@ List<Content> todayNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage5,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -373,7 +385,7 @@ List<Content> todayNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage6,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -384,7 +396,7 @@ List<Content> todayNotificationList = [
 
 List<Content> thisWeekNotificationList = [
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage1,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -392,7 +404,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage2,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -400,7 +412,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage3,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -408,7 +420,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage4,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -416,7 +428,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage5,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -424,7 +436,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage6,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -432,7 +444,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage7,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -440,7 +452,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage8,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -448,7 +460,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage8,
     borderColor: pink,
     profileDescription: 'Started following you',
@@ -456,15 +468,15 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
-    profileImageUrl: Asset.profilePhoto,
+    profileId: 'tasbeat.ir',
+    profileImageUrl: Asset.explorePhoto3,
     borderColor: pink,
     profileDescription: 'Started following you',
     time: ' 3min',
     holderWidget: _getMessageButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage1,
     borderColor: pink,
     profileDescription: 'Liked your post',
@@ -472,7 +484,7 @@ List<Content> thisWeekNotificationList = [
     holderWidget: _getFollowButton(),
   ),
   Content(
-    profileId: '_tasbeat_',
+    profileId: 'tasbeat.ir',
     profileImageUrl: Asset.followerImage5,
     borderColor: pink,
     profileDescription: 'Started following you',
