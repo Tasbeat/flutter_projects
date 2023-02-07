@@ -15,7 +15,6 @@ class Application extends StatelessWidget {
 
   Widget _getApplication() {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'vazir'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: _getAppBar(),
@@ -31,7 +30,7 @@ class Application extends StatelessWidget {
       backgroundColor: Colors.blue,
       elevation: 0,
       title: Center(
-        child: Text('رزومه من'),
+        child: Text('My Resume'),
       ),
     );
   }
@@ -68,7 +67,7 @@ class Application extends StatelessWidget {
         ),
         SizedBox(height: 20),
         Text(
-          'علی علیرحیمی',
+          'Ali Alirahimi',
           style: TextStyle(
               fontWeight: FontWeight.w900,
               fontSize: 15.0,
@@ -154,16 +153,11 @@ class Application extends StatelessWidget {
 
   Widget _getResume() {
     var resumeContext = [
-      'متن 1',
-      'متن 2',
-      'متن 3',
-      'متن 4',
-      'متن 5',
-      'متن 6',
-      'متن 7',
-      'متن 8',
-      'متن 9',
-      'متن 10'
+      'I am Ali Alirahimi. Graduated in computer software engineering. Freelancer, mobile and web developer, and programmer. With work experience since 2018. Also quality control manager of Aslefoolad Company and covered by insurance since 2018 with teaching experience in Salam and Rushd schools.',
+      ' ',
+      ' ',
+      ' ',
+      ' ',
     ];
     return Column(
       children: [
@@ -171,7 +165,7 @@ class Application extends StatelessWidget {
           color: Colors.blue[400],
           width: double.infinity,
           child: Text(
-            'سابقه کاری',
+            'Work Experience',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
@@ -189,7 +183,7 @@ class Application extends StatelessWidget {
                 for (var index in resumeContext)
                   Text(
                     index,
-                    textDirection: TextDirection.rtl,
+                    textDirection: TextDirection.ltr,
                   ),
               ],
             ),
