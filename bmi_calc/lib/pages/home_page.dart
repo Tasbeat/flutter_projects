@@ -97,17 +97,17 @@ class _HomePageState extends State<HomePage> {
             () {
               resultBMI = weightDouble / (heightDouble * heightDouble);
               if (resultBMI >= 25) {
-                resultText = 'فراتر از استاندارد';
+                resultText = 'More than standard';
                 resultColor = red;
                 unHealthyProgressBarWidth = 270;
                 healthyProgressBarWidth = 50;
               } else if (resultBMI <= 24.9 && resultBMI >= 18.5) {
-                resultText = 'مطابق با استاندارد';
+                resultText = 'Equal to the standard';
                 resultColor = green;
                 unHealthyProgressBarWidth = 50;
                 healthyProgressBarWidth = 270;
               } else if (resultBMI < 18.5) {
-                resultText = 'کمتر از استاندارد';
+                resultText = 'Less than standard';
                 resultColor = black;
                 unHealthyProgressBarWidth = 80;
                 healthyProgressBarWidth = 80;
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: Text(
         textDirection: TextDirection.rtl,
-        'محاسبه کن !',
+        'Calculate!',
         style: TextStyle(
           color: black,
           fontSize: 30.0,
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
               hoverColor: Colors.black,
               prefixIconColor: Colors.black,
               suffixIconColor: Colors.black,
-              hintText: 'قد',
+              hintText: 'Height',
               icon: Icon(Icons.height),
               hintStyle: TextStyle(
                 color: black.withOpacity(0.3),
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
             maxLength: 3,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              hintText: 'وزن',
+              hintText: 'Weight',
               icon: Icon(Icons.fastfood),
               hintStyle: TextStyle(
                 color: black.withOpacity(0.3),
@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.lightBlue,
       elevation: 0,
       title: Text(
-        'BMI محاسبه ',
+        'BMI Calculator ',
         style: TextStyle(color: black),
       ),
       centerTitle: true,
