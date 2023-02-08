@@ -89,19 +89,19 @@ class _HomePageState extends State<HomePage> {
       builder: (context) => Directionality(
         textDirection: TextDirection.rtl,
         child: AlertDialog(
-          title: const Text('مطمئنید؟'),
-          content: const Text('آیا از پاک کردن تسک مطمئن هستید؟'),
+          title: const Text('Are You Sure?'),
+          content: const Text('Are you sure you want to delete the task?'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('خیر'),
+              child: const Text('No'),
             ),
             TextButton(
               onPressed: () {
                 task.delete();
                 Navigator.of(context).pop();
               },
-              child: const Text('بله'),
+              child: const Text('Yes'),
             ),
           ],
         ),

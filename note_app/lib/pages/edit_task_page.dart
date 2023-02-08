@@ -72,9 +72,9 @@ class _EditTaskPageState extends State<EditTaskPage> {
                       textDirection: TextDirection.rtl,
                       child: _getTextField(
                         controller: _taskTitleController,
-                        hintText: 'عنوان تسک',
+                        hintText: 'Task Title',
                         inputType: TextInputType.emailAddress,
-                        labelText: 'عنوان تسک',
+                        labelText: 'Task Title',
                       ),
                     ),
                   ),
@@ -85,9 +85,9 @@ class _EditTaskPageState extends State<EditTaskPage> {
                       textDirection: TextDirection.rtl,
                       child: _getTextField(
                         controller: _taskSubTitleController,
-                        hintText: 'توضیحات',
+                        hintText: 'Descripiton',
                         inputType: TextInputType.visiblePassword,
-                        labelText: 'توضیحات',
+                        labelText: 'Descrtption;',
                       ),
                     ),
                   ),
@@ -107,8 +107,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
                             accentColor: myGreen,
                             borderRadius: 20,
                             blurredBackground: true,
-                            cancelText: 'بازگشت',
-                            okText: 'ذخیره',
+                            cancelText: 'Back',
+                            okText: 'Save',
                             okStyle: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
                         );
                       },
                       child: Text(
-                        "زمان تسک رو انتخاب کن",
+                        'Choose Task Time',
                       ),
                     ),
                   ),
@@ -161,7 +161,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
                         currentTask.save();
                         Navigator.pop(context);
                       },
-                      child: Text('ویرایش تسک'),
+                      child: Text('Edit Task'),
                     ),
                   )
                 ],
@@ -187,8 +187,9 @@ class _EditTaskPageState extends State<EditTaskPage> {
       required TextEditingController controller}) {
     return TextField(
       controller: controller,
-      focusNode:
-          labelText == 'عنوان تسک' ? taskTitleFocusNode : taskSubTitleFocusNode,
+      focusNode: labelText == 'Task Title'
+          ? taskTitleFocusNode
+          : taskSubTitleFocusNode,
       autofocus: false,
       keyboardType: inputType,
       cursorColor: myWhite,
@@ -196,7 +197,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
         color: Colors.black,
         fontSize: 14,
       ),
-      maxLines: labelText == 'عنوان تسک' ? 1 : 2,
+      maxLines: labelText == 'Task Title' ? 1 : 2,
       decoration: InputDecoration(
         isDense: true,
         contentPadding:
@@ -230,7 +231,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
         ),
         labelText: '$labelText',
         labelStyle: TextStyle(
-          color: labelText == 'عنوان تسک'
+          color: labelText == 'Task Title'
               ? (taskTitleFocusNode.hasFocus ? myGreen : Colors.grey)
               : (taskSubTitleFocusNode.hasFocus ? myGreen : Colors.grey),
           fontSize: 14,

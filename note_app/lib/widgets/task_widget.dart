@@ -103,7 +103,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                     child: Image.asset(Asset.iconEdit),
                   ),
                   Text(
-                    'ویرایش',
+                    'Edit',
                     style: TextStyle(
                       color: myGreen,
                       fontSize: 12.0,
@@ -126,8 +126,8 @@ class _TaskWidgetState extends State<TaskWidget> {
                   accentColor: myGreen,
                   borderRadius: 20,
                   blurredBackground: true,
-                  cancelText: 'بازگشت',
-                  okText: 'ذخیره',
+                  cancelText: 'Back',
+                  okText: 'Save',
                   okStyle: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
@@ -185,7 +185,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                       task.dateTime == null ||
                               task.dateTime!.hour == 0 ||
                               task.dateTime!.minute == 0
-                          ? 'نامشخص'
+                          ? 'Unknown'
                           : '${task.dateTime!.hour}:${task.dateTime!.minute} ',
                       style: TextStyle(
                         fontSize: 12.0,

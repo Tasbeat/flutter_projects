@@ -7,32 +7,32 @@ List<TaskType> getTaskTypeList() {
   List<TaskType> taskTypeList = [
     TaskType(
       taskTypeHeader: Asset.banking,
-      taskTypeTitle: 'کار بانکی',
+      taskTypeTitle: 'Banking',
       taskTypeEnum: TaskTypeEnum.banking,
     ),
     TaskType(
       taskTypeHeader: Asset.hardWorking,
-      taskTypeTitle: 'کار زیاد',
+      taskTypeTitle: 'Hard Working',
       taskTypeEnum: TaskTypeEnum.hardWorking,
     ),
     TaskType(
       taskTypeHeader: Asset.meditate,
-      taskTypeTitle: 'استراحت',
+      taskTypeTitle: 'Resr',
       taskTypeEnum: TaskTypeEnum.meditate,
     ),
     TaskType(
       taskTypeHeader: Asset.socialFriends,
-      taskTypeTitle: 'گپ با دوستان',
+      taskTypeTitle: 'Hangout With Friends',
       taskTypeEnum: TaskTypeEnum.socialFriends,
     ),
     TaskType(
       taskTypeHeader: Asset.workMeeting,
-      taskTypeTitle: 'میتینگ کاری',
+      taskTypeTitle: 'Work Meeting',
       taskTypeEnum: TaskTypeEnum.workMeeting,
     ),
     TaskType(
       taskTypeHeader: Asset.workout,
-      taskTypeTitle: 'تمرین',
+      taskTypeTitle: 'Workout',
       taskTypeEnum: TaskTypeEnum.workout,
     ),
   ];
