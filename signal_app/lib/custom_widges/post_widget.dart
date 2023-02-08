@@ -35,7 +35,7 @@ Widget _getSubTitle() {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
-        'فروش',
+        'Sell',
         style: TextStyle(
           color: Colors.red,
           fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ Widget _getSubTitle() {
       ),
       SizedBox(width: 40),
       Text(
-        'خرید',
+        'Buy',
         style: TextStyle(
           color: Colors.green,
           fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ Widget _getSubTitle() {
 
 Widget _getTitle(String name) {
   return Text(
-    'سیگنال خرید ${name} برای 14 مرداد',
+    ' Buy and sell signal for ${name} ',
     textDirection: TextDirection.rtl,
     textAlign: TextAlign.center,
     style: TextStyle(fontSize: 16.0),

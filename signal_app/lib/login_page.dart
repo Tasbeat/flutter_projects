@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'خوش آمدید!',
+          'Welcome!',
           textDirection: TextDirection.rtl,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
           ForgotPasswordPage(),
         );
       },
-      child: Text('فراموشی رمز عبور!', textDirection: TextDirection.rtl),
+      child: Text('Forgot Password', textDirection: TextDirection.rtl),
     );
   }
 
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
           primary: Colors.black),
       onPressed: () {},
       child: Text(
-        'ثبت نام',
+        'Sign Up!',
         style: TextStyle(fontSize: 16.0),
       ),
     );
@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
         elevation: 10.0,
       ),
       child: Text(
-        'ورود',
+        'Login',
         style: TextStyle(fontSize: 16.0),
       ),
       onPressed: () {
@@ -115,7 +115,7 @@ class LoginPage extends StatelessWidget {
     return AppBar(
       elevation: 10.0,
       title: Text(
-        'Home Screen',
+        'Login',
       ),
     );
   }
