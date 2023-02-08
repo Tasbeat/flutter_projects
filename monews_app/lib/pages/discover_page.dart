@@ -52,9 +52,9 @@ class _DiscoverPageState extends State<DiscoverPage> {
             slivers: [
               _getCarouselSlider(),
               _getCategoryList(),
-              _getNewsTitle(more: 'مشاهده بیشتر', title: 'خبرگذاری ها'),
+              _getNewsTitle(more: 'More', title: 'Agencies'),
               _getAgenciesContentList(),
-              _getNewsTitle(more: 'مشاهده بیشتر', title: 'پیشنهاد سر دبیر'),
+              _getNewsTitle(more: 'More', title: 'Recommended'),
               _getEditorCategorySuggestionList(),
               const SliverPadding(
                 padding: EdgeInsets.only(bottom: 60.0),
@@ -77,7 +77,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
         child: Marquee(
           textDirection: TextDirection.rtl,
           text:
-              'بی‌نظمی شدید در مراسم رونمایی از کاپ جام جهانی و قهر نماینده فیفا       ***       برانکو تکذیب کرد/ نه با عمان فسخ کردم، نه با ایران مذاکره داشتم',
+              'Severe disorder in the unveiling ceremony of the World Cup cup and the anger of the FIFA representative       ***       ',
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: white,

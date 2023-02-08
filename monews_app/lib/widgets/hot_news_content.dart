@@ -16,7 +16,7 @@ class HotNewsContent extends StatelessWidget {
       padding: const EdgeInsets.only(right: 5.0),
       child: SizedBox(
         width: 255.0,
-        height: 294.0,
+        height: 290.0,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -34,7 +34,7 @@ class HotNewsContent extends StatelessWidget {
                       child: Image.asset(
                         hotNewsList[index].imageUrl,
                         width: 240.0,
-                        height: 150.0,
+                        height: 130.0,
                       ),
                     ),
                   ),
@@ -72,7 +72,7 @@ class HotNewsContent extends StatelessWidget {
                       child: Image.asset(Asset.flashCircle),
                     ),
                     const Text(
-                      'پیشنهاد مونیوز',
+                      'Monews Recommended',
                       style: TextStyle(
                         color: grey,
                         fontSize: 10.0,

@@ -48,7 +48,7 @@ class AgenciesContent extends StatelessWidget {
               ),
               child: const Center(
                 child: Text(
-                  'دنبال کردن',
+                  'Follow',
                   style: TextStyle(
                     color: pink,
                     fontFamily: 'SM',

@@ -15,91 +15,94 @@ const Color blue2 = Color(0xff55B9F7);
 List<Content> hotNewsList = [
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
-    agency: 'خبرگذاری آخرین خبر',
+    catergories: ['Sport'],
+    agency: 'last news Agency',
     agencyLogoUrl: Asset.akharinKhabarLogo,
-    reportTime: '5 دقیقه پیش',
-    shortDescription: 'پاسخ منفی پورتو به چلسی برای جذب طارمی با طعم تهدید!',
+    reportTime: '5 min ago',
+    shortDescription:
+        'Porto\'s negative answer to Chelsea for attracting Tarami with the taste of threat!',
   ),
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
-    agency: 'خبرگذاری آخرین خبر',
+    catergories: ['Sport'],
+    agency: 'last news Agency',
     agencyLogoUrl: Asset.varzesh3SmallLogo,
-    reportTime: '5 دقیقه پیش',
+    reportTime: '5 min ago',
     shortDescription:
-        'پای اژدها به گلزنی باز شد ، اولین گل لـوکـادیـا به صنعت نفت آبادان',
+        'The foot of the dragon opened to score, the first goal of Leucadia against Sanat Naft Abadan',
   ),
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
-    agency: 'خبرگذاری آخرین خبر',
+    catergories: ['Sports'],
+    agency: 'last news Agency',
     agencyLogoUrl: Asset.akharinKhabarLogo,
-    reportTime: '5 دقیقه پیش',
-    shortDescription: 'پاسخ منفی پورتو به چلسی برای جذب طارمی با طعم تهدید!',
-  ),
-  Content(
-    imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
-    agency: 'خبرگذاری آخرین خبر',
-    agencyLogoUrl: Asset.akharinKhabarLogo,
-    reportTime: '5 دقیقه پیش',
+    reportTime: '5 min ago',
     shortDescription:
-        'پای اژدها به گلزنی باز شد ، اولین گل لـوکـادیـا به صنعت نفت آبادان',
+        'Porto\'s negative answer to Chelsea for attracting Tarami with the taste of threat!',
   ),
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
-    agency: 'خبرگذاری آخرین خبر',
+    catergories: ['Sports'],
+    agency: 'last news Agency',
     agencyLogoUrl: Asset.akharinKhabarLogo,
-    reportTime: '5 دقیقه پیش',
-    shortDescription: 'پاسخ منفی پورتو به چلسی برای جذب طارمی با طعم تهدید!',
+    reportTime: '5 min ago',
+    shortDescription:
+        'The foot of the dragon opened to score, the first goal of Leucadia against Sanat Naft Abadan',
+  ),
+  Content(
+    imageUrl: Asset.newsImage1,
+    catergories: ['Sports'],
+    agency: 'last news Agency',
+    agencyLogoUrl: Asset.akharinKhabarLogo,
+    reportTime: '5 min ago',
+    shortDescription:
+        'Porto\'s negative answer to Chelsea for attracting Tarami with the taste of threat!',
   ),
 ];
 List<Content> suggestionNewsList = [
   Content(
     imageUrl: Asset.suggestionNewsPhoto1,
-    catergories: ['تکنولوژی'],
-    agency: 'خبرگذاری دیجیاتو',
+    catergories: ['Technology'],
+    agency: 'Digiato Agency',
     agencyLogoUrl: Asset.digiatoLogo,
-    reportTime: '5 دقیقه پیش',
+    reportTime: '5 min ago',
     shortDescription:
-        'سـاعـت هوشـمـنـد گــارمـیـن Venu Sq 2 بـا عمر باتری ۱۱ روزه معرفی شد',
+        'Garmin Venu Sq 2 smart watch with 11-day battery life was introduced.',
     longDescription:
-        'گارمین در رویداد IFA ۲۰۲۲ ساعت هوشمند Venu Sq 2 و ردیاب سلامت کودکان موسوم به Black Panther Vivofit Jr 3 را معرفی کرد.',
+        'At the IFA 2022 event, Garmin introduced the Venu Sq 2 smartwatch and the Black Panther Vivofit Jr 3 children\'s health tracker.',
   ),
   Content(
     imageUrl: Asset.suggestionNewsPhoto1,
-    catergories: ['تکنولوژی'],
-    agency: 'خبرگذاری دیجیاتو',
+    catergories: ['Technology'],
+    agency: 'Digiato Agency',
     agencyLogoUrl: Asset.digiatoLogo,
-    reportTime: '5 دقیقه پیش',
+    reportTime: '5 min ago',
     shortDescription:
-        'سـاعـت هوشـمـنـد گــارمـیـن Venu Sq 2 بـا عمر باتری ۱۱ روزه معرفی شد',
+        'Garmin Venu Sq 2 smart watch with 11-day battery life was introduced.',
     longDescription:
-        'گارمین در رویداد IFA ۲۰۲۲ ساعت هوشمند Venu Sq 2 و ردیاب سلامت کودکان موسوم به Black Panther Vivofit Jr 3 را معرفی کرد.',
+        'At the IFA 2022 event, Garmin introduced the Venu Sq 2 smartwatch and the Black Panther Vivofit Jr 3 children\'s health tracker.',
   ),
   Content(
     imageUrl: Asset.suggestionNewsPhoto1,
-    catergories: ['تکنولوژی'],
-    agency: 'خبرگذاری دیجیاتو',
+    catergories: ['Technology'],
+    agency: 'Digiato Agency',
     agencyLogoUrl: Asset.digiatoLogo,
-    reportTime: '5 دقیقه پیش',
+    reportTime: '5 min ago',
     shortDescription:
-        'سـاعـت هوشـمـنـد گــارمـیـن Venu Sq 2 بـا عمر باتری ۱۱ روزه معرفی شد',
+        'Garmin Venu Sq 2 smart watch with 11-day battery life was introduced.',
     longDescription:
-        'گارمین در رویداد IFA ۲۰۲۲ ساعت هوشمند Venu Sq 2 و ردیاب سلامت کودکان موسوم به Black Panther Vivofit Jr 3 را معرفی کرد.',
+        'At the IFA 2022 event, Garmin introduced the Venu Sq 2 smartwatch and the Black Panther Vivofit Jr 3 children\'s health tracker.',
   ),
   Content(
     imageUrl: Asset.suggestionNewsPhoto1,
-    catergories: ['تکنولوژی'],
-    agency: 'خبرگذاری دیجیاتو',
+    catergories: ['Technology'],
+    agency: 'Digiato Agency',
     agencyLogoUrl: Asset.digiatoLogo,
-    reportTime: '5 دقیقه پیش',
+    reportTime: '5 min ago',
     shortDescription:
-        'سـاعـت هوشـمـنـد گــارمـیـن Venu Sq 2 بـا عمر باتری ۱۱ روزه معرفی شد',
+        'Garmin Venu Sq 2 smart watch with 11-day battery life was introduced.',
     longDescription:
-        'گارمین در رویداد IFA ۲۰۲۲ ساعت هوشمند Venu Sq 2 و ردیاب سلامت کودکان موسوم به Black Panther Vivofit Jr 3 را معرفی کرد.',
+        'At the IFA 2022 event, Garmin introduced the Venu Sq 2 smartwatch and the Black Panther Vivofit Jr 3 children\'s health tracker.',
   ),
 ];
 
@@ -107,7 +110,7 @@ List<Content> categoryList = [
   Content(
     imageUrl: '',
     catergories: [
-      'ورزشی',
+      'Sports',
     ],
     agency: '',
     agencyLogoUrl: '',
@@ -116,7 +119,7 @@ List<Content> categoryList = [
   Content(
     imageUrl: '',
     catergories: [
-      'تکنولوژی',
+      'Technology',
     ],
     agency: '',
     agencyLogoUrl: '',
@@ -125,7 +128,7 @@ List<Content> categoryList = [
   Content(
     imageUrl: '',
     catergories: [
-      'علمی',
+      'Science',
     ],
     agency: '',
     agencyLogoUrl: '',
@@ -134,7 +137,7 @@ List<Content> categoryList = [
   Content(
     imageUrl: '',
     catergories: [
-      'اقتصادی',
+      'Economic',
     ],
     agency: '',
     agencyLogoUrl: '',
@@ -143,7 +146,7 @@ List<Content> categoryList = [
   Content(
     imageUrl: '',
     catergories: [
-      'سیاسی',
+      'political',
     ],
     agency: '',
     agencyLogoUrl: '',
@@ -152,7 +155,7 @@ List<Content> categoryList = [
   Content(
     imageUrl: '',
     catergories: [
-      'فرهنگی',
+      'cultural',
     ],
     agency: '',
     agencyLogoUrl: '',
@@ -164,42 +167,42 @@ List<Content> agenciesList = [
   Content(
     imageUrl: '',
     catergories: [],
-    agency: 'زومیت',
+    agency: 'Zoomit',
     agencyLogoUrl: Asset.zoomitIcon,
     reportTime: '',
   ),
   Content(
     imageUrl: '',
     catergories: [],
-    agency: 'ورزش سه',
+    agency: 'Varzesh3',
     agencyLogoUrl: Asset.varzesh3Logo,
     reportTime: '',
   ),
   Content(
     imageUrl: '',
     catergories: [],
-    agency: 'دیجیاتو',
+    agency: 'Digiato',
     agencyLogoUrl: Asset.digiatoLogo,
     reportTime: '',
   ),
   Content(
     imageUrl: '',
     catergories: [],
-    agency: 'زومیت',
+    agency: 'Zoomit',
     agencyLogoUrl: Asset.zoomitIcon,
     reportTime: '',
   ),
   Content(
     imageUrl: '',
     catergories: [],
-    agency: 'ورزش سه',
+    agency: 'Varzesh3',
     agencyLogoUrl: Asset.varzesh3Logo,
     reportTime: '',
   ),
   Content(
     imageUrl: '',
     catergories: [],
-    agency: 'دیجیاتو',
+    agency: 'Digiato',
     agencyLogoUrl: Asset.digiatoLogo,
     reportTime: '',
   ),
@@ -207,42 +210,42 @@ List<Content> agenciesList = [
 List<Content> editorCategorySuggestionList = [
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
+    catergories: ['Sports'],
     agency: '',
     agencyLogoUrl: '',
     reportTime: '',
   ),
   Content(
     imageUrl: Asset.medicalAndSciencePhoto,
-    catergories: ['علمی پزشکی'],
+    catergories: ['Science-Medical'],
     agency: '',
     agencyLogoUrl: '',
     reportTime: '',
   ),
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
+    catergories: ['Sports'],
     agency: '',
     agencyLogoUrl: '',
     reportTime: '',
   ),
   Content(
     imageUrl: Asset.medicalAndSciencePhoto,
-    catergories: ['علمی پزشکی'],
+    catergories: ['Science-Medical'],
     agency: '',
     agencyLogoUrl: '',
     reportTime: '',
   ),
   Content(
     imageUrl: Asset.newsImage1,
-    catergories: ['ورزشی'],
+    catergories: ['Sports'],
     agency: '',
     agencyLogoUrl: '',
     reportTime: '',
   ),
   Content(
     imageUrl: Asset.medicalAndSciencePhoto,
-    catergories: ['علمی پزشکی'],
+    catergories: ['Science-Medical'],
     agency: '',
     agencyLogoUrl: '',
     reportTime: '',

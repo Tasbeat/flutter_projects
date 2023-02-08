@@ -16,7 +16,7 @@ class CategoryContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 14.0),
-      width: 53.0,
+      width: 65.0,
       decoration: BoxDecoration(
         color: currentCategorySelectedIndex == index ? pink2 : Colors.white,
         borderRadius: BorderRadius.circular(20.0),

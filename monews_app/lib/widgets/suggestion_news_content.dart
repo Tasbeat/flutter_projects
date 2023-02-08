@@ -19,7 +19,7 @@ class SuggestionNewsContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: SizedBox(
         width: 380.0,
-        height: 120.0,
+        height: 145.0,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),

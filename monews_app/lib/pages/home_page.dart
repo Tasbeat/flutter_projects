@@ -71,10 +71,10 @@ class _HomePageState extends State<HomePage> {
         CustomScrollView(
           slivers: [
             const SliverPadding(padding: EdgeInsets.only(top: 34.0)),
-            _getNewsTitle(more: 'مشاهده بیشتر', title: 'خبر های داغ'),
+            _getNewsTitle(more: 'More', title: 'Hot News'),
             _getHotNewsList(),
             const SliverPadding(padding: EdgeInsets.only(top: 32.0)),
-            _getNewsTitle(more: 'مشاهده بیشتر', title: 'خبرهایی که علاقه داری'),
+            _getNewsTitle(more: 'More', title: 'You Liked'),
             _getSuggestionNewsList(),
             const SliverPadding(padding: EdgeInsets.only(bottom: 10.0)),
           ],
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
   SliverToBoxAdapter _getHotNewsList() {
     return SliverToBoxAdapter(
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: SizedBox(
           height: 280.0,
           child: ListView.builder(
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           return Directionality(
-            textDirection: TextDirection.rtl,
+            textDirection: TextDirection.ltr,
             child: SuggestionNewsContent(
                 suggestionNewsList: suggestionNewsList, index: index),
           );
@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: TabBar(
           labelColor: white,
           labelStyle: const TextStyle(fontFamily: 'SM', color: white),
@@ -238,10 +238,10 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           tabs: const [
             Tab(
-              text: 'پیشنهادی',
+              text: 'Suggestion',
             ),
             Tab(
-              text: 'دنبال میکنید',
+              text: 'You Following',
             ),
           ],
         ),
