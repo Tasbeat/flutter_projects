@@ -50,16 +50,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
       builder: (context) => Directionality(
         textDirection: TextDirection.rtl,
         child: AlertDialog(
-          title: const Text('مطمئنید؟'),
-          content: const Text('آیا میخواهید از برنامه خارج شوید؟'),
+          title: const Text('Are you sure?'),
+          content: const Text('Do you want to exit?'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('خیر'),
+              child: const Text('No'),
             ),
             TextButton(
               onPressed: () => SystemNavigator.pop(),
-              child: const Text('بله'),
+              child: const Text('Yes'),
             ),
           ],
         ),
@@ -84,12 +84,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
               textDirection: TextDirection.rtl,
               child: AlertDialog(
                 title: const Text(
-                  'شهر مورد نظر یافت نشد!',
+                  'City not found!',
                   style: TextStyle(fontSize: 18),
                 ),
                 actions: [
                   ElevatedButton(
-                    child: const Text("باشه"),
+                    child: const Text("Ok"),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -114,7 +114,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   child: AlertDialog(
                     scrollable: true,
                     title: const Text(
-                      'شهر مورد نظر خود را جستجو کنید',
+                      'Search City',
                       style: TextStyle(fontSize: 16),
                     ),
                     content: Column(
@@ -130,7 +130,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     ),
                     actions: [
                       ElevatedButton(
-                        child: const Text("جستجو"),
+                        child: const Text("Search"),
                         onPressed: () {
                           getDataFromAPI();
                           Navigator.pop(context);
@@ -161,7 +161,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ),
       ],
       centerTitle: true,
-      title: const Text('ودرمن'),
+      title: const Text('Weatherman'),
     );
   }
 
@@ -198,33 +198,33 @@ class _WeatherScreenState extends State<WeatherScreen> {
       child: Column(
         children: [
           const SizedBox(height: 10.0),
-          const Text('سایر اطلاعات'),
+          const Text('Other Information'),
           Divider(
             thickness: 1.0,
             color: isSwitchOn ? Colors.white : Colors.black,
           ),
           _getExtraData(
-            'توضیحات',
+            'Descrtiption',
             cityWeather!.description,
           ),
           _getExtraData(
-            'بیشترین دما',
+            'Highest Temp',
             cityWeather!.tempMax.toString(),
           ),
           _getExtraData(
-            'کمترین دما',
+            'Lowest Temp',
             cityWeather!.tempMin.toString(),
           ),
           _getExtraData(
-            'فشار',
+            'Preasure',
             cityWeather!.pressure.toString(),
           ),
           _getExtraData(
-            'رطوبت',
+            'Humidity',
             cityWeather!.humidity.toString(),
           ),
           _getExtraData(
-            'دما',
+            'Tempreture',
             cityWeather!.temp.toString(),
           ),
         ],
@@ -274,7 +274,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           child: Column(
             children: [
               const Text(
-                ':دما',
+                'Tempreture:',
                 style: TextStyle(fontSize: 40),
               ),
               Text(
