@@ -26,7 +26,7 @@ class _ResultPageState extends State<ResultPage> {
               ),
             ),
             Text(
-              ':تعداد پاسخ های درست شما',
+              'True Answers:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(
@@ -34,7 +34,7 @@ class _ResultPageState extends State<ResultPage> {
               style: TextStyle(color: Colors.green, fontSize: 60),
             ),
             Text(
-              ':تعداد پاسخ های نادرست شما',
+              'Wrong Answers:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(

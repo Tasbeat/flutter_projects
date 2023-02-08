@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
         );
       },
       child: Text(
-        'شروع',
+        'Start',
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );

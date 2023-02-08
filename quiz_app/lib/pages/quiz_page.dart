@@ -20,14 +20,14 @@ class _QuizPageState extends State<QuizPage> {
   var isAnswerHasSubmitted = false;
   var userCorrectAnswersNumber = 0;
   var userWrongAnswersNumber = 0;
-  var submitText = 'سوال بعدی';
+  var submitText = 'Next Question';
   var trueAnswerColor;
   var wrongAnswerColor;
   var stringListOfAnswerTitleOrders = [
-    'گزینه اول',
-    'گزینه دوم',
-    'گزینه سوم',
-    'گزینه چهارم'
+    'The first option',
+    'The second option',
+    'The third option',
+    'The forth option',
   ];
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
   Widget _getQuestionTitle() {
     return ListTile(
       subtitle: Text(
-        'سوال $questionNumberTitle از ${questions.length}  ',
+        'Question $questionNumberTitle Of ${questions.length}  ',
         textAlign: TextAlign.end,
       ),
       dense: true,
@@ -107,7 +107,7 @@ class _QuizPageState extends State<QuizPage> {
               }
             });
           },
-          child: Text('ارسال جواب'),
+          child: Text('Submit Answers'),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -140,7 +140,7 @@ class _QuizPageState extends State<QuizPage> {
             });
           },
           child: Text(
-            questionIndex == questions.length - 1 ? 'نتیجه' : 'سوال بعدی',
+            questionIndex == questions.length - 1 ? 'Result' : 'Next Question',
           ),
         )
       ],
