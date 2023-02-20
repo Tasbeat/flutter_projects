@@ -55,7 +55,7 @@ class ProductDetailScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(bottom: 20),
                 child: Text(
-                  'Se 2022 آیفون',
+                  'آیفون 13 پرو',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'sb', fontSize: 16, color: Colors.black),
@@ -159,7 +159,7 @@ class ProductDetailScreen extends StatelessWidget {
                           height: 26,
                           width: 26,
                           decoration: const BoxDecoration(
-                            color: Colors.red,
+                            color: Color.fromARGB(255, 32, 132, 35),
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
                         ),
@@ -168,7 +168,7 @@ class ProductDetailScreen extends StatelessWidget {
                           height: 26,
                           width: 26,
                           decoration: const BoxDecoration(
-                            color: Colors.red,
+                            color: Colors.blueAccent,
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
                         ),
@@ -177,7 +177,7 @@ class ProductDetailScreen extends StatelessWidget {
                           height: 26,
                           width: 26,
                           decoration: const BoxDecoration(
-                            color: Colors.red,
+                            color: Colors.blueGrey,
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
                         ),
@@ -236,7 +236,7 @@ class ProductDetailScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Center(
                                 child: Text(
-                              '128',
+                              '256',
                               style: TextStyle(fontFamily: 'sb', fontSize: 12),
                             )),
                           ),
@@ -254,10 +254,12 @@ class ProductDetailScreen extends StatelessWidget {
                           child: const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Center(
-                                child: Text(
-                              '128',
-                              style: TextStyle(fontFamily: 'sb', fontSize: 12),
-                            )),
+                              child: Text(
+                                '512',
+                                style:
+                                    TextStyle(fontFamily: 'sb', fontSize: 12),
+                              ),
+                            ),
                           ),
                         ),
                       ],
