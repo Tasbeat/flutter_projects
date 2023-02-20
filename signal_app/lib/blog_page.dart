@@ -46,7 +46,7 @@ class BlogPage extends StatelessWidget {
         Navigator.pop(context);
       },
       child: Text(
-        'خروج از حساب',
+        'Sign Out!',
         style: TextStyle(color: Colors.blue, fontSize: 16),
       ),
     );

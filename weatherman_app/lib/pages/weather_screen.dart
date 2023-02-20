@@ -48,7 +48,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return (await showDialog(
       context: context,
       builder: (context) => Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: AlertDialog(
           title: const Text('Are you sure?'),
           content: const Text('Do you want to exit?'),
@@ -71,7 +71,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Future<void> getDataFromAPI() async {
     try {
       Response response = await Dio().get(
-          'https://api.openweathermap.org/data/2.5/weather?q=$cityName&lang=fa&units=metric&appid=604a5a2d0698e550e7ef5281689d43b5');
+          'https://api.openweathermap.org/data/2.5/weather?q=$cityName&units=metric&appid=604a5a2d0698e550e7ef5281689d43b5');
       Map<String, dynamic> jsonMapObject = response.data;
       setState(() {
         cityWeather = CityWeather.fromMapJson(jsonMapObject);
@@ -81,7 +81,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           context: context,
           builder: (BuildContext context) {
             return Directionality(
-              textDirection: TextDirection.rtl,
+              textDirection: TextDirection.ltr,
               child: AlertDialog(
                 title: const Text(
                   'City not found!',
@@ -110,7 +110,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               context: context,
               builder: (BuildContext context) {
                 return Directionality(
-                  textDirection: TextDirection.rtl,
+                  textDirection: TextDirection.ltr,
                   child: AlertDialog(
                     scrollable: true,
                     title: const Text(
@@ -275,7 +275,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             children: [
               const Text(
                 'Tempreture:',
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontSize: 30),
               ),
               Text(
                 cityWeather!.temp.toString(),
