@@ -1,7 +1,7 @@
 name: ecommerce_app
 description: A new Flutter project.
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -10,19 +10,19 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^5.0.1
   flutter:
     sdk: flutter
+  get_it: ^7.2.0
   smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
-
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
-
 flutter:
-
 
   uses-material-design: true
   assets:
