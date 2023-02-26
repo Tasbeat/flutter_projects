@@ -2,13 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/data/datasource/authentication_datasource.dart';
 import 'package:ecommerce_app/util/api_exception.dart';
 
+import '../../di/di.dart';
+
 abstract class AuthRepository {
   Future<Either<String, String>> register(
       String username, String password, String passwordConfirm);
 }
 
 class AuthenticationRepository extends AuthRepository {
-  final AuthenticationDatasource datasource = AuthenticationRemote();
+  final AuthenticationDatasource datasource = locator.get();
   @override
   Future<Either<String, String>> register(
       String username, String password, String passwordConfirm) async {

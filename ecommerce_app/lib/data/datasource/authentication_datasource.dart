@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ecommerce_app/di/di.dart';
 import 'package:ecommerce_app/util/api_exception.dart';
 
 abstract class AuthenticationDatasource {
@@ -7,7 +8,7 @@ abstract class AuthenticationDatasource {
 }
 
 class AuthenticationRemote extends AuthenticationDatasource {
-  final Dio dio = Dio(BaseOptions(baseUrl: 'http://startflutter.ir/api/'));
+  final Dio dio = locator.get();
   @override
   Future<void> register(
       String username, String password, String passwordConfirm) async {

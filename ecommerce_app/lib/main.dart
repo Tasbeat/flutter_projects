@@ -1,10 +1,13 @@
 import 'package:ecommerce_app/constants/colors.dart';
+import 'package:ecommerce_app/di/di.dart';
 import 'package:ecommerce_app/ui/pages/home_page.dart';
 import 'package:ecommerce_app/ui/pages/login_page.dart';
 import 'package:ecommerce_app/ui/pages/nav_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
-void main() {
+void main() async {
+  await getItInit();
   runApp(const MyApp());
 }
 
