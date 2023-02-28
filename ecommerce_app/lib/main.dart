@@ -1,9 +1,11 @@
+import 'package:ecommerce_app/bloc/authentication/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/constants/colors.dart';
 import 'package:ecommerce_app/di/di.dart';
 import 'package:ecommerce_app/ui/pages/home_page.dart';
 import 'package:ecommerce_app/ui/pages/login_page.dart';
 import 'package:ecommerce_app/ui/pages/nav_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void main() async {
@@ -21,12 +23,12 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       theme: ThemeData(
         textTheme: const TextTheme(
-          headline1: TextStyle(
+          displayLarge: TextStyle(
             color: Colors.black,
             fontFamily: 'SB',
             fontSize: 14.0,
           ),
-          headline2: TextStyle(
+          displayMedium: TextStyle(
             color: CustomColors.grey,
             fontFamily: 'SB',
             fontSize: 12.0,
@@ -34,7 +36,12 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: BlocProvider(
+        create: (context) {
+          return AuthBloc();
+        },
+        child: const LoginPage(),
+      ),
     );
   }
 }

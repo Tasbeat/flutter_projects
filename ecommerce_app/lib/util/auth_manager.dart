@@ -7,6 +7,10 @@ class AuthManager {
     sharedPref.setString('access_token', token);
   }
 
+  static String getToken() {
+    return sharedPref.get('access_token').toString();
+  }
+
   static logout() {
     sharedPref.clear();
   }

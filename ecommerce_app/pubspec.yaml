@@ -9,11 +9,13 @@ environment:
   sdk: '>=2.18.4 <3.0.0'
 
 dependencies:
+  bloc: ^8.1.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.0.1
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.2
   get_it: ^7.2.0
   shared_preferences: ^2.0.18
   smooth_page_indicator: ^1.0.0+2
