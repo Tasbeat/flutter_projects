@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             var either = await AuthenticationRepository()
-                .register('tasbeat100', '12345678', '12345678');
+                .login('tasbeat100', '12345678');
             either.fold((l) => print(l), (r) => print(r));
           },
           child: Text('click'),
