@@ -5,7 +5,7 @@ import 'package:ecommerce_app/util/api_exception.dart';
 abstract class AuthenticationDatasource {
   Future<void> register(
       String username, String password, String passwordConfirm);
-  Future<String> login(String username, String identity);
+  Future<String> login(String username, String password);
 }
 
 class AuthenticationRemote extends AuthenticationDatasource {
@@ -27,10 +27,10 @@ class AuthenticationRemote extends AuthenticationDatasource {
   }
 
   @override
-  Future<String> login(String username, String identity) async {
+  Future<String> login(String username, String password) async {
     try {
       var response = await dio.post('collections/users/auth-with-password',
-          data: {'username': username, 'password': identity});
+          data: {'identity': username, 'password': password});
       if (response.statusCode == 200) {
         return response.data['token'];
       }
