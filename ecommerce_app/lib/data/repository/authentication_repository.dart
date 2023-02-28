@@ -7,6 +7,8 @@ import '../../di/di.dart';
 abstract class AuthRepository {
   Future<Either<String, String>> register(
       String username, String password, String passwordConfirm);
+
+  Future<Either<String, String>> login(String username, String identity);
 }
 
 class AuthenticationRepository extends AuthRepository {
@@ -19,6 +21,20 @@ class AuthenticationRepository extends AuthRepository {
       return right('ثبت نام انجام شد');
     } on ApiException catch (ex) {
       return left(ex.message ?? 'خطا محتوای متنی ندارد');
+    }
+  }
+
+  @override
+  Future<Either<String, String>> login(String username, String identity) async {
+    try {
+      var token = await datasource.login(username, identity);
+      if (token.isNotEmpty) {
+        return right('وارد شده اید!');
+      } else {
+        return left('خطایی پیش آمده');
+      }
+    } on ApiException catch (ex) {
+      return left(ex.message ?? 'خطایی رخ داده');
     }
   }
 }
