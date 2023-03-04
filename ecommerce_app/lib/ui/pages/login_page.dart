@@ -1,18 +1,13 @@
 import 'package:ecommerce_app/bloc/authentication/bloc/auth_bloc.dart';
-import 'package:ecommerce_app/data/repository/authentication_repository.dart';
-import 'package:ecommerce_app/di/di.dart';
 import 'package:ecommerce_app/util/auth_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final SharedPreferences sharedPref = locator.get();
-
     return Scaffold(
       body: SafeArea(
         child: Column(

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/data/datasource/authentication_datasource.dart';
+import 'package:ecommerce_app/data/datasource/category_datasource.dart';
 import 'package:ecommerce_app/data/repository/authentication_repository.dart';
+import 'package:ecommerce_app/data/repository/category_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,7 +19,9 @@ Future<void> getItInit() async {
   //datasources
   locator
       .registerFactory<AuthenticationDatasource>(() => AuthenticationRemote());
+  locator.registerFactory<CategoryDatasource>(() => CategoryRemoteDatasource());
 
   //repositories
   locator.registerFactory<AuthRepository>(() => AuthenticationRepository());
+  locator.registerFactory<CatRepository>(() => CategoryRepository());
 }

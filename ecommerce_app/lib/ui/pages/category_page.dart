@@ -1,5 +1,9 @@
+import 'dart:math';
+
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:ecommerce_app/constants/asset.dart';
 import 'package:ecommerce_app/constants/colors.dart';
+import 'package:ecommerce_app/data/repository/category_repository.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -11,6 +15,22 @@ class CategoryScreen extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
+            SliverToBoxAdapter(
+              child: ElevatedButton(
+                onPressed: () async {
+                  final catRepo = CategoryRepository();
+                  var either = await catRepo.getCategoriesList();
+                  either.fold(
+                      (l) => print(l),
+                      (r) => {
+                            r.forEach((element) {
+                              print(element.title);
+                            })
+                          });
+                },
+                child: const Text('print categories title list'),
+              ),
+            ),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(left: 44, right: 44, bottom: 32),
