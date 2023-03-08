@@ -13,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) async {
       if (event is AuthRequest) {
-        emit(AuthResponseInProgres());
+        emit(AuthResponseInProgress());
         var response =
             await _authRepository.login(event.username, event.password);
         emit(AuthResponseSuccess(response: response));

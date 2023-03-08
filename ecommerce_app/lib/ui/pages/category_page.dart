@@ -16,22 +16,6 @@ class CategoryScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final catRepo = CategoryRepository();
-                  var either = await catRepo.getCategoriesList();
-                  either.fold(
-                      (l) => print(l),
-                      (r) => {
-                            r.forEach((element) {
-                              print(element.title);
-                            })
-                          });
-                },
-                child: const Text('print categories title list'),
-              ),
-            ),
-            SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(left: 44, right: 44, bottom: 32),
                 child: Container(

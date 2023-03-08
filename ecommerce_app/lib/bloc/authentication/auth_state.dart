@@ -6,7 +6,7 @@ abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class AuthResponseInProgres extends AuthState {}
+class AuthResponseInProgress extends AuthState {}
 
 class AuthResponseSuccess extends AuthState {
   final Either<String, String> response;

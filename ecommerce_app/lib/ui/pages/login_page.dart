@@ -1,7 +1,8 @@
-import 'package:ecommerce_app/bloc/authentication/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/util/auth_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/authentication/auth_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -34,7 +35,7 @@ class LoginPage extends StatelessWidget {
                 if (state is AuthInitial) {
                   return const Text('لطفا وارد شوید');
                 }
-                if (state is AuthResponseInProgres) {
+                if (state is AuthResponseInProgress) {
                   return const CircularProgressIndicator();
                 }
                 if (state is AuthResponseSuccess) {
