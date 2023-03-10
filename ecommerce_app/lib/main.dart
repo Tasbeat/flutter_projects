@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/bloc/authentication/bloc/auth_bloc.dart';
+import 'package:ecommerce_app/bloc/category/category_bloc.dart';
 import 'package:ecommerce_app/constants/colors.dart';
 import 'package:ecommerce_app/di/di.dart';
 import 'package:ecommerce_app/ui/pages/category_page.dart';
@@ -8,6 +8,8 @@ import 'package:ecommerce_app/ui/pages/nav_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+
+import 'bloc/authentication/auth_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,10 +40,8 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-        create: (context) {
-          return AuthBloc();
-        },
-        child: CategoryScreen(),
+        create: (context) => CategoryBloc(),
+        child: const CategoryScreen(),
       ),
     );
   }
