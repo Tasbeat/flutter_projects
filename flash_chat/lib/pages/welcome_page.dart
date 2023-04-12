@@ -48,7 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   tag: 'logo',
                   child: SizedBox(
                     height: 60.0,
-                    child: Image.asset(Asset.logo),
+                    child: Image.asset('assets/images/logo.png'),
                   ),
                 ),
                 SizedBox(
@@ -58,18 +58,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       fontSize: 40.0,
                       fontWeight: FontWeight.bold,
                     ),
-                    child: AnimatedTextKit(
-                      repeatForever: true,
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          'Flash Chat',
-                          speed: const Duration(milliseconds: 300),
-                        ),
-                      ],
-                      onTap: () {
-                        print("Tap Event");
-                      },
-                    ),
+                    child: Text('Chat app'),
+                    // AnimatedTextKit(
+                    //   repeatForever: true,
+                    //   animatedTexts: [
+                    //     TypewriterAnimatedText(
+                    //       'Flash Chat',
+                    //       speed: const Duration(milliseconds: 300),
+                    //     ),
+                    //   ],
+                    //   onTap: () {
+                    //     print("Tap Event");
+                    //   },
+                    // ),
                   ),
                 ),
               ],
