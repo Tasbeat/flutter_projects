@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
+import 'package:day_night_time_picker/lib/state/time.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/utility.dart';
@@ -183,7 +184,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         fontFamily: 'SM',
       ),
       context: context,
-      value: TimeOfDay.now(),
+      value: Time(hour: TimeOfDay.now().hour, minute: TimeOfDay.now().minute),
       onChange: (p0) {
         taskHour = p0.hour;
         taskMinute = p0.minute;

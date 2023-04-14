@@ -1,4 +1,5 @@
 import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
+import 'package:day_night_time_picker/lib/state/time.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/data/data.dart';
 import 'package:note_app/navigator.dart';
@@ -141,7 +142,9 @@ class _TaskWidgetState extends State<TaskWidget> {
                     fontFamily: 'SM',
                   ),
                   context: context,
-                  value: TimeOfDay.now(),
+                  value: Time(
+                      hour: TimeOfDay.now().hour,
+                      minute: TimeOfDay.now().minute),
                   onChange: (p0) {
                     setState(() {
                       task.dateTime = DateTime(
